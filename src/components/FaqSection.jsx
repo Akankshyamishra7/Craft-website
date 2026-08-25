@@ -92,6 +92,16 @@ export default function FaqSection() {
             )
           })}
         </div>
+
+        {/* Still Have Questions Banner */}
+        <div className="mx-auto max-w-lg rounded-2xl border border-white/80 bg-white/70 p-4 text-center shadow-soft backdrop-blur-sm">
+          <p className="text-xs text-cocoa-muted">
+            Still have questions about a custom piece?{' '}
+            <a href="#contact" className="font-bold text-clay underline transition hover:text-cocoa">
+              Contact our studio team →
+            </a>
+          </p>
+        </div>
       </div>
     </section>
   )
