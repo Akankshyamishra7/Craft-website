@@ -1,6 +1,6 @@
 "use client"
 
-import { Award, MapPin, Star } from 'lucide-react'
+import { ArrowRight, Award, MapPin, Star } from 'lucide-react'
 import { fallbackCraftImage } from '../utils/fallbackImage'
 
 const ARTISANS = [
@@ -110,15 +110,25 @@ export default function ArtisanSpotlight() {
                   </p>
                 </div>
 
-                <div className="mt-4 flex flex-wrap gap-1.5 border-t border-sand/60 pt-3.5">
-                  {artisan.badges.map((b) => (
-                    <span
-                      key={b}
-                      className="rounded-full bg-mint/50 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-moss"
-                    >
-                      {b}
-                    </span>
-                  ))}
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-sand/60 pt-3.5">
+                  <div className="flex flex-wrap gap-1.5">
+                    {artisan.badges.map((b) => (
+                      <span
+                        key={b}
+                        className="rounded-full bg-mint/50 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-moss"
+                      >
+                        {b}
+                      </span>
+                    ))}
+                  </div>
+
+                  <a
+                    href="#collection"
+                    className="inline-flex items-center gap-1 text-[11px] font-bold text-clay transition hover:text-cocoa"
+                  >
+                    <span>View Crafts</span>
+                    <ArrowRight className="h-3 w-3" />
+                  </a>
                 </div>
               </div>
             </article>
