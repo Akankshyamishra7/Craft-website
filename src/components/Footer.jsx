@@ -106,13 +106,13 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-sand/70 pt-8 text-xs font-semibold text-cocoa-muted sm:flex-row">
-          <p>© 2026 Crafty Handmade Marketplace. Handcrafted with care & soft shadows.</p>
+          <p>© {new Date().getFullYear()} Crafty Handmade Marketplace. Handcrafted with care & soft shadows.</p>
           <div className="flex items-center gap-4 text-[11px]">
-            <span>Privacy Policy</span>
+            <a href="#about" className="hover:text-clay transition">Privacy Policy</a>
             <span>•</span>
-            <span>Terms of Service</span>
+            <a href="#about" className="hover:text-clay transition">Terms of Service</a>
             <span>•</span>
-            <span>Artisan Ethics</span>
+            <a href="#makers" className="hover:text-clay transition">Artisan Ethics</a>
           </div>
         </div>
       </div>

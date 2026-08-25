@@ -18,6 +18,7 @@ import QuickSearchModal from './QuickSearchModal'
 import AuthModal from './AuthModal'
 import SellCraftModal from './SellCraftModal'
 import ToastContainer from './ToastContainer'
+import BackToTop from './BackToTop'
 
 export default function HomePage() {
   return (
@@ -51,6 +52,7 @@ export default function HomePage() {
       <QuickSearchModal />
       <AuthModal />
       <SellCraftModal />
+      <BackToTop />
     </div>
   )
 }
