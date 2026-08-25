@@ -241,23 +241,38 @@ export default function CartSidebar() {
                       </button>
                     </div>
                   ) : (
-                    <form onSubmit={handleApplyCoupon} className="flex gap-2">
-                      <div className="relative flex-1">
-                        <Tag className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-cocoa-muted" />
-                        <input
-                          value={couponInput}
-                          onChange={(e) => setCouponInput(e.target.value)}
-                          placeholder="Coupon: CRAFTY10 or FREESHIP"
-                          className="h-9 w-full rounded-xl border border-sand bg-white/90 pl-8 pr-3 text-xs text-cocoa outline-none focus:border-clay"
-                        />
+                    <div>
+                      <form onSubmit={handleApplyCoupon} className="flex gap-2">
+                        <div className="relative flex-1">
+                          <Tag className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-cocoa-muted" />
+                          <input
+                            value={couponInput}
+                            onChange={(e) => setCouponInput(e.target.value)}
+                            placeholder="Coupon code..."
+                            className="h-9 w-full rounded-xl border border-sand bg-white/90 pl-8 pr-3 text-xs text-cocoa outline-none focus:border-clay"
+                          />
+                        </div>
+                        <button
+                          type="submit"
+                          className="rounded-xl bg-cocoa px-3 text-xs font-bold text-white transition hover:bg-clay"
+                        >
+                          Apply
+                        </button>
+                      </form>
+                      <div className="mt-1.5 flex items-center gap-1.5 text-[10px] text-cocoa-muted">
+                        <span className="shrink-0 font-medium">Quick apply:</span>
+                        {['CRAFTY10', 'HANDMADE20', 'FREESHIP'].map((code) => (
+                          <button
+                            key={code}
+                            type="button"
+                            onClick={() => applyCouponCode(code)}
+                            className="rounded-md border border-sand/80 bg-white/80 px-1.5 py-0.5 font-bold text-clay transition hover:bg-clay hover:text-white"
+                          >
+                            {code}
+                          </button>
+                        ))}
                       </div>
-                      <button
-                        type="submit"
-                        className="rounded-xl bg-cocoa px-3 text-xs font-bold text-white transition hover:bg-clay"
-                      >
-                        Apply
-                      </button>
-                    </form>
+                    </div>
                   )}
                 </div>
 
