@@ -83,12 +83,17 @@ export default function Newsletter() {
                 </div>
                 <button
                   type="submit"
-                  className="btn-primary h-14 px-8 text-sm font-bold shadow-glow"
+                  className="btn-primary h-14 px-8 text-sm font-bold shadow-glow shrink-0"
                 >
                   <Send className="h-4 w-4" />
                   Subscribe & Get $5
                 </button>
               </form>
+            )}
+            {!isSubscribed && (
+              <p className="mt-2.5 text-center text-[11px] text-cocoa-muted sm:text-left">
+                🔒 We respect your privacy. Zero spam, unsubscribe anytime.
+              </p>
             )}
           </div>
         </div>
