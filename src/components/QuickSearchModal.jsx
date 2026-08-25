@@ -17,6 +17,7 @@ export default function QuickSearchModal() {
   } = useMarketplace()
 
   const [query, setQuery] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('All')
   const inputRef = useRef(null)
 
   useEffect(() => {
@@ -26,20 +27,23 @@ export default function QuickSearchModal() {
     }
   }, [isQuickSearchOpen])
 
-
   const searchResults = useMemo(() => {
+    let list = products
+    if (selectedCategory !== 'All') {
+      list = list.filter((p) => p.category.toLowerCase().includes(selectedCategory.toLowerCase()))
+    }
     const cleanQuery = query.trim().toLowerCase()
     if (!cleanQuery) {
-      return products.slice(0, 6) // Top trending initial
+      return list.slice(0, 8)
     }
 
-    return products.filter((p) =>
+    return list.filter((p) =>
       [p.title, p.category, p.description, ...(p.badges || [])]
         .join(' ')
         .toLowerCase()
         .includes(cleanQuery)
     )
-  }, [products, query])
+  }, [products, query, selectedCategory])
 
   return (
     <AnimatePresence>
@@ -82,8 +86,26 @@ export default function QuickSearchModal() {
               )}
             </div>
 
+            {/* Quick Category Filter Bar */}
+            <div className="flex items-center gap-1.5 overflow-x-auto border-b border-sand/50 bg-white/40 px-4 py-2.5 sm:px-6">
+              {['All', 'Jewelry', 'Home Decor', 'Beauty', 'Accessories'].map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`rounded-full px-3 py-1 text-xs font-bold transition shrink-0 ${
+                    selectedCategory === cat
+                      ? 'bg-cocoa text-white shadow-sm'
+                      : 'bg-white/80 text-cocoa-muted hover:bg-white hover:text-cocoa'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
+
             {/* Suggestions & Results List */}
-            <div className="max-h-[60vh] overflow-y-auto p-4 sm:p-6">
+            <div className="max-h-[55vh] overflow-y-auto p-4 sm:p-6">
               <div className="flex items-center justify-between pb-3 text-xs font-bold uppercase tracking-wider text-cocoa-muted">
                 <span>{query ? `Found ${searchResults.length} crafts` : 'Trending Artisan Pieces'}</span>
                 <span className="text-[10px] text-moss">Press ESC to exit</span>
