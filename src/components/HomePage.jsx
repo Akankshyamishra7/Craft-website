@@ -1,30 +1,59 @@
-import Footer from './Footer'
-import CartSidebar from './CartSidebar'
-import AuthModal from './AuthModal'
-import SellCraftModal from './SellCraftModal'
+"use client"
+
+import Navbar from './Navbar'
 import Hero from './Hero'
 import HandmadeGallery from './HandmadeGallery'
-import Navbar from './Navbar'
-import Newsletter from './Newsletter'
+import CraftCustomizer from './CraftCustomizer'
+import ArtisanSpotlight from './ArtisanSpotlight'
 import Testimonials from './Testimonials'
-import { testimonials } from '../data/products'
+import FaqSection from './FaqSection'
+import Newsletter from './Newsletter'
+import Footer from './Footer'
 
-function HomePage() {
+// Modals & Drawers
+import CartSidebar from './CartSidebar'
+import WishlistSidebar from './WishlistSidebar'
+import CheckoutModal from './CheckoutModal'
+import QuickSearchModal from './QuickSearchModal'
+import AuthModal from './AuthModal'
+import SellCraftModal from './SellCraftModal'
+import ToastContainer from './ToastContainer'
+import BackToTop from './BackToTop'
+
+export default function HomePage() {
   return (
-    <div className="min-h-screen overflow-x-hidden">
+    <div className="relative min-h-screen overflow-x-hidden selection:bg-blossom selection:text-cocoa">
+      {/* Toast Notifications */}
+      <ToastContainer />
+
+      {/* Navigation */}
       <Navbar />
+
+      {/* Main Content Flow */}
       <main>
         <Hero />
         <HandmadeGallery />
-        <Testimonials testimonials={testimonials} />
+        <CraftCustomizer />
+        <div id="makers">
+          <ArtisanSpotlight />
+        </div>
+        <Testimonials />
+        <FaqSection />
         <Newsletter />
       </main>
+
+      {/* Footer */}
       <Footer />
+
+      {/* Modals & Overlays */}
       <CartSidebar />
+      <WishlistSidebar />
+      <CheckoutModal />
+      <QuickSearchModal />
       <AuthModal />
       <SellCraftModal />
+      <BackToTop />
     </div>
   )
 }
 
-export default HomePage
