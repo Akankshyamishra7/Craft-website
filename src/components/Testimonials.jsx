@@ -72,16 +72,23 @@ export default function Testimonials() {
                 </p>
               </div>
 
-              <div className="mt-6 flex items-center gap-3.5 border-t border-sand/60 pt-4">
-                <img
-                  src={t.avatar}
-                  alt={t.name}
-                  className="h-11 w-11 rounded-full border border-white object-cover shadow-soft"
-                />
-                <div>
-                  <h4 className="font-serif text-lg font-bold text-cocoa">{t.name}</h4>
-                  <p className="text-[11px] text-cocoa-muted">{t.role}</p>
+              <div className="mt-6 flex items-center justify-between gap-3 border-t border-sand/60 pt-4">
+                <div className="flex items-center gap-3.5">
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    className="h-11 w-11 rounded-full border border-white object-cover shadow-soft"
+                  />
+                  <div>
+                    <h4 className="font-serif text-lg font-bold text-cocoa">{t.name}</h4>
+                    <p className="text-[11px] text-cocoa-muted">{t.role}</p>
+                  </div>
                 </div>
+                {t.craft && (
+                  <span className="hidden sm:inline-block rounded-full bg-sand/40 px-2.5 py-1 text-[10px] font-bold text-clay">
+                    {t.craft}
+                  </span>
+                )}
               </div>
             </article>
           ))}
