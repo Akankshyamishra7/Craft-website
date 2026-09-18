@@ -9,7 +9,7 @@ const STORAGE_KEYS = {
   auth: 'ateliernp-auth-user-v1',
   cart: 'ateliernp-cart-v1',
   wishlist: 'ateliernp-wishlist-v1',
-  products: 'ateliernp-products-v2',
+  products: 'ateliernp-products-v3',
   orders: 'ateliernp-orders-v1',
   coupons: 'ateliernp-coupons-v1',
 }
