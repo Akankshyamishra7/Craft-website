@@ -92,10 +92,15 @@ export default function Footer() {
                 <Mail className="h-4 w-4 text-clay" />
                 <span>hello@ateliernp.market</span>
               </div>
-              <div className="flex items-center gap-2.5 rounded-xl border border-white/80 bg-white/80 p-2.5 text-cocoa shadow-sm">
-                <Phone className="h-4 w-4 text-clay" />
-                <span>+1 (800) 248-CRAFT</span>
-              </div>
+              <a
+                href="https://wa.me/917667233182?text=Hi%20Atelier%20NP%2C%20I%20want%20to%20place%20an%20order!"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2.5 rounded-xl border border-green-200 bg-green-50 p-2.5 text-green-800 shadow-sm transition hover:bg-green-100"
+              >
+                <Phone className="h-4 w-4 text-green-600" />
+                <span className="font-semibold">+91 76672 33182 · WhatsApp Orders</span>
+              </a>
               <div className="flex items-center gap-2.5 rounded-xl border border-white/80 bg-white/80 p-2.5 text-cocoa shadow-sm">
                 <MapPin className="h-4 w-4 text-clay" />
                 <span>San Francisco, CA & Global Studios</span>

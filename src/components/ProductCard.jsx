@@ -126,13 +126,14 @@ export default function ProductCard({
           </div>
 
           <div className="flex gap-1.5">
-            <button
-              type="button"
-              onClick={() => onBuyNow(product, 1)}
-              className="rounded-full bg-sand/60 px-3.5 py-1.5 text-xs font-bold text-cocoa transition hover:bg-clay hover:text-white"
+            <a
+              href={`https://wa.me/917667233182?text=Hi%20Atelier%20NP%2C%20I%20want%20to%20order%3A%20${encodeURIComponent(product.title)}%20%E2%80%94%20please%20confirm%20availability!`}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full bg-green-500 px-3.5 py-1.5 text-xs font-bold text-white transition hover:bg-green-600 flex items-center gap-1.5"
             >
-              Buy Now
-            </button>
+              🛒 Order Now
+            </a>
           </div>
         </div>
       </div>
