@@ -16,7 +16,7 @@ const FAQS = [
       'We pack all delicate resin, glassware, and candles in reinforced eco-friendly honeycomb wrap and crush-proof boutique boxes. In the rare event of breakage, we offer 100% free replacements or instant full refunds with our Artisan Guarantee.',
   },
   {
-    question: 'How do I list and sell my own handmade crafts on Crafty?',
+    question: 'How do I list and sell my own handmade crafts on Atelier NP?',
     answer:
       'Click the "Sell Your Craft" button in the top navigation! You can instantly list your handmade items, set your prices, add photos, and join our verified artisan community with zero setup fees.',
   },
@@ -28,7 +28,7 @@ const FAQS = [
   {
     question: 'How do coupon codes and free shipping work?',
     answer:
-      'Use code CRAFTY10 at checkout for 10% off your entire order, or HANDMADE20 for 20% off during seasonal drops. All orders with a subtotal over $50 automatically receive Free Worldwide Shipping!',
+      'Use code ATELIER10 at checkout for 10% off your entire order, or HANDMADE20 for 20% off during seasonal drops. All orders with a subtotal over ₹499 automatically receive Free Delivery across India!',
   },
 ]
 

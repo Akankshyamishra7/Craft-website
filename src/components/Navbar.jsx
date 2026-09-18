@@ -46,13 +46,13 @@ export default function Navbar() {
           <div className="flex items-center gap-2">
             <span className="grid h-4 w-4 place-items-center rounded-full bg-white/20 text-[10px]">✨</span>
             <span className="tracking-wide">
-              Spring Artisan Drop Live • Use code <strong className="rounded bg-white/20 px-1.5 py-0.5 text-gold">CRAFTY10</strong> for 10% off
+              Spring Artisan Drop Live • Use code <strong className="rounded bg-white/20 px-1.5 py-0.5 text-gold">ATELIER10</strong> for 10% off
             </span>
           </div>
           <div className="hidden items-center gap-4 text-[11px] font-medium text-white/85 sm:flex">
             <span>🌿 100% Artisan Handcrafted</span>
             <span>•</span>
-            <span>📦 Free Worldwide Shipping over $50</span>
+            <span>📦 Free Delivery Across India over ₹499</span>
             <span>•</span>
             <Link href="/admin" className="font-bold underline hover:text-gold transition">
               Admin Portal
@@ -71,7 +71,7 @@ export default function Navbar() {
                 ✿
               </span>
               <div>
-                <span className="font-serif text-3xl font-extrabold tracking-tight text-cocoa">Crafty</span>
+                <span className="font-serif text-3xl font-extrabold tracking-tight text-cocoa">Atelier NP</span>
                 <span className="block text-[9px] font-bold uppercase tracking-[0.3em] text-clay">Artisan Market</span>
               </div>
             </a>
@@ -157,9 +157,17 @@ export default function Navbar() {
               {user ? (
                 <div className="flex items-center gap-2">
                   <div className="flex items-center gap-2 rounded-full border border-white/90 bg-white/90 p-1.5 pr-3 shadow-soft">
-                    <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-blossom to-sand text-xs font-bold text-cocoa">
-                      {user.avatar || 'U'}
-                    </span>
+                    {user.avatarImage ? (
+                      <img
+                        src={user.avatarImage}
+                        alt={user.name}
+                        className="h-8 w-8 rounded-full object-cover border border-white"
+                      />
+                    ) : (
+                      <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-blossom to-sand text-xs font-bold text-cocoa">
+                        {user.avatar || 'U'}
+                      </span>
+                    )}
                     <span className="max-w-[80px] truncate text-xs font-bold text-cocoa">{user.name}</span>
                   </div>
                   <button

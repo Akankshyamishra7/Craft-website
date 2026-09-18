@@ -9,8 +9,8 @@ import { categories } from '../data/products'
 const PRESET_IMAGES = [
   { label: 'Resin Flora', url: 'https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=800&q=80' },
   { label: 'Silk Bangles', url: 'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80' },
-  { label: 'Soy Candle', url: 'https://images.unsplash.com/photo-1603006905393-df8f1d1e8c7b?auto=format&fit=crop&w=800&q=80' },
-  { label: 'Botanical Soap', url: 'https://images.unsplash.com/photo-1600857062241-98c4a8f1f08f?auto=format&fit=crop&w=800&q=80' },
+  { label: 'Soy Candle', url: 'https://images.unsplash.com/photo-1543257580-7269da773bf5?auto=format&fit=crop&w=800&q=80' },
+  { label: 'Botanical Soap', url: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=800&q=80' },
   { label: 'Ceramic Decor', url: 'https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&fit=crop&w=800&q=80' },
 ]
 
@@ -21,7 +21,7 @@ export default function SellCraftModal() {
     title: '',
     description: '',
     category: categories[0],
-    price: '34',
+    price: '499',
   })
 
   const submitProduct = (event) => {
@@ -35,7 +35,7 @@ export default function SellCraftModal() {
       title: '',
       description: '',
       category: categories[0],
-      price: '34',
+      price: '499',
     })
   }
 
@@ -160,14 +160,14 @@ export default function SellCraftModal() {
                 </div>
 
                 <div>
-                  <label className="mb-1 block text-xs font-bold text-cocoa">Price ($ USD)</label>
+                  <label className="mb-1 block text-xs font-bold text-cocoa">Price (₹ INR)</label>
                   <input
                     type="number"
                     min="1"
                     value={formState.price}
                     onChange={(e) => setFormState({ ...formState, price: e.target.value })}
                     className="h-11 w-full rounded-xl border border-sand bg-white px-3.5 text-sm font-bold text-cocoa outline-none focus:border-clay"
-                    placeholder="34"
+                    placeholder="499"
                     required
                   />
                 </div>
@@ -186,7 +186,7 @@ export default function SellCraftModal() {
                       {formState.category}
                     </span>
                     <p className="truncate text-sm font-bold text-cocoa">{formState.title}</p>
-                    <p className="text-xs font-bold text-clay">${formState.price}</p>
+                    <p className="text-xs font-bold text-clay">₹{formState.price}</p>
                   </div>
                   <span className="rounded-full bg-sand/60 px-2.5 py-1 text-[10px] font-bold text-cocoa">
                     Live Preview

@@ -10,7 +10,7 @@ export default function AuthModal() {
   const [mode, setMode] = useState('login') // 'login' | 'register'
   const [formState, setFormState] = useState({
     name: user?.name || 'Maya Lin',
-    email: user?.email || 'maya@crafty.market',
+    email: user?.email || 'maya@ateliernp.market',
     password: '••••••••',
   })
 
@@ -23,7 +23,7 @@ export default function AuthModal() {
   const handleDemoFill = () => {
     setFormState({
       name: 'Ananya Sharma',
-      email: 'ananya.artisan@crafty.market',
+      email: 'ananya.artisan@ateliernp.market',
       password: 'password123',
     })
   }
@@ -61,7 +61,7 @@ export default function AuthModal() {
             <div className="border-b border-sand/70 bg-gradient-to-r from-blossom/60 via-sand/50 to-peach/50 p-6 sm:p-8">
               <span className="section-eyebrow">Artisan Account</span>
               <h3 className="mt-2 font-serif text-3xl text-cocoa">
-                {mode === 'login' ? 'Welcome Back' : 'Join Crafty Circle'}
+                {mode === 'login' ? 'Welcome Back' : 'Join Atelier NP Circle'}
               </h3>
               <p className="mt-1 text-xs text-cocoa-muted sm:text-sm">
                 Save bespoke wishlists, track handmade shipments, and connect directly with creators.

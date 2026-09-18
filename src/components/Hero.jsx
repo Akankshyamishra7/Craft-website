@@ -16,23 +16,23 @@ import { fallbackCraftImage } from '../utils/fallbackImage'
 const showcaseItems = [
   {
     title: 'Silk Thread Bangles',
-    price: '$24',
+    price: '₹499',
     category: 'Handmade Jewelry',
     image: 'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80',
     className: 'top-2 left-0 sm:left-4 -rotate-6 w-36 sm:w-44',
   },
   {
     title: 'Botanical Resin Coasters',
-    price: '$32',
+    price: '₹649',
     category: 'Home Decor',
     image: 'https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=800&q=80',
     className: 'top-8 right-0 sm:right-2 rotate-6 w-40 sm:w-48',
   },
   {
     title: 'Aromatherapy Soy Candle',
-    price: '$22',
+    price: '₹449',
     category: 'Beauty DIY',
-    image: 'https://images.unsplash.com/photo-1603006905393-df8f1d1e8c7b?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1543257580-7269da773bf5?auto=format&fit=crop&w=800&q=80',
     className: 'bottom-2 left-6 -rotate-3 w-36 sm:w-44',
   },
 ]
@@ -73,7 +73,7 @@ export default function Hero() {
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
                 href="#collection"
-                className="btn-primary py-4 px-8 text-base shadow-glow"
+                className="btn-dark py-4 px-8 text-base shadow-lift hover:bg-black"
               >
                 Explore Collection
                 <ArrowRight className="h-4 w-4" />

@@ -17,7 +17,7 @@ const BASE_CRAFTS = [
     id: 'custom-resin',
     title: 'Pressed Botanical Resin Tray',
     category: 'DIY Home Decor & Crafts',
-    basePrice: 38,
+    basePrice: 799,
     image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80',
     description: 'High-gloss crystalline resin embedding dried botanicals with scalloped edges.',
   },
@@ -25,7 +25,7 @@ const BASE_CRAFTS = [
     id: 'custom-bangles',
     title: 'Artisan Silk Thread Bangles Set',
     category: 'Handmade Jewelry',
-    basePrice: 28,
+    basePrice: 599,
     image: 'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80',
     description: 'Hand-wrapped raw silk thread bangles embellished with delicate zari and pearl beadwork.',
   },
@@ -33,16 +33,16 @@ const BASE_CRAFTS = [
     id: 'custom-candle',
     title: 'Botanical Hand-Poured Soy Candle',
     category: 'Beauty DIY Products',
-    basePrice: 26,
-    image: 'https://images.unsplash.com/photo-1603006905393-df8f1d1e8c7b?auto=format&fit=crop&w=800&q=80',
+    basePrice: 549,
+    image: 'https://images.unsplash.com/photo-1543257580-7269da773bf5?auto=format&fit=crop&w=800&q=80',
     description: 'Pure soy wax blended with essential botanical oils and topped with dried floral petals.',
   },
   {
     id: 'custom-pendant',
     title: 'Pressed Flower Locket Pendant',
     category: 'Handmade Jewelry',
-    basePrice: 34,
-    image: 'https://images.unsplash.com/photo-1617038220319-4f9adf07f779?auto=format&fit=crop&w=800&q=80',
+    basePrice: 699,
+    image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80',
     description: 'Vintage-inspired glass locket framing real pressed wild flora in warm brass trim.',
   },
 ]
@@ -78,28 +78,28 @@ const ADDONS = [
   {
     id: 'monogram',
     name: 'Hand-Stamped Monogram / Name',
-    price: 5,
+    price: 99,
     icon: FilePenLine,
     description: 'Personalized initials or short quote in calligraphy',
   },
   {
     id: 'gold-foil',
     name: '24K Gold Leaf Flake Accents',
-    price: 4,
+    price: 79,
     icon: Sparkles,
     description: 'Luminous metallic foil flecks embedded within the craft',
   },
   {
     id: 'botanicals',
     name: 'Dried Lavender & Blossom Infusion',
-    price: 3.5,
+    price: 69,
     icon: Flame,
     description: 'Real organic floral petals hand-harvested from studio gardens',
   },
   {
     id: 'gift-box',
     name: 'Artisan Keepsake Velvet Gift Box',
-    price: 6,
+    price: 129,
     icon: Gift,
     description: 'Embossed gift presentation with wax seal and handwritten note',
   },
@@ -131,7 +131,7 @@ export default function CraftCustomizer() {
     const customProduct = {
       id: Date.now(),
       title: `Custom ${selectedCraft.title}`,
-      price: `$${calculatedPrice.toFixed(2)}`,
+      price: `₹${calculatedPrice.toFixed(0)}`,
       category: selectedCraft.category,
       image: selectedCraft.image,
       badges: ['Bespoke Custom', 'Artisan Made'],
@@ -192,7 +192,7 @@ export default function CraftCustomizer() {
                   >
                     <p className="text-sm font-bold text-cocoa">{craft.title}</p>
                     <p className="mt-1 text-xs text-cocoa-muted line-clamp-1">{craft.category}</p>
-                    <span className="mt-3 text-sm font-extrabold text-clay">${craft.basePrice}</span>
+                    <span className="mt-3 text-sm font-extrabold text-clay">₹{craft.basePrice}</span>
                   </button>
                 ))}
               </div>
@@ -274,7 +274,7 @@ export default function CraftCustomizer() {
                         </div>
                       </div>
                       <div className="flex items-center gap-3">
-                        <span className="text-xs font-bold text-clay">+${addon.price.toFixed(2)}</span>
+                        <span className="text-xs font-bold text-clay">+₹{addon.price}</span>
                         <div
                           className={`grid h-5 w-5 place-items-center rounded-full border transition ${
                             isChecked ? 'border-clay bg-clay text-white' : 'border-sand bg-white'
@@ -360,7 +360,7 @@ export default function CraftCustomizer() {
               <div className="flex items-baseline justify-between">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wider text-cocoa-muted">Total Craft Price</p>
-                  <p className="font-serif text-3xl font-bold text-clay">${calculatedPrice.toFixed(2)}</p>
+                  <p className="font-serif text-3xl font-bold text-clay">₹{calculatedPrice.toFixed(0)}</p>
                 </div>
                 <button
                   type="button"

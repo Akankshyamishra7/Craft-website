@@ -22,7 +22,7 @@ import { useMarketplace } from '../context/MarketplaceContext'
 import { fallbackCraftImage } from '../utils/fallbackImage'
 
 const allCategories = ['All', ...categoryGroups.map((c) => c.title)]
-const BADGE_TAGS = ['All', 'Trending', 'New', 'Handmade', 'Under $30']
+const BADGE_TAGS = ['All', 'Trending', 'New', 'Handmade', 'Under ₹500']
 
 export default function HandmadeGallery() {
   const { ref, isVisible } = useRevealOnScroll()
@@ -58,9 +58,9 @@ export default function HandmadeGallery() {
 
       // Badge / Tag filter
       let matchesBadge = true
-      if (activeBadge === 'Under $30') {
-        const priceNum = Number.parseFloat(product.price.replace('$', '')) || 0
-        matchesBadge = priceNum <= 30
+      if (activeBadge === 'Under ₹500') {
+        const priceNum = Number.parseFloat(String(product.price).replace(/[^0-9.]/g, '')) || 0
+        matchesBadge = priceNum <= 500
       } else if (activeBadge !== 'All') {
         matchesBadge = (product.badges || []).some(
           (b) => b.toLowerCase() === activeBadge.toLowerCase()
@@ -81,14 +81,14 @@ export default function HandmadeGallery() {
     // Sorting
     if (sortBy === 'price-asc') {
       result.sort((a, b) => {
-        const pA = Number.parseFloat(a.price.replace('$', '')) || 0
-        const pB = Number.parseFloat(b.price.replace('$', '')) || 0
+        const pA = Number.parseFloat(String(a.price).replace(/[^0-9.]/g, '')) || 0
+        const pB = Number.parseFloat(String(b.price).replace(/[^0-9.]/g, '')) || 0
         return pA - pB
       })
     } else if (sortBy === 'price-desc') {
       result.sort((a, b) => {
-        const pA = Number.parseFloat(a.price.replace('$', '')) || 0
-        const pB = Number.parseFloat(b.price.replace('$', '')) || 0
+        const pA = Number.parseFloat(String(a.price).replace(/[^0-9.]/g, '')) || 0
+        const pB = Number.parseFloat(String(b.price).replace(/[^0-9.]/g, '')) || 0
         return pB - pA
       })
     } else if (sortBy === 'rating') {
@@ -127,6 +127,50 @@ export default function HandmadeGallery() {
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-cocoa-muted sm:text-lg">
             Discover one-of-a-kind silk jewelry, botanical UV resin, clean-burn soy candles, and bespoke gifts crafted in independent artisan studios.
           </p>
+        </div>
+
+        {/* Visual Category Showcase Cards */}
+        <div className="grid grid-cols-2 gap-3.5 sm:grid-cols-4 sm:gap-4">
+          {categoryGroups.map((cat) => {
+            const isSelected = activeCategory === cat.title
+            return (
+              <button
+                key={cat.title}
+                type="button"
+                onClick={() => {
+                  setActiveCategory(isSelected ? 'All' : cat.title)
+                }}
+                className={`group relative flex flex-col overflow-hidden rounded-2xl border text-left transition duration-300 ${
+                  isSelected
+                    ? 'border-clay ring-2 ring-clay/40 shadow-lift'
+                    : 'border-white/80 bg-white/70 hover:bg-white hover:shadow-soft'
+                }`}
+              >
+                <div className="relative aspect-[16/10] w-full overflow-hidden bg-sand/30">
+                  <img
+                    src={cat.image}
+                    alt={cat.title}
+                    onError={(e) => {
+                      e.currentTarget.src = fallbackCraftImage
+                    }}
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-cocoa/80 via-cocoa/25 to-transparent" />
+                  <span className="absolute bottom-2 left-2.5 right-2.5 truncate font-serif text-xs sm:text-sm font-bold text-white">
+                    {cat.title}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between p-2 sm:p-2.5">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-clay">
+                    {cat.badge}
+                  </span>
+                  <span className="text-[10px] text-cocoa-muted font-bold">
+                    {isSelected ? 'Selected ✓' : 'Browse →'}
+                  </span>
+                </div>
+              </button>
+            )
+          })}
         </div>
 
         {/* Filter Toolbar */}

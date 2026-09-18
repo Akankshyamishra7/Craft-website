@@ -4,7 +4,7 @@ import { useState, useMemo } from 'react'
 import Link from 'next/link'
 import {
   ArrowLeft,
-  DollarSign,
+  IndianRupee,
   Edit,
   Eye,
   LayoutDashboard,
@@ -26,8 +26,8 @@ import { fallbackCraftImage } from '../../utils/fallbackImage'
 const PRESET_IMAGES = [
   { label: 'Resin Floral', url: 'https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=800&q=80' },
   { label: 'Silk Bangles', url: 'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80' },
-  { label: 'Soy Candle', url: 'https://images.unsplash.com/photo-1603006905393-df8f1d1e8c7b?auto=format&fit=crop&w=800&q=80' },
-  { label: 'Botanical Soap', url: 'https://images.unsplash.com/photo-1600857062241-98c4a8f1f08f?auto=format&fit=crop&w=800&q=80' },
+  { label: 'Soy Candle', url: 'https://images.unsplash.com/photo-1543257580-7269da773bf5?auto=format&fit=crop&w=800&q=80' },
+  { label: 'Botanical Soap', url: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?auto=format&fit=crop&w=800&q=80' },
   { label: 'Ceramic Decor', url: 'https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&fit=crop&w=800&q=80' },
 ]
 
@@ -119,7 +119,7 @@ export default function AdminPage() {
     setProductForm({
       title: product.title,
       category: product.category,
-      price: product.price.replace('$', ''),
+      price: String(product.price).replace(/[^0-9.]/g, ''),
       description: product.description,
       image: product.image,
       stock: product.stock || 20,
@@ -167,7 +167,7 @@ export default function AdminPage() {
               </span>
               <div>
                 <h1 className="font-serif text-2xl font-bold leading-tight text-cocoa">
-                  Crafty Admin Console
+                  Atelier NP Admin Console
                 </h1>
                 <p className="text-[10px] font-bold uppercase tracking-widest text-clay">
                   Marketplace & Creator Ops
@@ -179,7 +179,7 @@ export default function AdminPage() {
           <div className="flex items-center gap-3">
             <div className="hidden rounded-2xl border border-sand bg-sand/30 px-4 py-2 text-right sm:block">
               <p className="text-[10px] font-bold uppercase tracking-wider text-cocoa-muted">Total Gross Sales</p>
-              <p className="text-sm font-extrabold text-clay">${metrics.totalSales.toFixed(2)}</p>
+              <p className="text-sm font-extrabold text-clay">₹{metrics.totalSales.toFixed(0)}</p>
             </div>
 
             <button
@@ -230,10 +230,10 @@ export default function AdminPage() {
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold uppercase tracking-wider text-cocoa-muted">Gross Revenue</span>
                   <div className="grid h-8 w-8 place-items-center rounded-xl bg-mint/50 text-moss">
-                    <DollarSign className="h-4 w-4" />
+                    <IndianRupee className="h-4 w-4" />
                   </div>
                 </div>
-                <p className="mt-3 font-serif text-3xl font-bold text-cocoa">${metrics.totalSales.toFixed(2)}</p>
+                <p className="mt-3 font-serif text-3xl font-bold text-cocoa">₹{metrics.totalSales.toFixed(0)}</p>
                 <p className="mt-1 text-[11px] font-semibold text-moss">↗ +18.4% from last week</p>
               </div>
 
@@ -266,7 +266,7 @@ export default function AdminPage() {
                     <TrendingUp className="h-4 w-4" />
                   </div>
                 </div>
-                <p className="mt-3 font-serif text-3xl font-bold text-cocoa">${metrics.avgOrderVal.toFixed(2)}</p>
+                <p className="mt-3 font-serif text-3xl font-bold text-cocoa">₹{metrics.avgOrderVal.toFixed(0)}</p>
                 <p className="mt-1 text-[11px] font-semibold text-moss">Bespoke add-ons boosting basket size</p>
               </div>
             </div>
@@ -329,7 +329,7 @@ export default function AdminPage() {
                       </div>
 
                       <div className="text-right">
-                        <span className="text-sm font-extrabold text-clay">${order.total?.toFixed(2)}</span>
+                        <span className="text-sm font-extrabold text-clay">₹{order.total?.toFixed(0)}</span>
                         <p className="text-[10px] text-cocoa-muted">{order.date}</p>
                       </div>
                     </div>
@@ -484,7 +484,7 @@ export default function AdminPage() {
                           <p className="text-[10px] text-cocoa-muted">{order.customer?.city}</p>
                         </td>
                         <td className="p-4 font-semibold text-cocoa">{order.items?.length || 1} craft(s)</td>
-                        <td className="p-4 text-sm font-extrabold text-clay">${order.total?.toFixed(2)}</td>
+                        <td className="p-4 text-sm font-extrabold text-clay">₹{order.total?.toFixed(0)}</td>
                         <td className="p-4">
                           <select
                             value={order.status}
@@ -544,7 +544,7 @@ export default function AdminPage() {
                       className="h-10 w-full rounded-xl border border-sand bg-white px-3 text-xs font-bold text-cocoa outline-none"
                     >
                       <option value="percent">Percentage (%)</option>
-                      <option value="fixed">Fixed Amount ($)</option>
+                      <option value="fixed">Fixed Amount (₹)</option>
                       <option value="shipping">Free Shipping</option>
                     </select>
                   </div>
@@ -597,7 +597,7 @@ export default function AdminPage() {
                         {c.type === 'percent'
                           ? `${c.value}% discount`
                           : c.type === 'fixed'
-                          ? `$${c.value} discount`
+                          ? `₹${c.value} discount`
                           : 'Free Shipping'}
                       </p>
                     </div>
@@ -689,13 +689,13 @@ export default function AdminPage() {
                 </div>
 
                 <div>
-                  <label className="mb-1 block text-xs font-bold text-cocoa">Price ($ USD)</label>
+                  <label className="mb-1 block text-xs font-bold text-cocoa">Price (₹ INR)</label>
                   <input
                     required
                     type="number"
                     value={productForm.price}
                     onChange={(e) => setProductForm({ ...productForm, price: e.target.value })}
-                    placeholder="34"
+                    placeholder="499"
                     className="h-10 w-full rounded-xl border border-sand bg-white px-3 text-xs font-bold text-cocoa outline-none"
                   />
                 </div>
@@ -806,7 +806,7 @@ export default function AdminPage() {
               {/* Financial Totals */}
               <div className="flex justify-between rounded-xl bg-sand/30 p-3 text-sm font-bold text-cocoa">
                 <span>Total Amount</span>
-                <span className="text-clay">${selectedOrder.total?.toFixed(2)}</span>
+                <span className="text-clay">₹{selectedOrder.total?.toFixed(0)}</span>
               </div>
             </div>
           </div>

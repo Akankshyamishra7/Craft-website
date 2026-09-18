@@ -107,7 +107,7 @@ export default function CartSidebar() {
                   {cartSubtotal >= freeShippingThreshold ? (
                     <span className="text-moss">🎉 You unlocked FREE Shipping!</span>
                   ) : (
-                    <span>Add ${remainingForFreeShipping.toFixed(2)} more for FREE Shipping</span>
+                    <span>Add ₹{Math.max(0, remainingForFreeShipping).toFixed(0)} more for FREE Shipping</span>
                   )}
                 </span>
                 <span className="text-[10px] text-cocoa-muted">{Math.round(freeShippingProgress)}%</span>
@@ -210,7 +210,7 @@ export default function CartSidebar() {
                                 </button>
                               </div>
 
-                              <span className="text-sm font-extrabold text-clay">${itemTotal.toFixed(2)}</span>
+                              <span className="text-sm font-extrabold text-clay">₹{itemTotal.toFixed(0)}</span>
                             </div>
                           </div>
                         </div>
@@ -261,7 +261,7 @@ export default function CartSidebar() {
                       </form>
                       <div className="mt-1.5 flex items-center gap-1.5 text-[10px] text-cocoa-muted">
                         <span className="shrink-0 font-medium">Quick apply:</span>
-                        {['CRAFTY10', 'HANDMADE20', 'FREESHIP'].map((code) => (
+                        {['ATELIER10', 'HANDMADE20', 'FREESHIP'].map((code) => (
                           <button
                             key={code}
                             type="button"
@@ -285,7 +285,7 @@ export default function CartSidebar() {
                       onChange={(e) => setIsGiftWrap(e.target.checked)}
                       className="accent-clay"
                     />
-                    <Gift className="h-3.5 w-3.5 text-clay" /> Add Boutique Gift Wrap (+$3.50)
+                    <Gift className="h-3.5 w-3.5 text-clay" /> Add Boutique Gift Wrap (+₹49)
                   </label>
                 </div>
 
@@ -293,27 +293,27 @@ export default function CartSidebar() {
                 <div className="space-y-1.5 text-xs text-cocoa">
                   <div className="flex justify-between">
                     <span>Subtotal</span>
-                    <span>${cartSubtotal.toFixed(2)}</span>
+                    <span>₹{cartSubtotal.toFixed(0)}</span>
                   </div>
                   {discountAmount > 0 && (
                     <div className="flex justify-between font-bold text-clay">
                       <span>Discount</span>
-                      <span>-${discountAmount.toFixed(2)}</span>
+                      <span>-₹{discountAmount.toFixed(0)}</span>
                     </div>
                   )}
                   <div className="flex justify-between">
                     <span>Shipping</span>
-                    <span>{shippingCost === 0 ? <strong className="text-moss">FREE</strong> : `$${shippingCost.toFixed(2)}`}</span>
+                    <span>{shippingCost === 0 ? <strong className="text-moss">FREE</strong> : `₹${shippingCost.toFixed(0)}`}</span>
                   </div>
                   {giftWrapCost > 0 && (
                     <div className="flex justify-between">
                       <span>Gift Wrap</span>
-                      <span>+${giftWrapCost.toFixed(2)}</span>
+                      <span>+₹{giftWrapCost.toFixed(0)}</span>
                     </div>
                   )}
                   <div className="border-t border-sand/70 pt-2 flex justify-between text-base font-bold text-cocoa">
                     <span>Estimated Total</span>
-                    <span className="text-lg text-clay">${cartFinalTotal.toFixed(2)}</span>
+                    <span className="text-lg text-clay">₹{cartFinalTotal.toFixed(0)}</span>
                   </div>
                 </div>
 

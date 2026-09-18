@@ -7,6 +7,7 @@ import {
   CreditCard,
   Lock,
   PackageCheck,
+  QrCode,
   ShieldCheck,
   Sparkles,
   Truck,
@@ -40,7 +41,8 @@ export default function CheckoutModal() {
     city: '',
     state: '',
     zip: '',
-    paymentMethod: 'card', // 'card' | 'applepay' | 'cod'
+    paymentMethod: 'upi', // 'upi' | 'card' | 'cod'
+    upiId: 'artisan@okhdfcbank',
     cardNumber: '•••• •••• •••• 4242',
     cardExp: '12/28',
     cardCvc: '•••',
@@ -55,7 +57,6 @@ export default function CheckoutModal() {
 
   const handleClose = () => {
     setIsCheckoutOpen(false)
-    // reset state after animation
     setTimeout(() => {
       setStep('form')
       setConfirmedOrder(null)
@@ -95,12 +96,12 @@ export default function CheckoutModal() {
                   <div className="flex items-center gap-2">
                     <span className="section-eyebrow">Artisan Checkout</span>
                     <span className="inline-flex items-center gap-1 text-xs font-semibold text-moss">
-                      <Lock className="h-3.5 w-3.5" /> 256-bit Encrypted
+                      <Lock className="h-3.5 w-3.5" /> 256-bit Encrypted • India
                     </span>
                   </div>
                   <h3 className="mt-2 font-serif text-3xl text-cocoa">Complete Your Craft Order</h3>
                   <p className="mt-1 text-xs text-cocoa-muted sm:text-sm">
-                    Handmade directly by artisan creators • Ships with eco-friendly boutique packaging
+                    Handmade directly by artisan creators • Ships with eco-friendly boutique packaging across India
                   </p>
                 </div>
 
@@ -109,7 +110,7 @@ export default function CheckoutModal() {
                   <div className="rounded-2xl border border-white/80 bg-white/80 p-4 shadow-soft">
                     <div className="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-moss">
                       <span>Order Items ({cartItems.length})</span>
-                      <span>Total: ${cartFinalTotal.toFixed(2)}</span>
+                      <span>Total: ₹{cartFinalTotal.toFixed(0)}</span>
                     </div>
                     <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
                       {cartItems.map((item) => (
@@ -137,7 +138,7 @@ export default function CheckoutModal() {
                   {/* Shipping Section */}
                   <div>
                     <h4 className="flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-cocoa">
-                      <Truck className="h-4 w-4 text-clay" /> 1. Shipping Address
+                      <Truck className="h-4 w-4 text-clay" /> 1. Shipping Address (India)
                     </h4>
                     <div className="mt-3 grid gap-3 sm:grid-cols-2">
                       <div>
@@ -146,7 +147,7 @@ export default function CheckoutModal() {
                           required
                           value={formData.fullName}
                           onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                          placeholder="Maya Lin"
+                          placeholder="Ananya Sharma"
                           className="h-11 w-full rounded-xl border border-white/90 bg-white/90 px-3.5 text-sm text-cocoa outline-none focus:border-clay focus:ring-2 focus:ring-clay/20"
                         />
                       </div>
@@ -157,17 +158,17 @@ export default function CheckoutModal() {
                           required
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          placeholder="maya@example.com"
+                          placeholder="ananya@example.in"
                           className="h-11 w-full rounded-xl border border-white/90 bg-white/90 px-3.5 text-sm text-cocoa outline-none focus:border-clay focus:ring-2 focus:ring-clay/20"
                         />
                       </div>
                       <div className="sm:col-span-2">
-                        <label className="mb-1 block text-xs font-semibold text-cocoa">Street Address</label>
+                        <label className="mb-1 block text-xs font-semibold text-cocoa">Street Address / Landmark</label>
                         <input
                           required
                           value={formData.address}
                           onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                          placeholder="742 Evergreen Studio Way, Apt 3B"
+                          placeholder="Flat 402, Lotus Studio Apts, Indiranagar"
                           className="h-11 w-full rounded-xl border border-white/90 bg-white/90 px-3.5 text-sm text-cocoa outline-none focus:border-clay focus:ring-2 focus:ring-clay/20"
                         />
                       </div>
@@ -177,17 +178,18 @@ export default function CheckoutModal() {
                           required
                           value={formData.city}
                           onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                          placeholder="San Francisco"
+                          placeholder="Bengaluru"
                           className="h-11 w-full rounded-xl border border-white/90 bg-white/90 px-3.5 text-sm text-cocoa outline-none focus:border-clay focus:ring-2 focus:ring-clay/20"
                         />
                       </div>
                       <div>
-                        <label className="mb-1 block text-xs font-semibold text-cocoa">Postal / Zip Code</label>
+                        <label className="mb-1 block text-xs font-semibold text-cocoa">PIN Code (6 digits)</label>
                         <input
                           required
+                          maxLength={6}
                           value={formData.zip}
                           onChange={(e) => setFormData({ ...formData, zip: e.target.value })}
-                          placeholder="94107"
+                          placeholder="560038"
                           className="h-11 w-full rounded-xl border border-white/90 bg-white/90 px-3.5 text-sm text-cocoa outline-none focus:border-clay focus:ring-2 focus:ring-clay/20"
                         />
                       </div>
@@ -201,8 +203,8 @@ export default function CheckoutModal() {
                     </h4>
                     <div className="mt-3 grid grid-cols-3 gap-2.5">
                       {[
-                        { id: 'card', label: 'Credit Card', icon: CreditCard },
-                        { id: 'applepay', label: 'Apple / Google Pay', icon: Sparkles },
+                        { id: 'upi', label: 'UPI (GPay / PhonePe)', icon: QrCode },
+                        { id: 'card', label: 'Cards / NetBanking', icon: CreditCard },
                         { id: 'cod', label: 'Cash on Delivery', icon: ShieldCheck },
                       ].map((item) => (
                         <button
@@ -221,11 +223,31 @@ export default function CheckoutModal() {
                       ))}
                     </div>
 
+                    {formData.paymentMethod === 'upi' && (
+                      <div className="mt-3.5 rounded-2xl border border-white/90 bg-white/85 p-4 shadow-sm">
+                        <label className="mb-1 block text-xs font-semibold text-cocoa">Enter UPI ID / VPA</label>
+                        <div className="flex gap-2">
+                          <input
+                            defaultValue="yourname@okhdfcbank"
+                            className="h-10 flex-1 rounded-xl border border-sand bg-white px-3 text-sm text-cocoa outline-none focus:border-clay"
+                            placeholder="e.g. mobile@upi"
+                          />
+                          <button
+                            type="button"
+                            className="rounded-xl bg-sand/60 px-4 text-xs font-bold text-cocoa hover:bg-sand"
+                          >
+                            Verify
+                          </button>
+                        </div>
+                        <p className="mt-2 text-[11px] text-cocoa-muted">Supports Google Pay, PhonePe, Paytm, BHIM, and Cred UPI.</p>
+                      </div>
+                    )}
+
                     {formData.paymentMethod === 'card' && (
                       <div className="mt-3.5 rounded-2xl border border-white/90 bg-white/85 p-3.5 shadow-sm">
                         <div className="grid gap-3 sm:grid-cols-3">
                           <div className="sm:col-span-3">
-                            <label className="mb-1 block text-xs font-semibold text-cocoa">Card Number</label>
+                            <label className="mb-1 block text-xs font-semibold text-cocoa">Card Number (RuPay / Visa / Mastercard)</label>
                             <input
                               defaultValue="4532 •••• •••• 8892"
                               className="h-10 w-full rounded-xl border border-sand bg-white px-3 text-sm text-cocoa outline-none"
@@ -254,27 +276,27 @@ export default function CheckoutModal() {
                   <div className="space-y-1.5 rounded-2xl bg-cocoa-light/60 p-4 text-xs text-cocoa">
                     <div className="flex justify-between">
                       <span>Items Subtotal</span>
-                      <span>${cartSubtotal.toFixed(2)}</span>
+                      <span>₹{cartSubtotal.toFixed(0)}</span>
                     </div>
                     {discountAmount > 0 && (
                       <div className="flex justify-between font-semibold text-clay">
                         <span>Discount ({appliedCoupon?.code})</span>
-                        <span>-${discountAmount.toFixed(2)}</span>
+                        <span>-₹{discountAmount.toFixed(0)}</span>
                       </div>
                     )}
                     <div className="flex justify-between">
                       <span>Shipping</span>
-                      <span>{shippingCost === 0 ? 'FREE' : `$${shippingCost.toFixed(2)}`}</span>
+                      <span>{shippingCost === 0 ? <strong className="text-moss">FREE</strong> : `₹${shippingCost.toFixed(0)}`}</span>
                     </div>
                     {giftWrapCost > 0 && (
                       <div className="flex justify-between">
                         <span>Boutique Gift Wrapping</span>
-                        <span>+${giftWrapCost.toFixed(2)}</span>
+                        <span>+₹{giftWrapCost.toFixed(0)}</span>
                       </div>
                     )}
                     <div className="border-t border-cocoa/10 pt-2 flex justify-between text-sm font-bold text-cocoa">
                       <span>Total Due</span>
-                      <span className="text-base text-clay">${cartFinalTotal.toFixed(2)}</span>
+                      <span className="text-base text-clay">₹{cartFinalTotal.toFixed(0)}</span>
                     </div>
                   </div>
 
@@ -283,7 +305,7 @@ export default function CheckoutModal() {
                     className="btn-primary w-full py-4 text-base shadow-lift"
                   >
                     <PackageCheck className="h-5 w-5" />
-                    Place Artisan Order • ${cartFinalTotal.toFixed(2)}
+                    Place Artisan Order • ₹{cartFinalTotal.toFixed(0)}
                   </button>
                 </form>
               </div>
@@ -312,7 +334,7 @@ export default function CheckoutModal() {
                   </div>
                   <div className="mt-2 flex justify-between text-xs">
                     <span className="font-semibold text-cocoa-muted">Order Total:</span>
-                    <strong className="text-clay">${confirmedOrder?.total.toFixed(2)}</strong>
+                    <strong className="text-clay">₹{confirmedOrder?.total.toFixed(0)}</strong>
                   </div>
                 </div>
 

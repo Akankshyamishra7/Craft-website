@@ -6,19 +6,21 @@ import { handmadeProducts } from '../data/products'
 const MarketplaceContext = createContext(null)
 
 const STORAGE_KEYS = {
-  auth: 'crafty-auth-user-v2',
-  cart: 'crafty-cart-v2',
-  wishlist: 'crafty-wishlist-v2',
-  products: 'crafty-products-v2',
-  orders: 'crafty-orders-v2',
-  coupons: 'crafty-coupons-v2',
+  auth: 'ateliernp-auth-user-v1',
+  cart: 'ateliernp-cart-v1',
+  wishlist: 'ateliernp-wishlist-v1',
+  products: 'ateliernp-products-v1',
+  orders: 'ateliernp-orders-v1',
+  coupons: 'ateliernp-coupons-v1',
 }
 
 const DEFAULT_COUPONS = {
+  ATELIER10: { code: 'ATELIER10', type: 'percent', value: 10, label: '10% Off Atelier Drop' },
   CRAFTY10: { code: 'CRAFTY10', type: 'percent', value: 10, label: '10% Off Artisan Drop' },
   HANDMADE20: { code: 'HANDMADE20', type: 'percent', value: 20, label: '20% Off Spring Sale' },
-  FREESHIP: { code: 'FREESHIP', type: 'shipping', value: 0, label: 'Free Worldwide Shipping' },
-  WELCOME5: { code: 'WELCOME5', type: 'fixed', value: 5, label: '$5.00 Off First Order' },
+  FREESHIP: { code: 'FREESHIP', type: 'shipping', value: 0, label: 'Free Delivery Across India' },
+  WELCOME150: { code: 'WELCOME150', type: 'fixed', value: 150, label: '₹150 Off First Order' },
+  WELCOME5: { code: 'WELCOME5', type: 'fixed', value: 150, label: '₹150 Off First Order' },
 }
 
 const SEED_ORDERS = [
@@ -26,15 +28,15 @@ const SEED_ORDERS = [
     orderId: 'CRFT-849201',
     date: 'Aug 24, 2026',
     items: [
-      { id: 1, title: 'Silk Thread Bangles', price: '$24', quantity: 2, image: 'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80', category: 'Handmade Jewelry' },
-      { id: 9, title: 'Scented Candles', price: '$22', quantity: 1, image: 'https://images.unsplash.com/photo-1603006905393-df8f1d1e8c7b?auto=format&fit=crop&w=800&q=80', category: 'DIY Home Decor & Crafts' },
+      { id: 1, title: 'Silk Thread Bangles', price: '₹499', quantity: 2, image: 'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80', category: 'Handmade Jewelry' },
+      { id: 9, title: 'Scented Candles', price: '₹449', quantity: 1, image: 'https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=800&q=80', category: 'DIY Home Decor & Crafts' },
     ],
-    subtotal: 70,
-    discount: 7,
+    subtotal: 1447,
+    discount: 145,
     shipping: 0,
-    giftWrap: 3.5,
-    total: 66.5,
-    customer: { fullName: 'Sophia Sterling', email: 'sophia@example.com', city: 'Seattle, WA', phone: '+1 206 555 0192' },
+    giftWrap: 49,
+    total: 1351,
+    customer: { fullName: 'Pooja Verma', email: 'pooja.verma@example.in', city: 'Bengaluru, Karnataka', phone: '+91 98765 43210' },
     status: 'Handcrafting & Packing',
     estimatedDelivery: 'Aug 29, 2026',
   },
@@ -42,14 +44,14 @@ const SEED_ORDERS = [
     orderId: 'CRFT-773194',
     date: 'Aug 23, 2026',
     items: [
-      { id: 2, title: 'Resin Earrings', price: '$32', quantity: 1, image: 'https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=800&q=80', category: 'Handmade Jewelry' },
+      { id: 2, title: 'Resin Earrings', price: '₹649', quantity: 1, image: 'https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=800&q=80', category: 'Handmade Jewelry' },
     ],
-    subtotal: 32,
+    subtotal: 649,
     discount: 0,
-    shipping: 4.99,
+    shipping: 0,
     giftWrap: 0,
-    total: 36.99,
-    customer: { fullName: 'Lucas Vance', email: 'lucas@vance.design', city: 'Austin, TX', phone: '+1 512 555 0184' },
+    total: 649,
+    customer: { fullName: 'Rohan Mehra', email: 'rohan.mehra@example.in', city: 'Mumbai, Maharashtra', phone: '+91 98200 12345' },
     status: 'Shipped',
     estimatedDelivery: 'Aug 27, 2026',
   },
@@ -62,7 +64,18 @@ function safeReadStorage(key, fallbackValue) {
 
   try {
     const storedValue = window.localStorage.getItem(key)
-    return storedValue ? JSON.parse(storedValue) : fallbackValue
+    if (!storedValue) return fallbackValue
+    const parsed = JSON.parse(storedValue)
+    // If it's a product array, ensure any stale '$' is cleaned to '₹'
+    if (Array.isArray(parsed) && key === STORAGE_KEYS.products) {
+      return parsed.map((p) => ({
+        ...p,
+        price: typeof p.price === 'string' && p.price.includes('$')
+          ? p.price.replace('$', '₹')
+          : p.price,
+      }))
+    }
+    return parsed
   } catch {
     return fallbackValue
   }
@@ -139,103 +152,56 @@ export function MarketplaceProvider({ children }) {
     }
   }, [user])
 
-  const productLookup = useMemo(() => new Map(products.map((product) => [product.id, product])), [products])
-
-  const cartItems = useMemo(
-    () =>
-      cart
-        .map((item) => {
-          const product = productLookup.get(item.productId)
-
-          if (!product) {
-            return null
-          }
-
-          return {
-            ...product,
-            cartItemId: item.cartItemId || item.productId,
-            customization: item.customization,
-            quantity: item.quantity,
-          }
-        })
-        .filter(Boolean),
-    [cart, productLookup],
-  )
-
-  const cartRawSubtotal = useMemo(
-    () =>
-      cartItems.reduce((total, item) => {
-        const amount = Number.parseFloat(item.price.replace('$', '')) || 0
-        return total + amount * item.quantity
-      }, 0),
-    [cartItems],
-  )
-
-  const discountAmount = useMemo(() => {
-    if (!appliedCoupon) return 0
-    if (appliedCoupon.type === 'percent') {
-      return (cartRawSubtotal * appliedCoupon.value) / 100
+  const productLookup = useMemo(() => {
+    const map = new Map()
+    for (const item of products) {
+      map.set(item.id, item)
     }
-    if (appliedCoupon.type === 'fixed') {
-      return Math.min(cartRawSubtotal, appliedCoupon.value)
-    }
-    return 0
-  }, [appliedCoupon, cartRawSubtotal])
-
-  const shippingCost = useMemo(() => {
-    if (cartRawSubtotal >= 50 || appliedCoupon?.type === 'shipping' || cartItems.length === 0) {
-      return 0
-    }
-    return 4.99
-  }, [appliedCoupon, cartItems.length, cartRawSubtotal])
-
-  const giftWrapCost = useMemo(() => (isGiftWrap && cartItems.length > 0 ? 3.50 : 0), [isGiftWrap, cartItems.length])
-
-  const cartFinalTotal = useMemo(
-    () => Math.max(0, cartRawSubtotal - discountAmount + shippingCost + giftWrapCost),
-    [cartRawSubtotal, discountAmount, shippingCost, giftWrapCost],
-  )
-
-  const cartCount = useMemo(() => cartItems.reduce((total, item) => total + item.quantity, 0), [cartItems])
+    return map
+  }, [products])
 
   const wishlistedProducts = useMemo(
     () => wishlist.map((id) => productLookup.get(id)).filter(Boolean),
     [wishlist, productLookup],
   )
 
+  const isWishlisted = useCallback((id) => wishlist.includes(id), [wishlist])
+
   const toggleWishlist = (productId) => {
     const product = productLookup.get(productId)
-    const title = product?.title || 'Item'
+    const title = product?.title || 'Craft item'
 
     setWishlist((current) => {
-      if (current.includes(productId)) {
+      const exists = current.includes(productId)
+      if (exists) {
         showToast({
-          title: 'Removed from Wishlist',
+          title: 'Removed from Saved',
           message: `${title} was removed from your saved items.`,
-          type: 'wishlist',
+          type: 'info',
         })
         return current.filter((id) => id !== productId)
-      } else {
-        showToast({
-          title: 'Saved to Wishlist! ✨',
-          message: `${title} was added to your curated favorites.`,
-          type: 'wishlist',
-        })
-        return [...current, productId]
       }
+
+      showToast({
+        title: 'Saved to Wishlist! 💖',
+        message: `${title} was added to your curated favorites.`,
+        type: 'success',
+      })
+      return [...current, productId]
     })
   }
 
-  const isWishlisted = (productId) => wishlist.includes(productId)
-
   const addToCart = (product, quantity = 1, customization = null) => {
-    const safeQuantity = Math.max(1, Number(quantity) || 1)
+    const safeQuantity = Math.max(1, Number.parseInt(quantity, 10) || 1)
     const cartItemId = customization ? `${product.id}-${Date.now()}` : product.id
 
     setCart((current) => {
-      const existingIndex = current.findIndex(
-        (item) => !customization && item.productId === product.id && !item.customization
-      )
+      const existingIndex = current.findIndex((item) => {
+        if (customization) {
+          return false
+        }
+        return item.productId === product.id && !item.customization
+      })
 
       if (existingIndex > -1) {
         const next = [...current]
@@ -265,41 +231,115 @@ export function MarketplaceProvider({ children }) {
   }
 
   const setCartQuantity = (cartItemId, quantity) => {
-    const safeQuantity = Number(quantity)
+    const targetQty = Number.parseInt(quantity, 10) || 0
+    if (targetQty <= 0) {
+      removeFromCart(cartItemId)
+      return
+    }
 
-    setCart((current) => {
-      if (!Number.isFinite(safeQuantity) || safeQuantity <= 0) {
-        return current.filter((item) => (item.cartItemId || item.productId) !== cartItemId)
-      }
-
-      return current.map((item) =>
-        (item.cartItemId || item.productId) === cartItemId ? { ...item, quantity: safeQuantity } : item
+    setCart((current) =>
+      current.map((item) =>
+        (item.cartItemId || item.productId) === cartItemId ? { ...item, quantity: targetQty } : item
       )
-    })
+    )
   }
 
   const removeFromCart = (cartItemId) => {
     setCart((current) => current.filter((item) => (item.cartItemId || item.productId) !== cartItemId))
     showToast({
       title: 'Item Removed',
-      message: 'Item has been removed from your shopping bag.',
+      message: 'Product removed from your shopping bag.',
       type: 'info',
     })
   }
 
   const moveAllWishlistToCart = () => {
-    wishlistedProducts.forEach((prod) => {
-      addToCart(prod, 1)
+    if (wishlistedProducts.length === 0) return
+
+    setCart((current) => {
+      const next = [...current]
+      for (const prod of wishlistedProducts) {
+        const existingIdx = next.findIndex((item) => item.productId === prod.id && !item.customization)
+        if (existingIdx > -1) {
+          next[existingIdx].quantity += 1
+        } else {
+          next.push({
+            cartItemId: prod.id,
+            productId: prod.id,
+            quantity: 1,
+            customization: null,
+          })
+        }
+      }
+      return next
     })
+
     setWishlist([])
     setIsWishlistOpen(false)
     setIsCartOpen(true)
+
     showToast({
-      title: 'Moved to Bag! ✨',
-      message: 'All saved items have been transferred to your cart.',
+      title: 'Wishlist Moved to Bag! 🎁',
+      message: `${wishlistedProducts.length} handcrafted items moved to your bag.`,
       type: 'cart',
     })
   }
+
+  const cartItems = useMemo(
+    () =>
+      cart
+        .map((item) => {
+          const product = productLookup.get(item.productId)
+          if (!product) {
+            return null
+          }
+
+          return {
+            ...product,
+            cartItemId: item.cartItemId || item.productId,
+            customization: item.customization,
+            quantity: item.quantity,
+          }
+        })
+        .filter(Boolean),
+    [cart, productLookup],
+  )
+
+  const cartRawSubtotal = useMemo(
+    () =>
+      cartItems.reduce((total, item) => {
+        const amount = Number.parseFloat(String(item.price).replace(/[^0-9.]/g, '')) || 0
+        return total + amount * item.quantity
+      }, 0),
+    [cartItems],
+  )
+
+  const discountAmount = useMemo(() => {
+    if (!appliedCoupon) return 0
+    if (appliedCoupon.type === 'percent') {
+      return (cartRawSubtotal * appliedCoupon.value) / 100
+    }
+    if (appliedCoupon.type === 'fixed') {
+      return Math.min(cartRawSubtotal, appliedCoupon.value)
+    }
+    return 0
+  }, [appliedCoupon, cartRawSubtotal])
+
+  const shippingCost = useMemo(() => {
+    if (cartRawSubtotal >= 499 || appliedCoupon?.type === 'shipping' || cartItems.length === 0) {
+      return 0
+    }
+    return 49
+  }, [appliedCoupon, cartItems.length, cartRawSubtotal])
+
+  const giftWrapCost = useMemo(() => (isGiftWrap && cartItems.length > 0 ? 49 : 0), [isGiftWrap, cartItems.length])
+
+  const cartFinalTotal = useMemo(
+    () => Math.max(0, cartRawSubtotal - discountAmount + shippingCost + giftWrapCost),
+    [cartRawSubtotal, discountAmount, shippingCost, giftWrapCost],
+  )
+
+  const cartCount = useMemo(() => cartItems.reduce((total, item) => total + item.quantity, 0), [cartItems])
 
   const applyCouponCode = (code) => {
     const cleanCode = code.trim().toUpperCase()
@@ -314,7 +354,7 @@ export function MarketplaceProvider({ children }) {
     }
     showToast({
       title: 'Invalid Code',
-      message: 'Code not recognized. Try CRAFTY10 or FREESHIP',
+      message: 'Code not recognized. Try ATELIER10 or FREESHIP',
       type: 'error',
     })
     return { success: false, message: 'Invalid coupon code.' }
@@ -365,7 +405,7 @@ export function MarketplaceProvider({ children }) {
   const createOrder = (orderData) => {
     const newOrder = {
       orderId: `CRFT-${Math.floor(100000 + Math.random() * 900000)}`,
-      date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
+      date: new Date().toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' }),
       items: [...cartItems],
       subtotal: cartRawSubtotal,
       discount: discountAmount,
@@ -374,7 +414,7 @@ export function MarketplaceProvider({ children }) {
       total: cartFinalTotal,
       customer: orderData,
       status: 'Handcrafting & Packing',
-      estimatedDelivery: new Date(Date.now() + 5 * 86400000).toLocaleDateString('en-US', {
+      estimatedDelivery: new Date(Date.now() + 5 * 86400000).toLocaleDateString('en-IN', {
         month: 'short',
         day: 'numeric',
       }),
@@ -412,12 +452,13 @@ export function MarketplaceProvider({ children }) {
       name: cleanedName,
       email: cleanedEmail,
       avatar: buildAvatar(cleanedName),
+      avatarImage: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80',
       memberSince: '2026',
     })
 
     showToast({
       title: `Welcome, ${cleanedName}! 🌸`,
-      message: 'Signed in to your Crafty account.',
+      message: 'Signed in to your Atelier NP account.',
       type: 'success',
     })
   }
@@ -426,18 +467,21 @@ export function MarketplaceProvider({ children }) {
     setUser(null)
     showToast({
       title: 'Signed Out',
-      message: 'You have been logged out of your account.',
+      message: 'Come back soon for more handmade drops!',
       type: 'info',
     })
   }
 
   const addProduct = (productData) => {
+    const rawPrice = productData.price.trim()
+    const formattedPrice = rawPrice.startsWith('₹') ? rawPrice : `₹${rawPrice}`
+
     const nextProduct = {
       id: Date.now(),
       title: productData.title.trim(),
       description: productData.description.trim(),
       category: productData.category.trim(),
-      price: productData.price.trim().startsWith('$') ? productData.price.trim() : `$${productData.price.trim()}`,
+      price: formattedPrice,
       image: productData.image.trim(),
       badges: productData.badges || ['New', 'Artisan Maker', 'Handmade'],
       rating: 5.0,
@@ -460,14 +504,16 @@ export function MarketplaceProvider({ children }) {
     setProducts((current) =>
       current.map((prod) => {
         if (prod.id === productId) {
+          let updatedPrice = prod.price
+          if (updatedData.price) {
+            const raw = updatedData.price.trim()
+            updatedPrice = raw.startsWith('₹') ? raw : `₹${raw}`
+          }
+
           return {
             ...prod,
             ...updatedData,
-            price: updatedData.price
-              ? updatedData.price.startsWith('$')
-                ? updatedData.price
-                : `$${updatedData.price}`
-              : prod.price,
+            price: updatedPrice,
           }
         }
         return prod
@@ -580,5 +626,3 @@ export function useMarketplace() {
 
   return context
 }
-
-

@@ -19,13 +19,13 @@ export default function Footer() {
                 ✿
               </span>
               <div>
-                <p className="font-serif text-3xl font-bold text-cocoa">Crafty</p>
+                <p className="font-serif text-3xl font-bold text-cocoa">Atelier NP</p>
                 <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-clay">Artisan Market</p>
               </div>
             </div>
 
             <p className="max-w-md text-xs leading-6 text-cocoa-muted sm:text-sm">
-              Crafty is an independent marketplace dedicated to genuine handmade craftsmanship, bespoke jewelry, botanical decor, and clean DIY beauty rituals.
+              Atelier NP is an independent marketplace dedicated to genuine handmade craftsmanship, bespoke jewelry, botanical decor, and clean DIY beauty rituals.
             </p>
 
             <div className="flex items-center gap-3 pt-2">
@@ -90,7 +90,7 @@ export default function Footer() {
             <div className="space-y-2 text-xs">
               <div className="flex items-center gap-2.5 rounded-xl border border-white/80 bg-white/80 p-2.5 text-cocoa shadow-sm">
                 <Mail className="h-4 w-4 text-clay" />
-                <span>hello@crafty.market</span>
+                <span>hello@ateliernp.market</span>
               </div>
               <div className="flex items-center gap-2.5 rounded-xl border border-white/80 bg-white/80 p-2.5 text-cocoa shadow-sm">
                 <Phone className="h-4 w-4 text-clay" />
@@ -106,7 +106,7 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-sand/70 pt-8 text-xs font-semibold text-cocoa-muted sm:flex-row">
-          <p>© {new Date().getFullYear()} Crafty Handmade Marketplace. Handcrafted with care & soft shadows.</p>
+          <p>© {new Date().getFullYear()} Atelier NP Handmade Marketplace. Handcrafted with care & soft shadows.</p>
           <div className="flex items-center gap-4 text-[11px]">
             <a href="#about" className="hover:text-clay transition">Privacy Policy</a>
             <span>•</span>

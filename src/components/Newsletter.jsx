@@ -18,13 +18,13 @@ export default function Newsletter() {
     setIsSubscribed(true)
     showToast({
       title: 'Welcome to the Circle! 🌸',
-      message: 'Here is your $5 welcome coupon: WELCOME5',
+      message: 'Here is your ₹150 welcome coupon: WELCOME150',
       type: 'success',
     })
   }
 
   const handleApplyWelcome = () => {
-    applyCouponCode('WELCOME5')
+    applyCouponCode('WELCOME150')
   }
 
   return (
@@ -41,8 +41,18 @@ export default function Newsletter() {
               Join the Soft Handmade Circle
             </h2>
             <p className="mt-4 max-w-xl text-base leading-7 text-cocoa-muted sm:text-lg">
-              Get notified of limited batch drops, maker studio journals, and seasonal DIY tutorials. Plus receive a <strong className="text-clay">$5.00 voucher</strong> on your first order.
+              Get notified of limited batch drops, maker studio journals, and seasonal DIY tutorials. Plus receive a <strong className="text-clay">₹150 voucher</strong> on your first order.
             </p>
+            <div className="mt-5 flex items-center gap-3">
+              <img
+                src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=300&q=80"
+                alt="Artisan studio box"
+                className="h-12 w-12 rounded-xl object-cover border border-white shadow-soft"
+              />
+              <p className="text-xs font-semibold text-cocoa-muted">
+                🌿 Handcrafted boutique packaging • Dispatched across India
+              </p>
+            </div>
           </div>
 
           <div>
@@ -53,11 +63,11 @@ export default function Newsletter() {
                 </div>
                 <h3 className="mt-3 font-serif text-2xl text-cocoa">You're on the list! 🌸</h3>
                 <p className="mt-1 text-xs text-cocoa-muted">
-                  Use coupon code below at checkout for $5.00 off:
+                  Use coupon code below at checkout for ₹150 off:
                 </p>
                 <div className="mt-3 flex items-center justify-center gap-2">
                   <span className="rounded-xl border border-dashed border-clay bg-clay-light/50 px-3.5 py-1.5 font-mono text-sm font-bold text-clay">
-                    WELCOME5
+                    WELCOME150
                   </span>
                   <button
                     type="button"
@@ -86,7 +96,7 @@ export default function Newsletter() {
                   className="btn-primary h-14 px-8 text-sm font-bold shadow-glow shrink-0"
                 >
                   <Send className="h-4 w-4" />
-                  Subscribe & Get $5
+                  Subscribe & Get ₹150
                 </button>
               </form>
             )}

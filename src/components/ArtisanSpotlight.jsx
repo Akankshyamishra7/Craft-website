@@ -39,7 +39,7 @@ const ARTISANS = [
     rating: 4.94,
     reviews: 520,
     avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
-    cover: 'https://images.unsplash.com/photo-1603006905393-df8f1d1e8c7b?auto=format&fit=crop&w=600&q=80',
+    cover: 'https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=600&q=80',
     bio: 'Small-batch soy candles poured at low temperatures with pure wooden wicks, therapeutic essential oils, and dried buds.',
     badges: ['Clean Burn Certified', 'Zero-Plastic'],
   },
@@ -57,7 +57,7 @@ export default function ArtisanSpotlight() {
             Real Craftspeople Behind Every Creation
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-cocoa-muted sm:text-lg">
-            Every piece in the Crafty marketplace is designed and sculpted by independent artisans. When you buy, you directly support their creative studios.
+            Every piece in the Atelier NP marketplace is designed and sculpted by independent artisans. When you buy, you directly support their creative studios.
           </p>
         </div>
 

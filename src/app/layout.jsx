@@ -4,7 +4,7 @@ import '../index.css'
 import { MarketplaceProvider } from '../context/MarketplaceContext'
 
 export const metadata = {
-  title: 'Crafty | Luxury Handmade & Bespoke Craft Marketplace',
+  title: 'Atelier NP | Luxury Handmade & Bespoke Craft Marketplace',
   description:
     'Discover genuine artisan handmade jewelry, pressed floral resin, clean aromatherapy soy candles, and bespoke custom crafts direct from independent creators.',
   keywords: [
