@@ -82,8 +82,7 @@ export const handmadeProducts = [
     title: 'Silk Thread Bangles',
     price: '₹499',
     category: 'Handmade Jewelry',
-    image:
-      'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80',
+    image: '/products/silk-thread-bangles.jpg',
     badges: ['New', 'Handmade'],
     description: 'Hand-wrapped silk thread bangles in blush, pearl, and apricot tones.',
   },
@@ -92,8 +91,7 @@ export const handmadeProducts = [
     title: 'Resin Earrings',
     price: '₹649',
     category: 'Handmade Jewelry',
-    image:
-      'https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=800&q=80',
+    image: '/products/resin-earrings.jpg',
     badges: ['Trending', 'Handmade'],
     description: 'Translucent resin earrings with pressed florals and glossy edges.',
   },
@@ -112,8 +110,7 @@ export const handmadeProducts = [
     title: 'Beaded Bracelets',
     price: '₹399',
     category: 'Handmade Jewelry',
-    image:
-      'https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=800&q=80',
+    image: '/products/beaded-bracelets.jpg',
     badges: ['Trending'],
     description: 'Colorful bead stacks with a playful, sunlit handmade mood.',
   },
@@ -122,8 +119,7 @@ export const handmadeProducts = [
     title: 'Kundan Earrings',
     price: '₹899',
     category: 'Handmade Jewelry',
-    image:
-      'https://images.unsplash.com/photo-1630019852942-f89202989a59?auto=format&fit=crop&w=800&q=80',
+    image: '/products/kundan-earrings.jpg',
     badges: ['New'],
     description: 'Traditional-inspired kundan earrings with a refined bridal glow.',
   },
@@ -172,50 +168,45 @@ export const handmadeProducts = [
     title: 'Resin Art Items',
     price: '₹1,199',
     category: 'DIY Home Decor & Crafts',
-    image:
-      'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=800&q=80',
+    image: '/products/resin-art-tray.jpg',
     badges: ['Trending'],
-    description: 'Glossy resin pieces with layered color swirls and floral inlays.',
+    description: 'Glossy ocean wave resin tray with layered lacing cells and brass handles.',
   },
   {
     id: 11,
     title: 'Crystal Decor',
     price: '₹899',
     category: 'DIY Home Decor & Crafts',
-    image:
-      'https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&fit=crop&w=800&q=80',
+    image: '/products/crystal-suncatcher.jpg',
     badges: ['Handmade'],
-    description: 'Light-catching crystal decor that adds a gentle glow to any room.',
+    description: 'Light-catching hanging crystal suncatcher with raw amethyst and quartz prisms.',
   },
   {
     id: 12,
     title: 'Dream Catchers',
     price: '₹599',
     category: 'DIY Home Decor & Crafts',
-    image:
-      'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80',
+    image: '/products/dream-catcher.jpg',
     badges: ['New'],
-    description: 'Airy dream catchers with neutral threads, beads, and soft feathers.',
+    description: 'Airy bohemian dream catcher with woven mandala web, wooden beads, and soft feathers.',
   },
   {
     id: 13,
     title: 'Mini Lanterns',
     price: '₹649',
     category: 'DIY Home Decor & Crafts',
-    image:
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80',
+    image: '/products/mini-lantern.jpg',
     badges: ['Trending', 'Handmade'],
-    description: 'Tiny lanterns that cast a warm, cozy glow for shelves and corners.',
+    description: 'Handcrafted antique brass and amber glass mini lantern with cozy candle glow.',
   },
   {
     id: 14,
     title: 'Handmade Wall Hangings',
     price: '₹1,099',
     category: 'DIY Home Decor & Crafts',
-    image:
-      'https://images.unsplash.com/photo-1522758971460-1d21eed7dc1d?auto=format&fit=crop&w=800&q=80',
+    image: '/products/macrame-wall-hanging.jpg',
     badges: ['Handmade'],
-    description: 'Textural wall hangings with woven patterns and soft neutral yarns.',
+    description: 'Textural macrame wall hanging tapestry woven on a natural wooden branch.',
   },
   {
     id: 15,
@@ -292,20 +283,18 @@ export const handmadeProducts = [
     title: 'Keychains',
     price: '₹299',
     category: 'Cute Handmade Accessories',
-    image:
-      'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
+    image: '/products/atelier-ruby-glitter-keychains.jpg',
     badges: ['Trending'],
-    description: 'Custom keychains with a playful, collectable charm.',
+    description: 'Handcrafted ruby red and 24k gold glitter resin alphabet keychains.',
   },
   {
     id: 23,
     title: 'Crochet Flowers',
     price: '₹399',
     category: 'Cute Handmade Accessories',
-    image:
-      'https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?auto=format&fit=crop&w=800&q=80',
+    image: '/products/crochet-flowers.jpg',
     badges: ['New', 'Handmade'],
-    description: 'Tiny crochet blooms for gifts, desks, and gentle decor styling.',
+    description: 'Adorably handcrafted yarn crochet tulip and daisy flowers in a cute knitted pot.',
   },
   {
     id: 24,
@@ -322,30 +311,27 @@ export const handmadeProducts = [
     title: 'Phone Charms',
     price: '₹329',
     category: 'Cute Handmade Accessories',
-    image:
-      'https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=800&q=80',
+    image: '/products/phone-charms.jpg',
     badges: ['Trending'],
-    description: 'Soft pastel phone charms that make every device feel personal.',
+    description: 'Pastel handmade beaded phone wristlet charm straps with glass hearts and flowers.',
   },
   {
     id: 26,
     title: 'Hair Accessories',
     price: '₹349',
     category: 'Cute Handmade Accessories',
-    image:
-      'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80',
+    image: '/products/hair-accessories.jpg',
     badges: ['New'],
-    description: 'Cute clips and bands designed for a polished everyday finish.',
+    description: 'Delicate handmade French hair barrettes and silk embroidered floral bow clips.',
   },
   {
     id: 27,
     title: 'Custom Photo Resin Items',
     price: '₹699',
     category: 'Cute Handmade Accessories',
-    image:
-      'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80',
+    image: '/products/custom-photo-resin.jpg',
     badges: ['Handmade', 'Trending'],
-    description: 'Personalized resin keepsakes made to preserve little memories beautifully.',
+    description: 'Personalized crystal-clear resin keepsake photo keychain with real pressed petals.',
   },
 ]
 
