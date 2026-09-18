@@ -14,8 +14,8 @@ import {
 } from 'lucide-react'
 
 export default function AdminLoginForm({ onLoginSuccess }) {
-  const [email, setEmail] = useState('admin@ateliernp.market')
-  const [password, setPassword] = useState('admin123')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [rememberMe, setRememberMe] = useState(true)
   const [error, setError] = useState('')
@@ -71,12 +71,6 @@ export default function AdminLoginForm({ onLoginSuccess }) {
     }, 400)
   }
 
-  const handleAutoFill = () => {
-    setEmail('admin@ateliernp.market')
-    setPassword('admin123')
-    setError('')
-  }
-
   return (
     <div className="flex min-h-screen items-center justify-center bg-cream px-4 py-12">
       {/* Background Soft Glows */}
@@ -130,7 +124,7 @@ export default function AdminLoginForm({ onLoginSuccess }) {
           )}
 
           {/* Form */}
-          <form onSubmit={handleLogin} className="mt-6 space-y-4">
+          <form onSubmit={handleLogin} autoComplete="off" className="mt-6 space-y-4">
             {/* Email Field */}
             <div>
               <label className="block text-xs font-bold text-cocoa">Admin Email / Username</label>
@@ -139,6 +133,7 @@ export default function AdminLoginForm({ onLoginSuccess }) {
                 <input
                   type="text"
                   required
+                  autoComplete="off"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="admin@ateliernp.market"
@@ -151,13 +146,14 @@ export default function AdminLoginForm({ onLoginSuccess }) {
             <div>
               <div className="flex items-center justify-between">
                 <label className="block text-xs font-bold text-cocoa">Master Password</label>
-                <span className="text-[10px] text-cocoa-muted">Default: admin123</span>
+                <span className="text-[10px] text-cocoa-muted">Authorized staff only</span>
               </div>
               <div className="relative mt-1.5">
                 <Lock className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-cocoa-muted" />
                 <input
                   type={showPassword ? 'text' : 'password'}
                   required
+                  autoComplete="new-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
@@ -173,28 +169,6 @@ export default function AdminLoginForm({ onLoginSuccess }) {
                 </button>
               </div>
             </div>
-
-            {/* Remember Me */}
-            <div className="flex items-center justify-between pt-1">
-              <label className="flex cursor-pointer items-center gap-2 text-xs font-medium text-cocoa-muted">
-                <input
-                  type="checkbox"
-                  checked={rememberMe}
-                  onChange={(e) => setRememberMe(e.target.checked)}
-                  className="h-4 w-4 rounded border-sand text-clay focus:ring-clay/40"
-                />
-                Remember this device
-              </label>
-
-              <button
-                type="button"
-                onClick={handleAutoFill}
-                className="text-[11px] font-bold text-clay underline hover:text-cocoa transition"
-              >
-                Autofill Demo
-              </button>
-            </div>
-
             {/* Submit Button */}
             <button
               type="submit"
@@ -211,26 +185,6 @@ export default function AdminLoginForm({ onLoginSuccess }) {
               )}
             </button>
           </form>
-
-          {/* Quick Demo Fill Helper Card */}
-          <div className="mt-6 rounded-2xl border border-sand/80 bg-sand/20 p-4 text-xs">
-            <p className="font-bold text-cocoa">🔑 Quick Access Credentials</p>
-            <div className="mt-2 space-y-1 text-[11px] text-cocoa-muted">
-              <p>
-                <strong>Admin ID:</strong> <code className="rounded bg-white px-1.5 py-0.5 text-clay">admin@ateliernp.market</code>
-              </p>
-              <p>
-                <strong>Password:</strong> <code className="rounded bg-white px-1.5 py-0.5 text-clay">admin123</code>
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={handleAutoFill}
-              className="mt-2.5 w-full rounded-xl border border-sand bg-white py-1.5 text-center text-[11px] font-bold text-cocoa shadow-sm transition hover:bg-clay hover:text-white"
-            >
-              ✨ Click Here to Fill & Test Instantly
-            </button>
-          </div>
         </div>
 
         {/* Footer Note */}
