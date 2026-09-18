@@ -15,8 +15,8 @@ export default {
         dropdown: '0 16px 40px -10px rgba(88, 28, 135, 0.22)',
       },
       colors: {
-        cream: '#faf8ff',
-        sand: '#ede9fe',
+        cream: '#f0eaff',
+        sand: '#e4dbfc',
         blossom: '#ddd6fe',
         blush: '#f0abfc',
         lilac: '#c4b5fd',
