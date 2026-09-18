@@ -57,28 +57,28 @@ const BASE_CRAFTS = [
 
 const PALETTES = [
   {
-    id: 'lavender-dream',
-    name: 'Lavender Dream',
-    tones: ['#c4b5fd', '#ddd6fe', '#f5f3ff'],
-    description: 'Soft violet, lilac mist, and moonstone glow',
+    id: 'emerald-forest',
+    name: 'Emerald Forest',
+    tones: ['#059669', '#a7f3d0', '#ecfdf5'],
+    description: 'Deep emerald, seafoam mist, and morning dew',
   },
   {
-    id: 'orchid-garden',
-    name: 'Orchid Garden',
-    tones: ['#f0abfc', '#fce7f3', '#ede9fe'],
-    description: 'Orchid pink, rose petal, and twilight mauve',
+    id: 'mint-breeze',
+    name: 'Mint Breeze',
+    tones: ['#6ee7b7', '#bbf7d0', '#d1fae5'],
+    description: 'Cool mint, soft sage, and fresh spring',
   },
   {
-    id: 'emerald-grove',
-    name: 'Emerald Grove',
-    tones: ['#059669', '#d1fae5', '#ecfdf5'],
-    description: 'Deep emerald, jade leaf, and morning dew',
+    id: 'jade-garden',
+    name: 'Jade Garden',
+    tones: ['#065f46', '#34d399', '#d1f5de'],
+    description: 'Rich jade, vivid teal, and garden green',
   },
   {
-    id: 'starlit-dusk',
-    name: 'Starlit Dusk',
-    tones: ['#7c3aed', '#e0e7ff', '#faf8ff'],
-    description: 'Royal violet, sapphire blue, and stardust',
+    id: 'golden-meadow',
+    name: 'Golden Meadow',
+    tones: ['#fde68a', '#10b981', '#ecfdf5'],
+    description: 'Sunlit gold, meadow green, and fresh leaf',
   },
 ]
 

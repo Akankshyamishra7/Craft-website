@@ -14,7 +14,7 @@
 
   body {
     @apply bg-cream text-cocoa antialiased font-sans selection:bg-blossom selection:text-cocoa min-h-screen relative;
-    background: linear-gradient(160deg, #f3eeff 0%, #ece5ff 25%, #e8deff 50%, #f0e6ff 75%, #ede5fe 100%);
+    background: linear-gradient(160deg, #ecfdf5 0%, #d1fae5 25%, #c7f5db 50%, #dcfce7 75%, #d1f5de 100%);
   }
 
   /* Vivid floating glow orbs */
@@ -27,11 +27,11 @@
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     background-image:
-      radial-gradient(ellipse 600px 600px at 5% 10%, rgba(167, 139, 250, 0.45), transparent 60%),
-      radial-gradient(ellipse 500px 500px at 92% 12%, rgba(232, 121, 249, 0.35), transparent 55%),
-      radial-gradient(ellipse 550px 550px at 80% 85%, rgba(129, 140, 248, 0.3), transparent 55%),
-      radial-gradient(ellipse 450px 450px at 15% 80%, rgba(196, 181, 253, 0.4), transparent 50%),
-      radial-gradient(ellipse 400px 400px at 50% 50%, rgba(217, 70, 239, 0.12), transparent 60%);
+      radial-gradient(ellipse 600px 600px at 5% 10%, rgba(16, 185, 129, 0.35), transparent 60%),
+      radial-gradient(ellipse 500px 500px at 92% 12%, rgba(52, 211, 153, 0.3), transparent 55%),
+      radial-gradient(ellipse 550px 550px at 80% 85%, rgba(110, 231, 183, 0.25), transparent 55%),
+      radial-gradient(ellipse 450px 450px at 15% 80%, rgba(167, 243, 208, 0.35), transparent 50%),
+      radial-gradient(ellipse 400px 400px at 50% 50%, rgba(5, 150, 105, 0.1), transparent 60%);
     contain: strict;
   }
 
@@ -44,7 +44,7 @@
     z-index: -1;
     opacity: 0.35;
     background-image:
-      radial-gradient(circle at 1px 1px, rgba(124, 58, 237, 0.08) 1px, transparent 0);
+      radial-gradient(circle at 1px 1px, rgba(5, 150, 105, 0.08) 1px, transparent 0);
     background-size: 24px 24px;
     contain: strict;
   }
@@ -67,16 +67,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #f5f3ff;
+    background: #ecfdf5;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #c4b5fd;
+    background: #6ee7b7;
     border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #7c3aed;
+    background: #059669;
   }
 }
 
@@ -115,7 +115,7 @@
   }
 
   .btn-dark {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-cocoa px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition duration-200 hover:-translate-y-0.5 hover:bg-[#15122a] hover:shadow-lift active:translate-y-0 cursor-pointer;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-cocoa px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition duration-200 hover:-translate-y-0.5 hover:bg-[#041e0f] hover:shadow-lift active:translate-y-0 cursor-pointer;
     transform: translateZ(0);
   }
 

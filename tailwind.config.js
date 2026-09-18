@@ -8,49 +8,49 @@ export default {
         sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        soft: '0 12px 32px -16px rgba(88, 28, 135, 0.15)',
-        lift: '0 20px 48px -18px rgba(88, 28, 135, 0.25)',
-        glow: '0 0 30px -5px rgba(139, 92, 246, 0.35)',
-        glass: '0 8px 32px 0 rgba(88, 28, 135, 0.08)',
-        dropdown: '0 16px 40px -10px rgba(88, 28, 135, 0.22)',
+        soft: '0 12px 32px -16px rgba(5, 102, 57, 0.18)',
+        lift: '0 20px 48px -18px rgba(5, 102, 57, 0.28)',
+        glow: '0 0 30px -5px rgba(16, 185, 129, 0.4)',
+        glass: '0 8px 32px 0 rgba(5, 102, 57, 0.08)',
+        dropdown: '0 16px 40px -10px rgba(5, 102, 57, 0.22)',
       },
       colors: {
-        cream: '#f0eaff',
-        sand: '#e4dbfc',
-        blossom: '#ddd6fe',
-        blush: '#f0abfc',
-        lilac: '#c4b5fd',
-        sky: '#e0e7ff',
-        mint: '#d1fae5',
-        peach: '#fce7f3',
-        gold: '#fef3c7',
+        cream: '#eefbf3',
+        sand: '#d1f5de',
+        blossom: '#a7f3d0',
+        blush: '#6ee7b7',
+        lilac: '#86efac',
+        sky: '#d1fae5',
+        mint: '#bbf7d0',
+        peach: '#fef3c7',
+        gold: '#fde68a',
         clay: {
-          DEFAULT: '#7c3aed',
-          hover: '#6d28d9',
-          light: '#f5f3ff',
-        },
-        moss: {
           DEFAULT: '#059669',
+          hover: '#047857',
           light: '#ecfdf5',
         },
+        moss: {
+          DEFAULT: '#065f46',
+          light: '#d1fae5',
+        },
         cocoa: {
-          DEFAULT: '#1e1b2e',
-          soft: '#4c3f6e',
-          muted: '#7c6f9b',
-          light: '#f3f0ff',
+          DEFAULT: '#052e16',
+          soft: '#14532d',
+          muted: '#4d7c5f',
+          light: '#f0fdf4',
         },
       },
       backgroundImage: {
         paper:
-          'radial-gradient(circle at top left, rgba(255,255,255,0.9), transparent 45%), linear-gradient(135deg, rgba(255,255,255,0.8), rgba(245,243,255,0.98))',
+          'radial-gradient(circle at top left, rgba(255,255,255,0.9), transparent 45%), linear-gradient(135deg, rgba(255,255,255,0.8), rgba(236,253,245,0.98))',
         texture:
-          'radial-gradient(circle at 1px 1px, rgba(124, 58, 237, 0.06) 1px, transparent 0)',
+          'radial-gradient(circle at 1px 1px, rgba(5, 150, 105, 0.06) 1px, transparent 0)',
         'glass-gradient':
           'linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.45) 100%)',
         'terracotta-gradient':
-          'linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)',
+          'linear-gradient(135deg, #10b981 0%, #059669 100%)',
         'soft-glow':
-          'radial-gradient(circle, rgba(196, 181, 253, 0.5) 0%, rgba(250, 248, 255, 0) 70%)',
+          'radial-gradient(circle, rgba(167, 243, 208, 0.5) 0%, rgba(236, 253, 245, 0) 70%)',
       },
       keyframes: {
         floaty: {
