@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
 import {
   ArrowLeft,
@@ -9,6 +9,7 @@ import {
   Eye,
   LayoutDashboard,
   Layers,
+  LogOut,
   Package,
   PackageCheck,
   Plus,
@@ -22,6 +23,7 @@ import {
 import { useMarketplace } from '../../context/MarketplaceContext'
 import { categories } from '../../data/products'
 import { fallbackCraftImage } from '../../utils/fallbackImage'
+import AdminLoginForm from '../../components/AdminLoginForm'
 
 const PRESET_IMAGES = [
   { label: 'Resin Floral', url: 'https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=800&q=80' },
@@ -32,6 +34,25 @@ const PRESET_IMAGES = [
 ]
 
 export default function AdminPage() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [authChecked, setAuthChecked] = useState(false)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const auth = window.localStorage.getItem('ateliernp-admin-authenticated') === 'true'
+      setIsAuthenticated(auth)
+      setAuthChecked(true)
+    }
+  }, [])
+
+  const handleAdminLogout = () => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.removeItem('ateliernp-admin-authenticated')
+      window.localStorage.removeItem('ateliernp-admin-user')
+    }
+    setIsAuthenticated(false)
+  }
+
   const {
     products,
     addProduct,
@@ -145,6 +166,10 @@ export default function AdminPage() {
     setNewCoupon({ code: '', type: 'percent', value: 15, label: '' })
   }
 
+  if (!isAuthenticated) {
+    return <AdminLoginForm onLoginSuccess={() => setIsAuthenticated(true)} />
+  }
+
   return (
     <div className="min-h-screen bg-cream text-cocoa">
       {/* Top Admin Header */}
@@ -189,6 +214,16 @@ export default function AdminPage() {
             >
               <Plus className="h-4 w-4" />
               Add Craft
+            </button>
+
+            <button
+              type="button"
+              onClick={handleAdminLogout}
+              className="inline-flex items-center gap-1.5 rounded-full border border-sand bg-white px-3.5 py-2 text-xs font-bold text-rose-600 shadow-sm transition hover:bg-rose-50 hover:border-rose-200"
+              title="Sign out of admin session"
+            >
+              <LogOut className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">Sign Out</span>
             </button>
           </div>
         </div>

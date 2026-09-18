@@ -159,6 +159,19 @@ export default function AuthModal() {
                   </button>
                 </div>
               )}
+
+              <div className="border-t border-sand/60 pt-3 text-center">
+                <p className="text-[11px] text-cocoa-muted">
+                  Looking for creator & inventory management?{' '}
+                  <a
+                    href="/admin/login"
+                    onClick={() => setIsAuthOpen(false)}
+                    className="font-bold text-clay underline hover:text-cocoa transition"
+                  >
+                    Open Admin Login Portal →
+                  </a>
+                </p>
+              </div>
             </form>
           </motion.div>
         </motion.div>
