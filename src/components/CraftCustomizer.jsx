@@ -57,28 +57,28 @@ const BASE_CRAFTS = [
 
 const PALETTES = [
   {
-    id: 'blush-dawn',
-    name: 'Blush Dawn',
-    tones: ['#f8dcd0', '#f9dee4', '#f5ecdf'],
-    description: 'Soft peach, petal pink, and pearl shimmer',
+    id: 'lavender-dream',
+    name: 'Lavender Dream',
+    tones: ['#c4b5fd', '#ddd6fe', '#f5f3ff'],
+    description: 'Soft violet, lilac mist, and moonstone glow',
   },
   {
-    id: 'sage-botanical',
-    name: 'Sage Botanical',
-    tones: ['#6e8062', '#d9f3e5', '#f5ecdf'],
-    description: 'Earthy moss, pistachio leaves, and cream',
+    id: 'orchid-garden',
+    name: 'Orchid Garden',
+    tones: ['#f0abfc', '#fce7f3', '#ede9fe'],
+    description: 'Orchid pink, rose petal, and twilight mauve',
   },
   {
-    id: 'golden-sunset',
-    name: 'Golden Sunset',
-    tones: ['#f6e4bc', '#c86d51', '#fbe2cc'],
-    description: 'Warm amber, terracotta clay, and gold leaf',
+    id: 'emerald-grove',
+    name: 'Emerald Grove',
+    tones: ['#059669', '#d1fae5', '#ecfdf5'],
+    description: 'Deep emerald, jade leaf, and morning dew',
   },
   {
-    id: 'celestial-dusk',
-    name: 'Celestial Dusk',
-    tones: ['#ded9ff', '#dcf0ff', '#fdfbf7'],
-    description: 'Lilac haze, misty blue, and starry glow',
+    id: 'starlit-dusk',
+    name: 'Starlit Dusk',
+    tones: ['#7c3aed', '#e0e7ff', '#faf8ff'],
+    description: 'Royal violet, sapphire blue, and stardust',
   },
 ]
 

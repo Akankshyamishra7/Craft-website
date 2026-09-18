@@ -14,7 +14,7 @@
 
   body {
     @apply bg-cream text-cocoa antialiased font-sans selection:bg-blossom selection:text-cocoa min-h-screen relative;
-    background: linear-gradient(180deg, #fdfbf7 0%, #f9f3ea 50%, #f5eee2 100%);
+    background: linear-gradient(180deg, #faf8ff 0%, #f5f0ff 50%, #ede9fe 100%);
   }
 
   /* Hardware-accelerated smooth background glow layer without fixed scroll repaints */
@@ -27,10 +27,10 @@
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     background-image:
-      radial-gradient(circle at 12% 14%, rgba(248, 220, 208, 0.4), transparent 30%),
-      radial-gradient(circle at 88% 18%, rgba(222, 217, 255, 0.3), transparent 28%),
-      radial-gradient(circle at 75% 82%, rgba(217, 243, 229, 0.35), transparent 32%),
-      radial-gradient(circle at 20% 75%, rgba(251, 226, 204, 0.3), transparent 26%);
+      radial-gradient(circle at 12% 14%, rgba(196, 181, 253, 0.4), transparent 30%),
+      radial-gradient(circle at 88% 18%, rgba(240, 171, 252, 0.25), transparent 28%),
+      radial-gradient(circle at 75% 82%, rgba(209, 250, 229, 0.3), transparent 32%),
+      radial-gradient(circle at 20% 75%, rgba(224, 231, 255, 0.35), transparent 26%);
     contain: strict;
   }
 
@@ -52,16 +52,16 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #fbf6ee;
+    background: #f5f3ff;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #dfcfbe;
+    background: #c4b5fd;
     border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #c86d51;
+    background: #7c3aed;
   }
 }
 
@@ -100,7 +100,7 @@
   }
 
   .btn-dark {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-cocoa px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition duration-200 hover:-translate-y-0.5 hover:bg-[#1a1411] hover:shadow-lift active:translate-y-0 cursor-pointer;
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-cocoa px-6 py-3.5 text-sm font-semibold text-white shadow-soft transition duration-200 hover:-translate-y-0.5 hover:bg-[#15122a] hover:shadow-lift active:translate-y-0 cursor-pointer;
     transform: translateZ(0);
   }
 
@@ -143,4 +143,3 @@
   );
   animation: shimmer 2.5s infinite;
 }
-
