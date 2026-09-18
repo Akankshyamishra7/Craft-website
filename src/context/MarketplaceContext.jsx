@@ -66,9 +66,12 @@ function safeReadStorage(key, fallbackValue) {
     const storedValue = window.localStorage.getItem(key)
     if (!storedValue) return fallbackValue
     const parsed = JSON.parse(storedValue)
-    // If it's a product array, ensure any stale '$' is cleaned to '₹'
+    // If it's a product array, ensure any stale '$' is cleaned to '₹' and missing flagship products are included
     if (Array.isArray(parsed) && key === STORAGE_KEYS.products) {
-      return parsed.map((p) => ({
+      const storedIds = new Set(parsed.map((p) => p.id))
+      const missingDefaults = handmadeProducts.filter((hp) => !storedIds.has(hp.id))
+      const combined = [...missingDefaults, ...parsed]
+      return combined.map((p) => ({
         ...p,
         price: typeof p.price === 'string' && p.price.includes('$')
           ? p.price.replace('$', '₹')

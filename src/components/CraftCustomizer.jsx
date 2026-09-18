@@ -38,12 +38,20 @@ const BASE_CRAFTS = [
     description: 'Pure soy wax blended with essential botanical oils and topped with dried floral petals.',
   },
   {
+    id: 'custom-keychain',
+    title: 'Ruby Gold Glitter Initial Keychain',
+    category: 'Cute Handmade Accessories',
+    basePrice: 299,
+    image: '/products/atelier-ruby-glitter-keychains.jpg',
+    description: 'Custom poured crystal resin monogram letter dipped with chunky 24k gold leaf flakes and gold swivel clip.',
+  },
+  {
     id: 'custom-pendant',
-    title: 'Pressed Flower Locket Pendant',
+    title: 'Celestial Evil Eye Mandala Pendant',
     category: 'Handmade Jewelry',
-    basePrice: 699,
-    image: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=80',
-    description: 'Vintage-inspired glass locket framing real pressed wild flora in warm brass trim.',
+    basePrice: 599,
+    image: '/products/atelier-evil-eye-pendant.jpg',
+    description: 'Handcrafted cobalt blue mandala evil eye talisman pendant set in high-polish gold bezel on cable chain.',
   },
 ]
 

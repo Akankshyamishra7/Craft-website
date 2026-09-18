@@ -8,43 +8,75 @@ export const categories = [
 export const categoryGroups = [
   {
     title: 'Handmade Jewelry',
-    badge: 'Best selling sparkle',
+    badge: 'Artisan Talisman',
     description:
       'Soft shimmer, artisan finishes, and statement pieces made for everyday layering.',
     accent: 'from-rose-100 via-white to-amber-50',
-    image:
-      'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=600&q=80',
+    image: '/products/atelier-evil-eye-pendant.jpg',
   },
   {
     title: 'DIY Home Decor & Crafts',
-    badge: 'Room refresh',
+    badge: 'Atelier NP Kits',
     description:
       'Decor pieces with cozy glow, airy textures, and a Pinterest-friendly finish.',
     accent: 'from-sky-100 via-white to-mint-50',
-    image:
-      'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=600&q=80',
+    image: '/products/atelier-diy-paint-kit-explorer.jpg',
   },
   {
     title: 'Beauty DIY Products',
-    badge: 'Self-care edit',
+    badge: 'Creative Studio',
     description:
-      'Pretty, gentle essentials inspired by spa rituals and clean-label beauty shelves.',
+      'Pretty, gentle essentials inspired by spa rituals and creative craft kits.',
     accent: 'from-lilac-100 via-white to-rose-50',
-    image:
-      'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80',
+    image: '/products/atelier-diy-paint-kit-sea.jpg',
   },
   {
     title: 'Cute Handmade Accessories',
-    badge: 'Giftable favorites',
+    badge: 'Custom Keepsakes',
     description:
       'Tiny treasures, custom keepsakes, and playful accents with a premium feel.',
     accent: 'from-peach-100 via-white to-gold-50',
-    image:
-      'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80',
+    image: '/products/atelier-ruby-glitter-keychains.jpg',
   },
 ]
 
 export const handmadeProducts = [
+  {
+    id: 101,
+    title: 'Atelier NP Sea Life DIY Paint Kit',
+    price: '₹449',
+    category: 'Beauty DIY Products',
+    image: '/products/atelier-diy-paint-kit-sea.jpg',
+    badges: ['Atelier Signature', 'DIY Kit'],
+    description: 'Official NP Atelier creative craft kit featuring handcrafted plaster marine animal figurines (whale, fish, dolphin), 6 acrylic paint pots, and detail brush. Paint • Create • Enjoy!',
+  },
+  {
+    id: 102,
+    title: 'Atelier NP Explorer DIY Paint Kit',
+    price: '₹449',
+    category: 'DIY Home Decor & Crafts',
+    image: '/products/atelier-diy-paint-kit-explorer.jpg',
+    badges: ['Atelier Signature', 'Best Seller'],
+    description: 'Official NP Atelier creative plaster kit with vintage locomotive steam train, coastal lighthouse, and explorer figurines with rich acrylic paints and brush.',
+  },
+  {
+    id: 103,
+    title: 'Ruby Dip Resin Alphabet Keychains',
+    price: '₹299',
+    category: 'Cute Handmade Accessories',
+    image: '/products/atelier-ruby-glitter-keychains.jpg',
+    badges: ['Trending', 'Handmade'],
+    description: 'Bespoke hand-poured crimson ruby resin monogram letter keychains with chunky 24k gold glitter half-dip on high-shine golden keyrings.',
+  },
+  {
+    id: 104,
+    title: 'Celestial Evil Eye Mandala Pendant',
+    price: '₹599',
+    category: 'Handmade Jewelry',
+    image: '/products/atelier-evil-eye-pendant.jpg',
+    badges: ['New', 'Handmade', 'Talisman'],
+    description: 'Handcrafted cobalt blue mandala evil eye talisman pendant encased in high-polish gold-tone bezel on a dainty gold cable chain.',
+  },
   {
     id: 1,
     title: 'Silk Thread Bangles',
@@ -319,24 +351,20 @@ export const handmadeProducts = [
 
 export const inspirationTiles = [
   {
-    title: 'Pastel Workshop Shelf',
-    image:
-      'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=700&q=80',
+    title: 'Atelier NP Marine Paint Kit',
+    image: '/products/atelier-diy-paint-kit-sea.jpg',
   },
   {
-    title: 'Soft Resin Glow',
-    image:
-      'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=700&q=80',
+    title: 'Ruby Gold Initial Keychains',
+    image: '/products/atelier-ruby-glitter-keychains.jpg',
   },
   {
-    title: 'Gift Wrap Moodboard',
-    image:
-      'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=700&q=80',
+    title: 'Evil Eye Mandala Talisman',
+    image: '/products/atelier-evil-eye-pendant.jpg',
   },
   {
-    title: 'Desk Decor Detail',
-    image:
-      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=700&q=80',
+    title: 'Atelier NP Explorer Plaster Craft',
+    image: '/products/atelier-diy-paint-kit-explorer.jpg',
   },
   {
     title: 'Boutique Candle Stack',
