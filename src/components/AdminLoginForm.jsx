@@ -71,16 +71,16 @@ export default function AdminLoginForm({ onLoginSuccess }) {
   }
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#080808] px-4 py-12">
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#020506] px-4 py-12">
 
       {/* ── Gradient Background Orbs ── */}
       <div
         className="pointer-events-none fixed left-[-15%] top-[-10%] h-[520px] w-[520px] rounded-full opacity-30 blur-[120px]"
-        style={{ background: 'radial-gradient(circle, #c084fc, #7c3aed)' }}
+        style={{ background: 'radial-gradient(circle, #00f5a0, #059669)' }}
       />
       <div
         className="pointer-events-none fixed right-[-10%] bottom-[-5%] h-[480px] w-[480px] rounded-full opacity-25 blur-[100px]"
-        style={{ background: 'radial-gradient(circle, #f97316, #be185d)' }}
+        style={{ background: 'radial-gradient(circle, #fbbf24, #d97706)' }}
       />
       <div
         className="pointer-events-none fixed left-[40%] bottom-[10%] h-[300px] w-[300px] rounded-full opacity-20 blur-[90px]"
@@ -159,7 +159,7 @@ export default function AdminLoginForm({ onLoginSuccess }) {
 
           {/* Error Alert */}
           {error && (
-            <div className="mt-6 flex items-center gap-2.5 rounded-2xl border border-rose-500/30 bg-rose-500/10 p-3.5 text-xs font-medium text-rose-400">
+            <div className="mt-6 flex items-center gap-2.5 rounded-2xl border border-rose-500/30 bg-rose-500/100/10 p-3.5 text-xs font-medium text-rose-400">
               <ShieldAlert className="h-4 w-4 shrink-0" />
               <span>{error}</span>
             </div>
@@ -239,7 +239,7 @@ export default function AdminLoginForm({ onLoginSuccess }) {
             >
               {isLoading ? (
                 <span className="inline-flex items-center justify-center gap-2">
-                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/[0.1] border-t-transparent" />
                   Verifying Credentials...
                 </span>
               ) : (

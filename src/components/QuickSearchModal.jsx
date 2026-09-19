@@ -58,7 +58,7 @@ export default function QuickSearchModal() {
         >
           <motion.div
             key="quick-search-card"
-            className="w-full max-w-2xl overflow-hidden rounded-3xl border border-white/90 bg-cream shadow-2xl"
+            className="w-full max-w-2xl overflow-hidden rounded-3xl border border-white/[0.08] bg-[#050505] shadow-2xl"
             initial={{ scale: 0.95, y: -20 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.95, y: -20 }}
@@ -66,14 +66,14 @@ export default function QuickSearchModal() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Search Input Bar */}
-            <div className="relative border-b border-sand/70 p-4 sm:p-5">
+            <div className="relative border-b border-white/[0.06] p-4 sm:p-5">
               <Search className="pointer-events-none absolute left-7 top-1/2 h-5 w-5 -translate-y-1/2 text-clay" />
               <input
                 ref={inputRef}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search handmade bangles, candles, soaps, resin..."
-                className="h-12 w-full rounded-2xl border border-white/80 bg-white/90 pl-12 pr-12 text-base text-cocoa outline-none placeholder:text-cocoa-muted/60 focus:ring-2 focus:ring-clay/20"
+                className="h-12 w-full rounded-2xl border border-white/[0.06] bg-white/[0.06] pl-12 pr-12 text-base text-cocoa outline-none placeholder:text-white/30 focus:ring-2 focus:ring-clay/20"
               />
               {query && (
                 <button
@@ -95,8 +95,8 @@ export default function QuickSearchModal() {
                   onClick={() => setSelectedCategory(cat)}
                   className={`rounded-full px-3 py-1 text-xs font-bold transition shrink-0 ${
                     selectedCategory === cat
-                      ? 'bg-cocoa text-white shadow-sm'
-                      : 'bg-white/80 text-cocoa-muted hover:bg-white hover:text-cocoa'
+                      ? 'bg-emerald-600 text-white shadow-sm'
+                      : 'bg-white/[0.04] text-cocoa-muted hover:bg-[#111] hover:text-cocoa'
                   }`}
                 >
                   {cat}
@@ -123,7 +123,7 @@ export default function QuickSearchModal() {
                     return (
                       <div
                         key={product.id}
-                        className="group flex items-center gap-3 rounded-2xl border border-white/80 bg-white/80 p-2.5 shadow-sm transition hover:bg-white hover:shadow-soft"
+                        className="group flex items-center gap-3 rounded-2xl border border-white/[0.06] bg-white/[0.04] p-2.5 shadow-sm transition hover:bg-[#111] hover:shadow-soft"
                       >
                         <img
                           src={product.image}
@@ -142,7 +142,7 @@ export default function QuickSearchModal() {
                           <button
                             type="button"
                             onClick={() => toggleWishlist(product.id)}
-                            className="grid h-7 w-7 place-items-center rounded-full bg-sand/40 text-cocoa transition hover:text-rose-500"
+                            className="grid h-7 w-7 place-items-center rounded-full bg-emerald-500/10 text-cocoa transition hover:text-rose-500"
                           >
                             <Heart className={`h-3.5 w-3.5 ${wish ? 'fill-rose-500 text-rose-500' : ''}`} />
                           </button>
@@ -152,7 +152,7 @@ export default function QuickSearchModal() {
                               addToCart(product, 1)
                               setIsQuickSearchOpen(false)
                             }}
-                            className="grid h-7 w-7 place-items-center rounded-full bg-cocoa text-white transition hover:bg-clay"
+                            className="grid h-7 w-7 place-items-center rounded-full bg-emerald-600 text-white transition hover:bg-emerald-500"
                           >
                             <ShoppingBag className="h-3.5 w-3.5" />
                           </button>

@@ -20,7 +20,7 @@ function ProductGrid({ products }) {
           {categories.map((category) => (
             <span
               key={category}
-              className="rounded-full border border-white/70 bg-white/75 px-4 py-2 text-sm font-medium text-cocoa/75 shadow-soft transition hover:-translate-y-0.5 hover:bg-white"
+              className="rounded-full border border-white/70 bg-white/75 px-4 py-2 text-sm font-medium text-cocoa/75 shadow-soft transition hover:-translate-y-0.5 hover:bg-[#111]"
             >
               {category}
             </span>

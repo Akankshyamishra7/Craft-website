@@ -30,9 +30,9 @@ export default function ToastContainer() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.9 }}
             transition={{ duration: 0.22, ease: 'easeOut' }}
-            className="pointer-events-auto flex items-start gap-3 rounded-2xl border border-white/90 bg-white/95 p-3.5 shadow-dropdown backdrop-blur-xl"
+            className="pointer-events-auto flex items-start gap-3 rounded-2xl border border-white/[0.08] bg-white/[0.08] p-3.5 shadow-dropdown backdrop-blur-xl"
           >
-            <div className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-sand/40">
+            <div className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-emerald-500/10">
               {getIcon(toast.type)}
             </div>
             <div className="min-w-0 flex-1">
@@ -43,7 +43,7 @@ export default function ToastContainer() {
               type="button"
               onClick={() => removeToast(toast.id)}
               aria-label="Close notification"
-              className="grid h-6 w-6 place-items-center rounded-full text-cocoa/40 transition hover:bg-sand/50 hover:text-cocoa"
+              className="grid h-6 w-6 place-items-center rounded-full text-cocoa/40 transition hover:bg-white/[0.03] hover:text-cocoa"
             >
               <X className="h-3.5 w-3.5" />
             </button>

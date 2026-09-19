@@ -52,7 +52,7 @@ export default function SellCraftModal() {
         >
           <motion.div
             key="sell-modal-card"
-            className="relative my-8 w-full max-w-2xl overflow-hidden rounded-[2.2rem] bg-cream shadow-2xl"
+            className="relative my-8 w-full max-w-2xl overflow-hidden rounded-[2.2rem] bg-[#050505] shadow-2xl"
             initial={{ scale: 0.95, y: 20 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.95, y: 20 }}
@@ -63,16 +63,16 @@ export default function SellCraftModal() {
               type="button"
               aria-label="Close sell modal"
               onClick={() => setIsSellOpen(false)}
-              className="absolute right-5 top-5 z-20 grid h-10 w-10 place-items-center rounded-full border border-white/80 bg-white/90 text-cocoa shadow-soft transition hover:bg-white"
+              className="absolute right-5 top-5 z-20 grid h-10 w-10 place-items-center rounded-full border border-emerald-500/25 bg-white/[0.06] text-white shadow-soft transition hover:bg-[#111]"
             >
               <X className="h-5 w-5" />
             </button>
 
             {/* Header */}
-            <div className="border-b border-sand/70 bg-gradient-to-r from-blossom/60 via-sand/50 to-peach/50 px-6 py-6 sm:px-8">
+            <div className="border-b border-emerald-500/25 bg-gradient-to-r from-blossom/60 via-sand/50 to-peach/50 px-6 py-6 sm:px-8">
               <span className="section-eyebrow">Artisan Creator Hub</span>
-              <h3 className="mt-2 font-serif text-3xl text-cocoa">List Your Handmade Craft</h3>
-              <p className="mt-1 text-xs text-cocoa-muted sm:text-sm">
+              <h3 className="mt-2 font-serif text-3xl text-white">List Your Handmade Craft</h3>
+              <p className="mt-1 text-xs text-white-muted sm:text-sm">
                 Join our collective of independent craft makers. Your listing will appear live in the collection immediately.
               </p>
             </div>
@@ -80,7 +80,7 @@ export default function SellCraftModal() {
             <form className="space-y-5 p-6 sm:p-8" onSubmit={submitProduct}>
               {/* Preset Image Chooser */}
               <div>
-                <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-cocoa">
+                <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-white">
                   1. Select Photo Preset or Enter Image URL
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -94,7 +94,7 @@ export default function SellCraftModal() {
                         className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
                           isSelected
                             ? 'border-clay bg-clay text-white shadow-sm'
-                            : 'border-white/80 bg-white/80 text-cocoa/70 hover:bg-white'
+                            : 'border-emerald-500/25 bg-white/[0.04] text-white/70 hover:bg-white'
                         }`}
                       >
                         {isSelected && <Check className="h-3 w-3" />}
@@ -105,11 +105,11 @@ export default function SellCraftModal() {
                 </div>
 
                 <div className="relative mt-2.5">
-                  <ImageIcon className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-cocoa-muted" />
+                  <ImageIcon className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-white-muted" />
                   <input
                     value={formState.image}
                     onChange={(e) => setFormState({ ...formState, image: e.target.value })}
-                    className="h-11 w-full rounded-xl border border-sand bg-white pl-10 pr-4 text-xs text-cocoa outline-none focus:border-clay"
+                    className="h-11 w-full rounded-xl border border-white/[0.08] bg-[#111] pl-10 pr-4 text-xs text-white outline-none focus:border-clay"
                     placeholder="https://images.unsplash.com/..."
                     required
                   />
@@ -119,22 +119,22 @@ export default function SellCraftModal() {
               {/* Title & Category */}
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-xs font-bold text-cocoa">Craft Title</label>
+                  <label className="mb-1 block text-xs font-bold text-white">Craft Title</label>
                   <input
                     value={formState.title}
                     onChange={(e) => setFormState({ ...formState, title: e.target.value })}
-                    className="h-11 w-full rounded-xl border border-sand bg-white px-3.5 text-sm text-cocoa outline-none focus:border-clay"
+                    className="h-11 w-full rounded-xl border border-white/[0.08] bg-[#111] px-3.5 text-sm text-white outline-none focus:border-clay"
                     placeholder="e.g. Handmade Resin Trinket Dish"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="mb-1 block text-xs font-bold text-cocoa">Category</label>
+                  <label className="mb-1 block text-xs font-bold text-white">Category</label>
                   <select
                     value={formState.category}
                     onChange={(e) => setFormState({ ...formState, category: e.target.value })}
-                    className="h-11 w-full rounded-xl border border-sand bg-white px-3.5 text-sm text-cocoa outline-none focus:border-clay"
+                    className="h-11 w-full rounded-xl border border-white/[0.08] bg-[#111] px-3.5 text-sm text-white outline-none focus:border-clay"
                   >
                     {categories.map((c) => (
                       <option key={c} value={c}>
@@ -148,25 +148,25 @@ export default function SellCraftModal() {
               {/* Price & Description */}
               <div className="grid gap-4 sm:grid-cols-[1fr_130px]">
                 <div>
-                  <label className="mb-1 block text-xs font-bold text-cocoa">Story & Materials Description</label>
+                  <label className="mb-1 block text-xs font-bold text-white">Story & Materials Description</label>
                   <textarea
                     rows={3}
                     value={formState.description}
                     onChange={(e) => setFormState({ ...formState, description: e.target.value })}
-                    className="w-full rounded-xl border border-sand bg-white p-3 text-xs leading-5 text-cocoa outline-none focus:border-clay"
+                    className="w-full rounded-xl border border-white/[0.08] bg-[#111] p-3 text-xs leading-5 text-white outline-none focus:border-clay"
                     placeholder="Describe your handcrafting process, materials, scents, or styling notes..."
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="mb-1 block text-xs font-bold text-cocoa">Price (₹ INR)</label>
+                  <label className="mb-1 block text-xs font-bold text-white">Price (₹ INR)</label>
                   <input
                     type="number"
                     min="1"
                     value={formState.price}
                     onChange={(e) => setFormState({ ...formState, price: e.target.value })}
-                    className="h-11 w-full rounded-xl border border-sand bg-white px-3.5 text-sm font-bold text-cocoa outline-none focus:border-clay"
+                    className="h-11 w-full rounded-xl border border-white/[0.08] bg-[#111] px-3.5 text-sm font-bold text-white outline-none focus:border-clay"
                     placeholder="499"
                     required
                   />
@@ -175,7 +175,7 @@ export default function SellCraftModal() {
 
               {/* Live Mini Preview */}
               {formState.title && (
-                <div className="flex items-center gap-3.5 rounded-2xl border border-white/80 bg-white/90 p-3 shadow-soft">
+                <div className="flex items-center gap-3.5 rounded-2xl border border-emerald-500/25 bg-white/[0.06] p-3 shadow-soft">
                   <img
                     src={formState.image}
                     alt="Preview"
@@ -185,10 +185,10 @@ export default function SellCraftModal() {
                     <span className="text-[10px] font-bold uppercase tracking-wider text-moss">
                       {formState.category}
                     </span>
-                    <p className="truncate text-sm font-bold text-cocoa">{formState.title}</p>
+                    <p className="truncate text-sm font-bold text-white">{formState.title}</p>
                     <p className="text-xs font-bold text-clay">₹{formState.price}</p>
                   </div>
-                  <span className="rounded-full bg-sand/60 px-2.5 py-1 text-[10px] font-bold text-cocoa">
+                  <span className="rounded-full bg-white/[0.03] px-2.5 py-1 text-[10px] font-bold text-white">
                     Live Preview
                   </span>
                 </div>

@@ -333,12 +333,12 @@ export const inspirationTiles = [
   {
     title: 'Boutique Candle Stack',
     image:
-      'https://images.unsplash.com/photo-1543257580-7269da773bf5?auto=format&fit=crop&w=700&q=80',
+      'https://images.unsplash.com/photo-1543257580-7269da773bf5 • auto=format&fit=crop&w=700&q=80',
   },
   {
     title: 'Dreamy DIY Texture',
     image:
-      'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80',
+      'https://images.unsplash.com/photo-1513694203232-719a280e022f • auto=format&fit=crop&w=700&q=80',
   },
 ]
 

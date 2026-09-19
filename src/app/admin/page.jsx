@@ -171,14 +171,14 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-cream text-cocoa">
+    <div className="min-h-screen bg-[#050505] text-cocoa">
       {/* Top Admin Header */}
-      <header className="sticky top-0 z-30 border-b border-sand/80 bg-white/85 shadow-sm backdrop-blur-md">
+      <header className="sticky top-0 z-30 border-b border-white/[0.06] bg-white/85 shadow-sm backdrop-blur-md">
         <div className="section-shell flex h-20 items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 rounded-full border border-sand bg-white px-4 py-2 text-xs font-bold text-cocoa shadow-sm transition hover:bg-clay hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-[#111] px-4 py-2 text-xs font-bold text-cocoa shadow-sm transition hover:bg-emerald-500 hover:text-white"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to Storefront
@@ -202,7 +202,7 @@ export default function AdminPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="hidden rounded-2xl border border-sand bg-sand/30 px-4 py-2 text-right sm:block">
+            <div className="hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] px-4 py-2 text-right sm:block">
               <p className="text-[10px] font-bold uppercase tracking-wider text-cocoa-muted">Total Gross Sales</p>
               <p className="text-sm font-extrabold text-clay">₹{metrics.totalSales.toFixed(0)}</p>
             </div>
@@ -219,7 +219,7 @@ export default function AdminPage() {
             <button
               type="button"
               onClick={handleAdminLogout}
-              className="inline-flex items-center gap-1.5 rounded-full border border-sand bg-white px-3.5 py-2 text-xs font-bold text-rose-600 shadow-sm transition hover:bg-rose-50 hover:border-rose-200"
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/[0.08] bg-[#111] px-3.5 py-2 text-xs font-bold text-rose-600 shadow-sm transition hover:bg-rose-500/10 hover:border-rose-200"
               title="Sign out of admin session"
             >
               <LogOut className="h-3.5 w-3.5" />
@@ -232,7 +232,7 @@ export default function AdminPage() {
       {/* Main Admin Content */}
       <div className="section-shell py-8">
         {/* Navigation Tabs */}
-        <div className="mb-8 flex flex-wrap items-center gap-2 border-b border-sand/80 pb-4">
+        <div className="mb-8 flex flex-wrap items-center gap-2 border-b border-white/[0.06] pb-4">
           {[
             { id: 'overview', label: 'Executive Analytics', icon: LayoutDashboard },
             { id: 'products', label: `Crafts Catalog (${products.length})`, icon: Package },
@@ -247,7 +247,7 @@ export default function AdminPage() {
               className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold transition duration-200 ${
                 activeTab === tab.id
                   ? 'bg-cocoa text-white shadow-soft ring-1 ring-cocoa'
-                  : 'border border-sand bg-white/70 text-cocoa/70 hover:bg-white hover:text-cocoa'
+                  : 'border border-white/[0.08] bg-white/70 text-cocoa/70 hover:bg-[#111] hover:text-cocoa'
               }`}
             >
               <tab.icon className="h-4 w-4" />
@@ -297,7 +297,7 @@ export default function AdminPage() {
               <div className="glass-card p-5">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold uppercase tracking-wider text-cocoa-muted">Avg Order Value</span>
-                  <div className="grid h-8 w-8 place-items-center rounded-xl bg-sand/60 text-amber-700">
+                  <div className="grid h-8 w-8 place-items-center rounded-xl bg-white/[0.03] text-amber-700">
                     <TrendingUp className="h-4 w-4" />
                   </div>
                 </div>
@@ -351,7 +351,7 @@ export default function AdminPage() {
                     <div
                       key={order.orderId}
                       onClick={() => setSelectedOrder(order)}
-                      className="flex cursor-pointer items-center justify-between rounded-2xl border border-sand bg-white/70 p-3 transition hover:bg-white"
+                      className="flex cursor-pointer items-center justify-between rounded-2xl border border-white/[0.08] bg-white/70 p-3 transition hover:bg-[#111]"
                     >
                       <div>
                         <div className="flex items-center gap-2">
@@ -386,7 +386,7 @@ export default function AdminPage() {
                   value={productSearch}
                   onChange={(e) => setProductSearch(e.target.value)}
                   placeholder="Search products by title or description..."
-                  className="h-10 w-full rounded-xl border border-sand bg-white pl-10 pr-4 text-xs text-cocoa outline-none focus:border-clay"
+                  className="h-10 w-full rounded-xl border border-white/[0.08] bg-[#111] pl-10 pr-4 text-xs text-cocoa outline-none focus:border-clay"
                 />
               </div>
 
@@ -394,7 +394,7 @@ export default function AdminPage() {
                 <select
                   value={productCategory}
                   onChange={(e) => setProductCategory(e.target.value)}
-                  className="h-10 rounded-xl border border-sand bg-white px-3 text-xs font-bold text-cocoa outline-none"
+                  className="h-10 rounded-xl border border-white/[0.08] bg-[#111] px-3 text-xs font-bold text-cocoa outline-none"
                 >
                   <option value="All">All Categories</option>
                   {categories.map((c) => (
@@ -419,7 +419,7 @@ export default function AdminPage() {
             <div className="glass-card overflow-hidden">
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="border-b border-sand/80 bg-sand/30 font-bold uppercase tracking-wider text-cocoa-muted">
+                  <thead className="border-b border-white/[0.06] bg-white/[0.03] font-bold uppercase tracking-wider text-cocoa-muted">
                     <tr>
                       <th className="p-4">Craft</th>
                       <th className="p-4">Category</th>
@@ -464,7 +464,7 @@ export default function AdminPage() {
                               type="button"
                               onClick={() => openEditProductModal(p)}
                               title="Edit product"
-                              className="grid h-8 w-8 place-items-center rounded-lg border border-sand bg-white text-cocoa transition hover:bg-clay hover:text-white"
+                              className="grid h-8 w-8 place-items-center rounded-lg border border-white/[0.08] bg-[#111] text-cocoa transition hover:bg-emerald-500 hover:text-white"
                             >
                               <Edit className="h-3.5 w-3.5" />
                             </button>
@@ -472,7 +472,7 @@ export default function AdminPage() {
                               type="button"
                               onClick={() => deleteProduct(p.id)}
                               title="Delete product"
-                              className="grid h-8 w-8 place-items-center rounded-lg border border-rose-200 bg-rose-50 text-rose-600 transition hover:bg-rose-500 hover:text-white"
+                              className="grid h-8 w-8 place-items-center rounded-lg border border-rose-200 bg-rose-500/10 text-rose-600 transition hover:bg-rose-500/100 hover:text-white"
                             >
                               <Trash2 className="h-3.5 w-3.5" />
                             </button>
@@ -491,14 +491,14 @@ export default function AdminPage() {
         {activeTab === 'orders' && (
           <div className="space-y-6">
             <div className="glass-card overflow-hidden">
-              <div className="border-b border-sand/80 bg-sand/30 p-4">
+              <div className="border-b border-white/[0.06] bg-white/[0.03] p-4">
                 <h3 className="font-serif text-xl font-bold text-cocoa">All Customer Orders ({orders.length})</h3>
                 <p className="text-xs text-cocoa-muted">Manage packing, shipment tracking, and customer details</p>
               </div>
 
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-xs">
-                  <thead className="border-b border-sand/80 font-bold uppercase tracking-wider text-cocoa-muted">
+                  <thead className="border-b border-white/[0.06] font-bold uppercase tracking-wider text-cocoa-muted">
                     <tr>
                       <th className="p-4">Order ID</th>
                       <th className="p-4">Date</th>
@@ -524,7 +524,7 @@ export default function AdminPage() {
                           <select
                             value={order.status}
                             onChange={(e) => updateOrderStatus(order.orderId, e.target.value)}
-                            className="rounded-xl border border-sand bg-white px-2.5 py-1 text-xs font-bold text-cocoa outline-none"
+                            className="rounded-xl border border-white/[0.08] bg-[#111] px-2.5 py-1 text-xs font-bold text-cocoa outline-none"
                           >
                             <option value="Handcrafting & Packing">Handcrafting & Packing</option>
                             <option value="Shipped">Shipped</option>
@@ -536,7 +536,7 @@ export default function AdminPage() {
                           <button
                             type="button"
                             onClick={() => setSelectedOrder(order)}
-                            className="inline-flex items-center gap-1 rounded-lg border border-sand bg-white px-2.5 py-1 text-xs font-bold text-cocoa transition hover:bg-clay hover:text-white"
+                            className="inline-flex items-center gap-1 rounded-lg border border-white/[0.08] bg-[#111] px-2.5 py-1 text-xs font-bold text-cocoa transition hover:bg-emerald-500 hover:text-white"
                           >
                             <Eye className="h-3.5 w-3.5" /> View
                           </button>
@@ -566,7 +566,7 @@ export default function AdminPage() {
                     value={newCoupon.code}
                     onChange={(e) => setNewCoupon({ ...newCoupon, code: e.target.value })}
                     placeholder="e.g. SUMMER25"
-                    className="h-10 w-full rounded-xl border border-sand bg-white px-3.5 font-mono text-xs font-bold uppercase text-cocoa outline-none focus:border-clay"
+                    className="h-10 w-full rounded-xl border border-white/[0.08] bg-[#111] px-3.5 font-mono text-xs font-bold uppercase text-cocoa outline-none focus:border-clay"
                   />
                 </div>
 
@@ -576,7 +576,7 @@ export default function AdminPage() {
                     <select
                       value={newCoupon.type}
                       onChange={(e) => setNewCoupon({ ...newCoupon, type: e.target.value })}
-                      className="h-10 w-full rounded-xl border border-sand bg-white px-3 text-xs font-bold text-cocoa outline-none"
+                      className="h-10 w-full rounded-xl border border-white/[0.08] bg-[#111] px-3 text-xs font-bold text-cocoa outline-none"
                     >
                       <option value="percent">Percentage (%)</option>
                       <option value="fixed">Fixed Amount (₹)</option>
@@ -591,7 +591,7 @@ export default function AdminPage() {
                       value={newCoupon.value}
                       onChange={(e) => setNewCoupon({ ...newCoupon, value: Number(e.target.value) })}
                       placeholder="15"
-                      className="h-10 w-full rounded-xl border border-sand bg-white px-3.5 text-xs font-bold text-cocoa outline-none"
+                      className="h-10 w-full rounded-xl border border-white/[0.08] bg-[#111] px-3.5 text-xs font-bold text-cocoa outline-none"
                     />
                   </div>
                 </div>
@@ -602,7 +602,7 @@ export default function AdminPage() {
                     value={newCoupon.label}
                     onChange={(e) => setNewCoupon({ ...newCoupon, label: e.target.value })}
                     placeholder="e.g. 25% Off Summer Artisan Drops"
-                    className="h-10 w-full rounded-xl border border-sand bg-white px-3.5 text-xs text-cocoa outline-none"
+                    className="h-10 w-full rounded-xl border border-white/[0.08] bg-[#111] px-3.5 text-xs text-cocoa outline-none"
                   />
                 </div>
 
@@ -621,7 +621,7 @@ export default function AdminPage() {
                 {Object.values(availableCoupons).map((c) => (
                   <div
                     key={c.code}
-                    className="flex items-center justify-between rounded-2xl border border-sand bg-white/80 p-3.5 shadow-sm"
+                    className="flex items-center justify-between rounded-2xl border border-white/[0.08] bg-white/[0.04] p-3.5 shadow-sm"
                   >
                     <div>
                       <span className="rounded-lg border border-dashed border-clay bg-clay-light/50 px-2.5 py-1 font-mono text-xs font-bold text-clay">
@@ -640,7 +640,7 @@ export default function AdminPage() {
                     <button
                       type="button"
                       onClick={() => deleteCoupon(c.code)}
-                      className="grid h-8 w-8 place-items-center rounded-lg border border-rose-200 bg-rose-50 text-rose-600 transition hover:bg-rose-500 hover:text-white"
+                      className="grid h-8 w-8 place-items-center rounded-lg border border-rose-200 bg-rose-500/10 text-rose-600 transition hover:bg-rose-500/100 hover:text-white"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>
@@ -678,17 +678,17 @@ export default function AdminPage() {
 
       {/* ADD / EDIT PRODUCT MODAL */}
       {isProductModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-cocoa/50 p-4 backdrop-blur-md">
-          <div className="relative my-8 w-full max-w-xl overflow-hidden rounded-[2.2rem] bg-cream shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/70 p-4 backdrop-blur-md">
+          <div className="relative my-8 w-full max-w-xl overflow-hidden rounded-[2.2rem] bg-[#050505] shadow-2xl">
             <button
               type="button"
               onClick={() => setIsProductModalOpen(false)}
-              className="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-full border border-sand bg-white text-cocoa"
+              className="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-full border border-white/[0.08] bg-[#111] text-cocoa"
             >
               <X className="h-4 w-4" />
             </button>
 
-            <div className="border-b border-sand bg-sand/30 p-6">
+            <div className="border-b border-white/[0.08] bg-white/[0.03] p-6">
               <span className="section-eyebrow">Product Catalog Management</span>
               <h3 className="mt-2 font-serif text-2xl font-bold text-cocoa">
                 {editingProduct ? 'Edit Craft Details' : 'Add New Handmade Craft'}
@@ -703,7 +703,7 @@ export default function AdminPage() {
                   value={productForm.title}
                   onChange={(e) => setProductForm({ ...productForm, title: e.target.value })}
                   placeholder="e.g. Scalloped Resin Tray"
-                  className="h-10 w-full rounded-xl border border-sand bg-white px-3 text-xs text-cocoa outline-none focus:border-clay"
+                  className="h-10 w-full rounded-xl border border-white/[0.08] bg-[#111] px-3 text-xs text-cocoa outline-none focus:border-clay"
                 />
               </div>
 
@@ -713,7 +713,7 @@ export default function AdminPage() {
                   <select
                     value={productForm.category}
                     onChange={(e) => setProductForm({ ...productForm, category: e.target.value })}
-                    className="h-10 w-full rounded-xl border border-sand bg-white px-3 text-xs font-bold text-cocoa outline-none"
+                    className="h-10 w-full rounded-xl border border-white/[0.08] bg-[#111] px-3 text-xs font-bold text-cocoa outline-none"
                   >
                     {categories.map((c) => (
                       <option key={c} value={c}>
@@ -731,7 +731,7 @@ export default function AdminPage() {
                     value={productForm.price}
                     onChange={(e) => setProductForm({ ...productForm, price: e.target.value })}
                     placeholder="499"
-                    className="h-10 w-full rounded-xl border border-sand bg-white px-3 text-xs font-bold text-cocoa outline-none"
+                    className="h-10 w-full rounded-xl border border-white/[0.08] bg-[#111] px-3 text-xs font-bold text-cocoa outline-none"
                   />
                 </div>
               </div>
@@ -743,7 +743,7 @@ export default function AdminPage() {
                   value={productForm.description}
                   onChange={(e) => setProductForm({ ...productForm, description: e.target.value })}
                   placeholder="Materials, handcrafted techniques, and styling notes..."
-                  className="w-full rounded-xl border border-sand bg-white p-3 text-xs text-cocoa outline-none"
+                  className="w-full rounded-xl border border-white/[0.08] bg-[#111] p-3 text-xs text-cocoa outline-none"
                 />
               </div>
 
@@ -755,7 +755,7 @@ export default function AdminPage() {
                       key={img.label}
                       type="button"
                       onClick={() => setProductForm({ ...productForm, image: img.url })}
-                      className="rounded-full border border-sand bg-white px-2.5 py-1 text-[10px] font-bold text-cocoa hover:bg-clay hover:text-white"
+                      className="rounded-full border border-white/[0.08] bg-[#111] px-2.5 py-1 text-[10px] font-bold text-cocoa hover:bg-emerald-500 hover:text-white"
                     >
                       {img.label}
                     </button>
@@ -765,7 +765,7 @@ export default function AdminPage() {
                   required
                   value={productForm.image}
                   onChange={(e) => setProductForm({ ...productForm, image: e.target.value })}
-                  className="h-10 w-full rounded-xl border border-sand bg-white px-3 text-xs text-cocoa outline-none"
+                  className="h-10 w-full rounded-xl border border-white/[0.08] bg-[#111] px-3 text-xs text-cocoa outline-none"
                 />
               </div>
 
@@ -781,17 +781,17 @@ export default function AdminPage() {
 
       {/* ORDER DETAILS MODAL */}
       {selectedOrder && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-cocoa/50 p-4 backdrop-blur-md">
-          <div className="relative my-8 w-full max-w-xl overflow-hidden rounded-[2.2rem] bg-cream shadow-2xl">
+        <div className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/70 p-4 backdrop-blur-md">
+          <div className="relative my-8 w-full max-w-xl overflow-hidden rounded-[2.2rem] bg-[#050505] shadow-2xl">
             <button
               type="button"
               onClick={() => setSelectedOrder(null)}
-              className="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-full border border-sand bg-white text-cocoa"
+              className="absolute right-5 top-5 grid h-9 w-9 place-items-center rounded-full border border-white/[0.08] bg-[#111] text-cocoa"
             >
               <X className="h-4 w-4" />
             </button>
 
-            <div className="border-b border-sand bg-sand/30 p-6">
+            <div className="border-b border-white/[0.08] bg-white/[0.03] p-6">
               <span className="section-eyebrow">Order Inspection</span>
               <h3 className="mt-2 font-serif text-2xl font-bold text-cocoa">
                 Order #{selectedOrder.orderId}
@@ -801,7 +801,7 @@ export default function AdminPage() {
 
             <div className="space-y-4 p-6 text-xs">
               {/* Customer Info */}
-              <div className="rounded-2xl border border-sand bg-white p-4">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#111] p-4">
                 <h4 className="font-bold text-cocoa">Customer & Shipping Address</h4>
                 <p className="mt-1 text-cocoa font-semibold">{selectedOrder.customer?.fullName}</p>
                 <p className="text-cocoa-muted">{selectedOrder.customer?.email}</p>
@@ -810,11 +810,11 @@ export default function AdminPage() {
               </div>
 
               {/* Items */}
-              <div className="rounded-2xl border border-sand bg-white p-4">
+              <div className="rounded-2xl border border-white/[0.08] bg-[#111] p-4">
                 <h4 className="font-bold text-cocoa">Ordered Crafts ({selectedOrder.items?.length || 1})</h4>
                 <div className="mt-3 space-y-2">
                   {selectedOrder.items?.map((item, i) => (
-                    <div key={i} className="flex items-center justify-between border-b border-sand/40 pb-2">
+                    <div key={i} className="flex items-center justify-between border-b border-white/[0.04] pb-2">
                       <div className="flex items-center gap-2.5">
                         <img
                           src={item.image}
@@ -839,7 +839,7 @@ export default function AdminPage() {
               </div>
 
               {/* Financial Totals */}
-              <div className="flex justify-between rounded-xl bg-sand/30 p-3 text-sm font-bold text-cocoa">
+              <div className="flex justify-between rounded-xl bg-white/[0.03] p-3 text-sm font-bold text-cocoa">
                 <span>Total Amount</span>
                 <span className="text-clay">₹{selectedOrder.total?.toFixed(0)}</span>
               </div>

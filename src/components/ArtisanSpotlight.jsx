@@ -53,10 +53,10 @@ export default function ArtisanSpotlight() {
           <span className="section-eyebrow">
             <Award className="h-3.5 w-3.5 text-clay" /> Meet the Makers
           </span>
-          <h2 className="mt-3 text-4xl sm:text-5xl text-cocoa">
+          <h2 className="mt-3 text-4xl sm:text-5xl text-white">
             Real Craftspeople Behind Every Creation
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-cocoa-muted sm:text-lg">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-white-muted sm:text-lg">
             Every piece in the Atelier NP marketplace is designed and sculpted by independent artisans. When you buy, you directly support their creative studios.
           </p>
         </div>
@@ -67,7 +67,7 @@ export default function ArtisanSpotlight() {
               key={artisan.id}
               className="glass-card-hover group overflow-hidden rounded-[2.2rem] p-5"
             >
-              <div className="relative h-44 w-full overflow-hidden rounded-2xl bg-sand/30">
+              <div className="relative h-44 w-full overflow-hidden rounded-2xl bg-white/[0.03]">
                 <img
                   src={artisan.cover}
                   alt={artisan.name}
@@ -93,29 +93,29 @@ export default function ArtisanSpotlight() {
                   <img
                     src={artisan.avatar}
                     alt={artisan.name}
-                    className="h-14 w-14 rounded-full border-2 border-white object-cover shadow-soft"
+                    className="h-14 w-14 rounded-full border-2 border-emerald-500/30 object-cover shadow-soft"
                   />
-                  <span className="rounded-full bg-sand/70 px-3 py-1 text-[11px] font-bold text-cocoa">
+                  <span className="rounded-full bg-sand/70 px-3 py-1 text-[11px] font-bold text-white">
                     {artisan.experience}
                   </span>
                 </div>
 
                 <div className="mt-3">
-                  <h3 className="font-serif text-2xl font-bold text-cocoa">{artisan.name}</h3>
+                  <h3 className="font-serif text-2xl font-bold text-white">{artisan.name}</h3>
                   <p className="text-xs font-semibold uppercase tracking-wider text-clay">
                     {artisan.role}
                   </p>
-                  <p className="mt-3 text-xs leading-5 text-cocoa-muted line-clamp-3">
+                  <p className="mt-3 text-xs leading-5 text-white-muted line-clamp-3">
                     {artisan.bio}
                   </p>
                 </div>
 
-                <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-sand/60 pt-3.5">
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-white/[0.06] pt-3.5">
                   <div className="flex flex-wrap gap-1.5">
                     {artisan.badges.map((b) => (
                       <span
                         key={b}
-                        className="rounded-full bg-mint/50 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-moss"
+                        className="rounded-full bg-emerald-500/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-moss"
                       >
                         {b}
                       </span>
@@ -124,7 +124,7 @@ export default function ArtisanSpotlight() {
 
                   <a
                     href="#collection"
-                    className="inline-flex items-center gap-1 text-[11px] font-bold text-clay transition hover:text-cocoa"
+                    className="inline-flex items-center gap-1 text-[11px] font-bold text-clay transition hover:text-white"
                   >
                     <span>View Crafts</span>
                     <ArrowRight className="h-3 w-3" />

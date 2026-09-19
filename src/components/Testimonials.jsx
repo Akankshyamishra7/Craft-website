@@ -43,8 +43,8 @@ export default function Testimonials() {
           <span className="section-eyebrow">
             <Heart className="h-3.5 w-3.5 text-clay" /> Collector Love
           </span>
-          <h2 className="mt-3 text-4xl sm:text-5xl text-cocoa">Loved by Handmade Lovers Worldwide</h2>
-          <p className="mx-auto mt-3 text-xs leading-6 text-cocoa-muted sm:text-base">
+          <h2 className="mt-3 text-4xl sm:text-5xl text-white">Loved by Handmade Lovers Worldwide</h2>
+          <p className="mx-auto mt-3 text-xs leading-6 text-white-muted sm:text-base">
             Read authentic reviews from collectors who cherish thoughtful artisan craftsmanship.
           </p>
         </div>
@@ -62,30 +62,30 @@ export default function Testimonials() {
                       <Star key={i} className="h-4 w-4 fill-amber-400" />
                     ))}
                   </div>
-                  <span className="flex items-center gap-1 rounded-full bg-mint/50 px-2.5 py-0.5 text-[10px] font-bold text-moss">
+                  <span className="flex items-center gap-1 rounded-full bg-emerald-500/15 px-2.5 py-0.5 text-[10px] font-bold text-moss">
                     <CheckCircle2 className="h-3 w-3" /> Verified Purchase
                   </span>
                 </div>
 
-                <p className="mt-4 font-serif text-lg italic leading-7 text-cocoa sm:text-xl">
+                <p className="mt-4 font-serif text-lg italic leading-7 text-white sm:text-xl">
                   &ldquo;{t.quote}&rdquo;
                 </p>
               </div>
 
-              <div className="mt-6 flex items-center justify-between gap-3 border-t border-sand/60 pt-4">
+              <div className="mt-6 flex items-center justify-between gap-3 border-t border-white/[0.06] pt-4">
                 <div className="flex items-center gap-3.5">
                   <img
                     src={t.avatar}
                     alt={t.name}
-                    className="h-11 w-11 rounded-full border border-white object-cover shadow-soft"
+                    className="h-11 w-11 rounded-full border border-white/[0.1] object-cover shadow-soft"
                   />
                   <div>
-                    <h4 className="font-serif text-lg font-bold text-cocoa">{t.name}</h4>
-                    <p className="text-[11px] text-cocoa-muted">{t.role}</p>
+                    <h4 className="font-serif text-lg font-bold text-white">{t.name}</h4>
+                    <p className="text-[11px] text-white-muted">{t.role}</p>
                   </div>
                 </div>
                 {t.craft && (
-                  <span className="hidden sm:inline-block rounded-full bg-sand/40 px-2.5 py-1 text-[10px] font-bold text-clay">
+                  <span className="hidden sm:inline-block rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-bold text-clay">
                     {t.craft}
                   </span>
                 )}

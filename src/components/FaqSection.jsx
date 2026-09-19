@@ -42,8 +42,8 @@ export default function FaqSection() {
           <span className="section-eyebrow">
             <HelpCircle className="h-3.5 w-3.5 text-clay" /> Help & Assurance
           </span>
-          <h2 className="mt-3 text-4xl sm:text-5xl text-cocoa">Frequently Asked Questions</h2>
-          <p className="mx-auto mt-4 text-base leading-7 text-cocoa-muted">
+          <h2 className="mt-3 text-4xl sm:text-5xl text-white">Frequently Asked Questions</h2>
+          <p className="mx-auto mt-4 text-base leading-7 text-white-muted">
             Everything you need to know about custom orders, handmade materials, and our buyer protection guarantee.
           </p>
         </div>
@@ -55,18 +55,18 @@ export default function FaqSection() {
             return (
               <div
                 key={index}
-                className="overflow-hidden rounded-2xl border border-white/80 bg-white/80 shadow-soft transition duration-200"
+                className="overflow-hidden rounded-2xl border border-emerald-500/25 bg-[#061214]/85 hover:border-emerald-400/60 hover:bg-[#0a1e22] shadow-soft transition duration-200"
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                  className="flex w-full items-center justify-between p-5 text-left transition hover:bg-white/90"
+                  className="flex w-full items-center justify-between p-5 text-left transition hover:bg-white/[0.06]"
                 >
-                  <span className="font-serif text-xl font-bold text-cocoa sm:text-2xl">
+                  <span className="font-serif text-xl font-bold text-white sm:text-2xl">
                     {faq.question}
                   </span>
                   <div
-                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-full bg-sand/40 text-cocoa transition duration-300 ${
+                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-full bg-emerald-500/10 text-white transition duration-300 ${
                       isOpen ? 'rotate-180 bg-clay text-white' : ''
                     }`}
                   >
@@ -82,7 +82,7 @@ export default function FaqSection() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: 'easeInOut' }}
                     >
-                      <div className="border-t border-sand/40 px-5 pb-5 pt-3 text-sm leading-6 text-cocoa-muted sm:text-base">
+                      <div className="border-t border-sand/40 px-5 pb-5 pt-3 text-sm leading-6 text-white-muted sm:text-base">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -94,10 +94,10 @@ export default function FaqSection() {
         </div>
 
         {/* Still Have Questions Banner */}
-        <div className="mx-auto max-w-lg rounded-2xl border border-white/80 bg-white/70 p-4 text-center shadow-soft backdrop-blur-sm">
-          <p className="text-xs text-cocoa-muted">
+        <div className="mx-auto max-w-lg rounded-2xl border border-emerald-500/25 bg-[#061214]/85 hover:border-emerald-400/60 hover:bg-[#0a1e22] p-4 text-center shadow-soft backdrop-blur-sm">
+          <p className="text-xs text-white-muted">
             Still have questions about a custom piece?{' '}
-            <a href="#contact" className="font-bold text-clay underline transition hover:text-cocoa">
+            <a href="#contact" className="font-bold text-clay underline transition hover:text-white">
               Contact our studio team →
             </a>
           </p>
