@@ -41,7 +41,7 @@ export default function AuthModal() {
         >
           <motion.div
             key="auth-modal-card"
-            className="relative my-8 w-full max-w-md overflow-hidden rounded-[2.2rem] bg-[#050505] shadow-2xl"
+            className="relative my-8 w-full max-w-md overflow-hidden rounded-[2.2rem] bg-[#fdf9f0] border border-[#d4a338]/40 shadow-[0_25px_60px_rgba(133,90,16,0.25),0_0_30px_rgba(212,163,56,0.2)]"
             initial={{ scale: 0.95, y: 20 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.95, y: 20 }}
@@ -52,28 +52,28 @@ export default function AuthModal() {
               type="button"
               aria-label="Close modal"
               onClick={() => setIsAuthOpen(false)}
-              className="absolute right-5 top-5 z-20 grid h-10 w-10 place-items-center rounded-full border border-emerald-500/25 bg-white/[0.06] text-white shadow-soft transition hover:bg-[#111]"
+              className="absolute right-5 top-5 z-20 grid h-10 w-10 place-items-center rounded-full border border-[#d4a338]/30 bg-white/90 text-[#4a340e] shadow-soft transition hover:bg-white"
             >
               <X className="h-5 w-5" />
             </button>
 
             {/* Header */}
-            <div className="border-b border-emerald-500/25 bg-gradient-to-r from-blossom/60 via-sand/50 to-peach/50 p-6 sm:p-8">
+            <div className="border-b border-[#d4a338]/30 bg-gradient-to-r from-[#faeccd] via-[#f7e4b5] to-[#faeccd] p-6 sm:p-8 text-[#4a340e]">
               <span className="section-eyebrow">Artisan Account</span>
-              <h3 className="mt-2 font-serif text-3xl text-white">
+              <h3 className="mt-2 font-serif text-3xl text-[#241705] font-bold">
                 {mode === 'login' ? 'Welcome Back' : 'Join Atelier NP Circle'}
               </h3>
-              <p className="mt-1 text-xs text-white-muted sm:text-sm">
+              <p className="mt-1 text-xs text-[#5e4318] sm:text-sm font-medium">
                 Save bespoke wishlists, track handmade shipments, and connect directly with creators.
               </p>
 
               {/* Mode Tabs */}
-              <div className="mt-5 flex rounded-full border border-emerald-500/25 bg-white/[0.04] p-1">
+              <div className="mt-5 flex rounded-full border border-[#d4a338]/30 bg-white/60 p-1">
                 <button
                   type="button"
                   onClick={() => setMode('login')}
                   className={`flex-1 rounded-full py-1.5 text-xs font-bold transition ${
-                    mode === 'login' ? 'bg-emerald-600 text-white shadow-sm' : 'text-white/70 hover:text-white'
+                    mode === 'login' ? 'bg-gradient-to-r from-[#fff3cf] via-[#e8bc57] to-[#c89122] text-[#1a1204] shadow-sm' : 'text-[#4a340e] hover:text-[#1a1204]'
                   }`}
                 >
                   Sign In
@@ -82,7 +82,7 @@ export default function AuthModal() {
                   type="button"
                   onClick={() => setMode('register')}
                   className={`flex-1 rounded-full py-1.5 text-xs font-bold transition ${
-                    mode === 'register' ? 'bg-emerald-600 text-white shadow-sm' : 'text-white/70 hover:text-white'
+                    mode === 'register' ? 'bg-gradient-to-r from-[#fff3cf] via-[#e8bc57] to-[#c89122] text-[#1a1204] shadow-sm' : 'text-[#4a340e] hover:text-[#1a1204]'
                   }`}
                 >
                   Create Account
@@ -92,37 +92,37 @@ export default function AuthModal() {
 
             <form onSubmit={handleSubmit} className="space-y-4 p-6 sm:p-8">
               <div>
-                <label className="mb-1 block text-xs font-bold text-white">Full Name</label>
+                <label className="mb-1 block text-xs font-bold text-[#241705]">Full Name</label>
                 <input
                   required
                   value={formState.name}
                   onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                   placeholder="Maya Lin"
-                  className="h-11 w-full rounded-xl border border-white/[0.08] bg-[#111] px-3.5 text-sm text-white outline-none focus:border-clay"
+                  className="h-11 w-full rounded-xl border border-[#d4a338]/35 bg-white px-3.5 text-sm text-[#241705] outline-none focus:border-[#b8860b] focus:ring-1 focus:ring-[#e5be5e]/30"
                 />
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-bold text-white">Email Address</label>
+                <label className="mb-1 block text-xs font-bold text-[#241705]">Email Address</label>
                 <input
                   type="email"
                   required
                   value={formState.email}
                   onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                   placeholder="maya@example.com"
-                  className="h-11 w-full rounded-xl border border-white/[0.08] bg-[#111] px-3.5 text-sm text-white outline-none focus:border-clay"
+                  className="h-11 w-full rounded-xl border border-[#d4a338]/35 bg-white px-3.5 text-sm text-[#241705] outline-none focus:border-[#b8860b] focus:ring-1 focus:ring-[#e5be5e]/30"
                 />
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-bold text-white">Password</label>
+                <label className="mb-1 block text-xs font-bold text-[#241705]">Password</label>
                 <input
                   type="password"
                   required
                   value={formState.password}
                   onChange={(e) => setFormState({ ...formState, password: e.target.value })}
                   placeholder="••••••••"
-                  className="h-11 w-full rounded-xl border border-white/[0.08] bg-[#111] px-3.5 text-sm text-white outline-none focus:border-clay"
+                  className="h-11 w-full rounded-xl border border-[#d4a338]/35 bg-white px-3.5 text-sm text-[#241705] outline-none focus:border-[#b8860b] focus:ring-1 focus:ring-[#e5be5e]/30"
                 />
               </div>
 
@@ -139,14 +139,14 @@ export default function AuthModal() {
                   type="button"
                   onClick={handleDemoFill}
                   title="Auto-fill demo maker account"
-                  className="rounded-full border border-white/[0.08] bg-emerald-500/10 px-3.5 text-xs font-bold text-white transition hover:bg-sand"
+                  className="rounded-full border border-[#d4a338]/35 bg-[#e5be5e]/20 px-3.5 text-xs font-bold text-[#4a340e] transition hover:bg-[#e5be5e]"
                 >
                   Demo Fill
                 </button>
               </div>
 
               {user && (
-                <div className="border-t border-emerald-500/25 pt-3">
+                <div className="border-t border-[#d4a338]/25 pt-3">
                   <button
                     type="button"
                     onClick={() => {
@@ -160,13 +160,13 @@ export default function AuthModal() {
                 </div>
               )}
 
-              <div className="border-t border-emerald-500/25 pt-3 text-center">
-                <p className="text-[11px] text-white-muted">
+              <div className="border-t border-[#d4a338]/25 pt-3 text-center">
+                <p className="text-[11px] text-[#5e4318]">
                   Looking for creator & inventory management?{' '}
                   <a
                     href="/admin/login"
                     onClick={() => setIsAuthOpen(false)}
-                    className="font-bold text-clay underline hover:text-white transition"
+                    className="font-bold text-[#8c5f0b] underline hover:text-[#241705] transition"
                   >
                     Open Admin Login Portal →
                   </a>

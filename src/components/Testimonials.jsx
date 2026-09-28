@@ -41,10 +41,10 @@ export default function Testimonials() {
       <div className="reveal is-visible space-y-10">
         <div className="mx-auto max-w-2xl text-center">
           <span className="section-eyebrow">
-            <Heart className="h-3.5 w-3.5 text-clay" /> Collector Love
+            <Heart className="h-3.5 w-3.5 text-[#8c5f0b]" /> Collector Love
           </span>
-          <h2 className="mt-3 text-4xl sm:text-5xl text-white">Loved by Handmade Lovers Worldwide</h2>
-          <p className="mx-auto mt-3 text-xs leading-6 text-white-muted sm:text-base">
+          <h2 className="mt-3 text-4xl sm:text-5xl text-[#241705] font-serif font-bold">Loved by Handmade Lovers Worldwide</h2>
+          <p className="mx-auto mt-3 text-xs leading-6 text-[#5e4318] sm:text-base font-medium">
             Read authentic reviews from collectors who cherish thoughtful artisan craftsmanship.
           </p>
         </div>
@@ -57,35 +57,35 @@ export default function Testimonials() {
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <div className="flex text-amber-500">
+                  <div className="flex text-[#b8860b]">
                     {Array.from({ length: t.rating }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-amber-400" />
+                      <Star key={i} className="h-4 w-4 fill-[#b8860b]" />
                     ))}
                   </div>
-                  <span className="flex items-center gap-1 rounded-full bg-emerald-500/15 px-2.5 py-0.5 text-[10px] font-bold text-moss">
+                  <span className="flex items-center gap-1 rounded-full bg-[#e5be5e]/20 border border-[#d4a338]/35 px-2.5 py-0.5 text-[10px] font-bold text-[#4a340e]">
                     <CheckCircle2 className="h-3 w-3" /> Verified Purchase
                   </span>
                 </div>
 
-                <p className="mt-4 font-serif text-lg italic leading-7 text-white sm:text-xl">
+                <p className="mt-4 font-serif text-lg italic leading-7 text-[#241705] sm:text-xl font-medium">
                   &ldquo;{t.quote}&rdquo;
                 </p>
               </div>
 
-              <div className="mt-6 flex items-center justify-between gap-3 border-t border-white/[0.06] pt-4">
+              <div className="mt-6 flex items-center justify-between gap-3 border-t border-[#d4a338]/25 pt-4">
                 <div className="flex items-center gap-3.5">
                   <img
                     src={t.avatar}
                     alt={t.name}
-                    className="h-11 w-11 rounded-full border border-white/[0.1] object-cover shadow-soft"
+                    className="h-11 w-11 rounded-full border border-[#d4a338]/40 object-cover shadow-soft"
                   />
                   <div>
-                    <h4 className="font-serif text-lg font-bold text-white">{t.name}</h4>
-                    <p className="text-[11px] text-white-muted">{t.role}</p>
+                    <h4 className="font-serif text-lg font-bold text-[#241705]">{t.name}</h4>
+                    <p className="text-[11px] text-[#73562a] font-medium">{t.role}</p>
                   </div>
                 </div>
                 {t.craft && (
-                  <span className="hidden sm:inline-block rounded-full bg-emerald-500/10 px-2.5 py-1 text-[10px] font-bold text-clay">
+                  <span className="hidden sm:inline-block rounded-full bg-[#fbf4e4] border border-[#d4a338]/25 px-2.5 py-1 text-[10px] font-bold text-[#4a340e]">
                     {t.craft}
                   </span>
                 )}

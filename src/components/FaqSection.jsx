@@ -40,10 +40,10 @@ export default function FaqSection() {
       <div className="reveal is-visible space-y-10">
         <div className="mx-auto max-w-2xl text-center">
           <span className="section-eyebrow">
-            <HelpCircle className="h-3.5 w-3.5 text-clay" /> Help & Assurance
+            <HelpCircle className="h-3.5 w-3.5 text-[#a46e10]" /> Help & Assurance
           </span>
-          <h2 className="mt-3 text-4xl sm:text-5xl text-white">Frequently Asked Questions</h2>
-          <p className="mx-auto mt-4 text-base leading-7 text-white-muted">
+          <h2 className="mt-3 text-4xl sm:text-5xl font-serif font-bold text-[#241705]">Frequently Asked Questions</h2>
+          <p className="mx-auto mt-4 text-base leading-7 text-[#5e4318]">
             Everything you need to know about custom orders, handmade materials, and our buyer protection guarantee.
           </p>
         </div>
@@ -55,19 +55,19 @@ export default function FaqSection() {
             return (
               <div
                 key={index}
-                className="overflow-hidden rounded-2xl border border-emerald-500/25 bg-[#061214]/85 hover:border-emerald-400/60 hover:bg-[#0a1e22] shadow-soft transition duration-200"
+                className="overflow-hidden rounded-2xl border border-[#d4a338]/30 bg-white/85 hover:border-[#d4a338]/60 hover:bg-white/95 shadow-soft transition duration-200 backdrop-blur-sm"
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                  className="flex w-full items-center justify-between p-5 text-left transition hover:bg-white/[0.06]"
+                  className="flex w-full items-center justify-between p-5 text-left transition hover:bg-[#faeed1]/40"
                 >
-                  <span className="font-serif text-xl font-bold text-white sm:text-2xl">
+                  <span className="font-serif text-xl font-bold text-[#241705] sm:text-2xl">
                     {faq.question}
                   </span>
                   <div
-                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-full bg-emerald-500/10 text-white transition duration-300 ${
-                      isOpen ? 'rotate-180 bg-clay text-white' : ''
+                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#faeed1] text-[#855a10] transition duration-300 ${
+                      isOpen ? 'rotate-180 bg-gradient-to-r from-[#fff3cf] via-[#e8bc57] to-[#b38320] text-[#17120a]' : ''
                     }`}
                   >
                     <ChevronDown className="h-4 w-4" />
@@ -82,7 +82,7 @@ export default function FaqSection() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: 'easeInOut' }}
                     >
-                      <div className="border-t border-sand/40 px-5 pb-5 pt-3 text-sm leading-6 text-white-muted sm:text-base">
+                      <div className="border-t border-[#d4a338]/20 px-5 pb-5 pt-3 text-sm leading-6 text-[#5e4318] sm:text-base">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -94,10 +94,10 @@ export default function FaqSection() {
         </div>
 
         {/* Still Have Questions Banner */}
-        <div className="mx-auto max-w-lg rounded-2xl border border-emerald-500/25 bg-[#061214]/85 hover:border-emerald-400/60 hover:bg-[#0a1e22] p-4 text-center shadow-soft backdrop-blur-sm">
-          <p className="text-xs text-white-muted">
+        <div className="mx-auto max-w-lg rounded-2xl border border-[#d4a338]/30 bg-white/80 p-4 text-center shadow-soft backdrop-blur-sm">
+          <p className="text-xs text-[#5e4318]">
             Still have questions about a custom piece?{' '}
-            <a href="#contact" className="font-bold text-clay underline transition hover:text-white">
+            <a href="#contact" className="font-bold text-[#855a10] underline transition hover:text-[#241705]">
               Contact our studio team →
             </a>
           </p>

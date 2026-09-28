@@ -21,11 +21,11 @@ export default function ProductCard({
     <motion.article
       whileHover={{ y: -6 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
-      className={`group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-emerald-500/25 bg-gradient-to-b from-[#071518]/90 to-[#03090b]/95 p-4 shadow-[0_12px_35px_rgba(0,0,0,0.8),0_0_20px_rgba(0,245,160,0.08)] backdrop-blur-xl transition-all duration-300 hover:border-emerald-400/70 hover:shadow-[0_20px_45px_-10px_rgba(0,0,0,0.9),0_0_30px_rgba(0,245,160,0.3)] ${className}`}
+      className={`group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-[#d4a338]/35 bg-gradient-to-b from-[#fffdfa]/95 via-[#fcf6e8]/95 to-[#f8ecce]/95 p-4 shadow-[0_12px_32px_rgba(133,90,16,0.10),0_0_15px_rgba(212,163,56,0.12)] backdrop-blur-xl transition-all duration-300 hover:border-[#b8860b] hover:shadow-[0_20px_45px_rgba(133,90,16,0.18),0_0_25px_rgba(212,163,56,0.25)] ${className}`}
     >
       <div>
         {/* Image Container with Floating Action Pills */}
-        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.6rem] bg-[#020608] border border-emerald-500/20">
+        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.6rem] bg-[#fbf4e4] border border-[#d4a338]/25">
           <img
             src={product.image}
             alt={product.title}
@@ -36,17 +36,17 @@ export default function ProductCard({
             }}
             className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#020608]/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#241705]/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
           {/* Badges */}
           <div className="absolute left-3 top-3 flex flex-col items-start gap-1.5">
             {(product.badges || ['Handmade']).slice(0, 2).map((badge, idx) => (
               <span
                 key={badge}
-                className={`rounded-full border px-2.5 py-1 text-[10px] font-black uppercase tracking-wider backdrop-blur-md shadow-sm ${
+                className={`rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-sm ${
                   idx === 0
-                    ? 'border-emerald-400/50 bg-emerald-950/85 text-[#00f5a0]'
-                    : 'border-amber-400/50 bg-amber-950/85 text-amber-300'
+                    ? 'border-[#d4a338]/40 bg-white/95 text-[#241705]'
+                    : 'border-[#d4a338]/30 bg-white/85 text-[#8c5f0b]'
                 }`}
               >
                 {badge}
@@ -64,11 +64,11 @@ export default function ProductCard({
                 e.stopPropagation()
                 onWishlistToggle()
               }}
-              className="grid h-9 w-9 place-items-center rounded-full border border-emerald-500/30 bg-[#03080a]/90 text-slate-200 shadow-soft backdrop-blur-md transition duration-200 hover:scale-110 hover:border-rose-500/60 hover:bg-[#1a0a0f]"
+              className="grid h-9 w-9 place-items-center rounded-full border border-[#d4a338]/30 bg-white/90 text-[#4a340e] shadow-soft backdrop-blur-md transition duration-200 hover:scale-110 hover:border-rose-500/50 hover:bg-rose-50 hover:text-rose-500"
             >
               <Heart
                 className={`h-4 w-4 transition ${
-                  isWishlisted ? 'fill-rose-500 text-rose-500 scale-110' : 'text-slate-300'
+                  isWishlisted ? 'fill-rose-500 text-rose-500 scale-110' : 'text-[#63430b]'
                 }`}
               />
             </button>
@@ -79,7 +79,7 @@ export default function ProductCard({
                 e.stopPropagation()
                 onQuickView()
               }}
-              className="grid h-9 w-9 place-items-center rounded-full border border-emerald-500/30 bg-[#03080a]/90 text-slate-200 shadow-soft backdrop-blur-md transition duration-200 hover:scale-110 hover:border-emerald-400 hover:text-[#00f5a0]"
+              className="grid h-9 w-9 place-items-center rounded-full border border-[#d4a338]/30 bg-white/90 text-[#4a340e] shadow-soft backdrop-blur-md transition duration-200 hover:scale-110 hover:border-[#b8860b] hover:bg-white hover:text-[#1a1204]"
             >
               <Eye className="h-4 w-4" />
             </button>
@@ -90,9 +90,9 @@ export default function ProductCard({
             <button
               type="button"
               onClick={() => onAddToCart(product, 1)}
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#00f5a0] to-[#10b981] py-2.5 text-xs font-black text-slate-950 shadow-[0_0_20px_rgba(0,245,160,0.6)] backdrop-blur-md transition hover:scale-105"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#fff3cf] via-[#e8bc57] to-[#c89122] py-2.5 text-xs font-bold text-[#1a1204] shadow-[0_4px_16px_rgba(200,145,34,0.35)] backdrop-blur-md transition hover:scale-105"
             >
-              <ShoppingBag className="h-3.5 w-3.5 stroke-[2.5]" />
+              <ShoppingBag className="h-3.5 w-3.5 stroke-[2.2]" />
               Quick Add to Bag
             </button>
           </div>
@@ -101,35 +101,35 @@ export default function ProductCard({
         {/* Product Details */}
         <div className="mt-3.5 px-1">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-[11px] font-black uppercase tracking-wider text-emerald-400">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#8c5f0b]">
               {product.category}
             </span>
             <div className="flex items-center gap-1">
-              <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-              <span className="text-xs font-bold text-amber-300">{product.rating ?? '4.9'}</span>
-              <span className="text-[10px] text-slate-400">({product.reviews ?? 48})</span>
+              <Star className="h-3.5 w-3.5 fill-[#b8860b] text-[#b8860b]" />
+              <span className="text-xs font-bold text-[#241705]">{product.rating ?? '4.9'}</span>
+              <span className="text-[10px] text-[#73562a]">({product.reviews ?? 48})</span>
             </div>
           </div>
 
           <h3
             onClick={onQuickView}
-            className="mt-1 cursor-pointer truncate font-serif text-xl font-bold text-white transition hover:text-[#00f5a0]"
+            className="mt-1 cursor-pointer truncate font-serif text-xl font-bold text-[#241705] transition hover:text-[#8c5f0b]"
           >
             {product.title}
           </h3>
 
-          <p className="mt-1 line-clamp-2 text-xs leading-5 text-slate-400">
+          <p className="mt-1 line-clamp-2 text-xs leading-5 text-[#5e4318]">
             {product.description}
           </p>
         </div>
       </div>
 
       {/* Footer Price & Action */}
-      <div className="mt-4 border-t border-emerald-500/20 px-1 pt-3.5">
+      <div className="mt-4 border-t border-[#d4a338]/25 px-1 pt-3.5">
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-[10px] font-semibold text-slate-400 block uppercase tracking-wider">Artisan Direct</span>
-            <p className="text-xl font-black text-amber-400 drop-shadow-[0_0_10px_rgba(245,158,11,0.35)]">
+            <span className="text-[10px] font-semibold text-[#73562a] block uppercase tracking-wider">Artisan Direct</span>
+            <p className="text-xl font-extrabold text-[#241705]">
               {formattedPrice}
             </p>
           </div>
@@ -139,9 +139,9 @@ export default function ProductCard({
               href={`https://wa.me/917667233182?text=Hi%20Atelier%20NP%2C%20I%20want%20to%20order%3A%20${encodeURIComponent(product.title)}%20%E2%80%94%20please%20confirm%20availability!`}
               target="_blank"
               rel="noreferrer"
-              className="rounded-full bg-gradient-to-r from-[#00f5a0] to-[#10b981] px-4 py-2 text-xs font-black text-slate-950 transition-all duration-200 hover:scale-105 hover:shadow-[0_0_20px_rgba(0,245,160,0.6)] flex items-center gap-1.5"
+              className="rounded-full bg-gradient-to-r from-[#fff3cf] via-[#e8bc57] to-[#c89122] px-4 py-2 text-xs font-bold text-[#1a1204] transition-all duration-200 hover:scale-105 hover:shadow-[0_4px_16px_rgba(200,145,34,0.3)] flex items-center gap-1.5"
             >
-              <MessageCircle className="h-3.5 w-3.5 stroke-[2.5]" /> Order Now
+              <MessageCircle className="h-3.5 w-3.5 stroke-[2.2]" /> Order Now
             </a>
           </div>
         </div>

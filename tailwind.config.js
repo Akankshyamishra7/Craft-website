@@ -1,4 +1,4 @@
-﻿/** @type {import('tailwindcss').Config} */
+/** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
@@ -8,63 +8,64 @@ export default {
         sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        soft: '0 12px 32px -16px rgba(0, 245, 160, 0.25)',
-        lift: '0 20px 48px -18px rgba(0, 245, 160, 0.4)',
-        glow: '0 0 35px rgba(0, 245, 160, 0.55)',
-        'glow-gold': '0 0 35px rgba(245, 158, 11, 0.5)',
-        'glow-emerald': '0 0 45px rgba(0, 245, 160, 0.65)',
-        glass: '0 12px 40px 0 rgba(0, 0, 0, 0.75)',
-        dropdown: '0 20px 50px -10px rgba(0, 0, 0, 0.85)',
-        'inner-glow': 'inset 0 1px 0 0 rgba(0, 245, 160, 0.25)',
+        soft: '0 12px 32px -16px rgba(165, 115, 20, 0.18)',
+        lift: '0 20px 48px -18px rgba(165, 115, 20, 0.25)',
+        glow: '0 0 28px rgba(220, 170, 50, 0.32)',
+        'glow-gold': '0 0 32px rgba(235, 185, 60, 0.38)',
+        'glow-emerald': '0 0 25px rgba(210, 160, 45, 0.25)',
+        glass: '0 14px 40px 0 rgba(140, 95, 15, 0.15)',
+        dropdown: '0 22px 50px -10px rgba(130, 85, 10, 0.25)',
+        'inner-glow': 'inset 0 1px 0 0 rgba(255, 245, 215, 0.5)',
       },
       colors: {
-        cream: '#030708',
-        sand: '#081214',
-        obsidian: '#020506',
-        blossom: '#064e3b',
-        blush: '#059669',
-        lilac: '#00f5a0',
-        sky: '#06b6d4',
-        mint: '#10b981',
-        peach: '#f59e0b',
+        cream: '#fcf6e8',
+        sand: '#f5e6c7',
+        obsidian: '#241705',
+        blossom: '#edd197',
+        blush: '#b8860b',
+        lilac: '#dfbe73',
+        sky: '#c89122',
+        mint: '#fef5dc',
+        peach: '#e5be5e',
         gold: {
-          DEFAULT: '#fbbf24',
-          light: '#fef3c7',
-          dark: '#b45309',
+          light: '#fff9e8',
+          DEFAULT: '#d4a338',
+          dark: '#8b6310',
+          glow: '#fadc8a',
         },
         amber: {
-          DEFAULT: '#f59e0b',
-          glow: '#fbbf24',
+          DEFAULT: '#d4a338',
+          glow: '#f5dfa5',
         },
         clay: {
-          DEFAULT: '#00f5a0',
-          hover: '#34d399',
-          light: '#022c22',
+          DEFAULT: '#8b6310',
+          hover: '#6f4e09',
+          light: '#fdf6e6',
         },
         moss: {
-          DEFAULT: '#34d399',
-          light: '#064e3b',
+          DEFAULT: '#8b6310',
+          light: '#eed6a1',
         },
         cocoa: {
-          DEFAULT: '#ffffff',
-          soft: '#e2e8f0',
-          muted: '#94a3b8',
-          light: '#030708',
+          DEFAULT: '#241705',
+          soft: '#3d2b0e',
+          muted: '#73562a',
+          light: '#fbf4e2',
         },
       },
       backgroundImage: {
         paper:
-          'linear-gradient(145deg, rgba(8, 22, 18, 0.85) 0%, rgba(3, 8, 10, 0.95) 100%)',
+          'linear-gradient(145deg, rgba(255, 252, 245, 0.95) 0%, rgba(248, 235, 208, 0.9) 100%)',
         texture:
-          'radial-gradient(circle at 1px 1px, rgba(0, 245, 160, 0.12) 1px, transparent 0)',
+          'radial-gradient(circle at 1px 1px, rgba(180, 130, 25, 0.12) 1px, transparent 0)',
         'glass-gradient':
-          'linear-gradient(135deg, rgba(0, 245, 160, 0.12) 0%, rgba(3, 7, 8, 0.8) 100%)',
+          'linear-gradient(135deg, rgba(255, 255, 250, 0.92) 0%, rgba(246, 230, 198, 0.88) 100%)',
         'terracotta-gradient':
-          'linear-gradient(135deg, #00f5a0 0%, #059669 100%)',
+          'linear-gradient(135deg, #fef5dc 0%, #b8860b 100%)',
         'gold-gradient':
-          'linear-gradient(135deg, #fbbf24 0%, #d97706 100%)',
+          'linear-gradient(135deg, #fff3cf 0%, #e8bc57 50%, #c89122 100%)',
         'soft-glow':
-          'radial-gradient(circle, rgba(0, 245, 160, 0.25) 0%, transparent 70%)',
+          'radial-gradient(circle, rgba(225, 175, 55, 0.25) 0%, transparent 70%)',
       },
       keyframes: {
         floaty: {
