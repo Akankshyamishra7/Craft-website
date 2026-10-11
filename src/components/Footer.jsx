@@ -5,123 +5,136 @@ import {
   Mail,
   MapPin,
   Phone,
+  ArrowUpRight,
 } from 'lucide-react'
 
 export default function Footer() {
   return (
-    <footer id="contact" className="mt-16 border-t border-[#d4a338]/30 bg-gradient-to-b from-[#fdf7ec] via-[#f8ebd0] to-[#ebd29b] py-16">
+    <footer id="contact" className="mt-20 bg-[#0E0E0E] text-white pt-20 pb-12 border-t border-[#222222]">
       <div className="section-shell">
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr_1fr]">
-          {/* Brand Info */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-[#fff3cf] via-[#e8bc57] to-[#b38320] text-[#17120a] font-black text-lg shadow-soft border border-[#fbf3d5]">
-                ✿
-              </span>
-              <div>
-                <p className="font-serif text-3xl font-bold text-[#241705]">Atelier NP</p>
-                <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#8c5f0b]">Artisan Market</p>
+        {/* Tilted Polaroid Gallery Showcase (From Attached Reference Image) */}
+        <div className="flex justify-center items-center pb-12">
+          <div className="relative flex items-center justify-center -space-x-4">
+            {/* Left Polaroid */}
+            <div className="group relative -rotate-6 transform transition-all duration-300 hover:rotate-0 hover:scale-110 hover:z-20">
+              <div className="rounded-lg bg-white p-2 pb-5 shadow-2xl border border-white/20 w-24 sm:w-28">
+                <div className="aspect-square w-full overflow-hidden rounded bg-[#1A1A1A]">
+                  <img
+                    src="/products/atelier-evil-eye-pendant.jpg"
+                    alt="Art talisman"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
             </div>
 
-            <p className="max-w-md text-xs leading-6 text-[#5e4318] sm:text-sm">
-              Atelier NP is an independent marketplace dedicated to genuine handmade craftsmanship, bespoke jewelry, botanical decor, and clean DIY beauty rituals.
-            </p>
-
-            <div className="flex items-center gap-3 pt-2">
-              <a
-                href="https://instagram.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-                className="grid h-10 w-10 place-items-center rounded-full border border-[#d4a338]/30 bg-white/80 text-[#5e4318] shadow-sm transition hover:bg-[#c59325] hover:text-[#17120a]"
-              >
-                <InstagramIcon className="h-4 w-4" />
-              </a>
-              <a
-                href="https://pinterest.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Pinterest"
-                className="grid h-10 w-10 place-items-center rounded-full border border-[#d4a338]/30 bg-white/80 text-[#5e4318] shadow-sm transition hover:bg-[#c59325] hover:text-[#17120a]"
-              >
-                <PinterestIcon className="h-4 w-4" />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Facebook"
-                className="grid h-10 w-10 place-items-center rounded-full border border-[#d4a338]/30 bg-white/80 text-[#5e4318] shadow-sm transition hover:bg-[#c59325] hover:text-[#17120a]"
-              >
-                <FacebookIcon className="h-4 w-4" />
-              </a>
-            </div>
-          </div>
-
-          {/* Quick Links */}
-          <div className="grid grid-cols-2 gap-6 text-xs">
-            <div>
-              <h4 className="font-serif text-base font-bold text-[#241705]">Explore</h4>
-              <ul className="mt-3 space-y-2 font-medium text-[#5e4318]">
-                <li><a href="#collection" className="hover:text-[#17120a] transition-colors">Artisan Drops</a></li>
-                <li><a href="#customize" className="hover:text-[#17120a] transition-colors">Custom Studio</a></li>
-                <li><a href="#makers" className="hover:text-[#17120a] transition-colors">Meet the Makers</a></li>
-                <li><a href="#inspiration" className="hover:text-[#17120a] transition-colors">DIY Moodboard</a></li>
-                <li><a href="#about" className="hover:text-[#17120a] transition-colors">Collector Reviews</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-serif text-base font-bold text-[#241705]">Artisan Direct</h4>
-              <ul className="mt-3 space-y-2 font-medium text-[#5e4318]">
-                <li><a href="#newsletter" className="hover:text-[#17120a] transition-colors">Artisan Circle</a></li>
-                <li><span className="text-[#8c5f0b] font-bold">100% Eco Packaging</span></li>
-                <li><span className="text-[#8c5f0b] font-bold">Buyer Protection</span></li>
-                <li><span>Worldwide Dispatch</span></li>
-                <li><span>Zero Plastic Guarantee</span></li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Contact & Hours */}
-          <div className="space-y-3">
-            <h4 className="font-serif text-base font-bold text-[#241705]">Studio & Support</h4>
-            <div className="space-y-2 text-xs">
-              <div className="flex items-center gap-2.5 rounded-xl border border-[#d4a338]/25 bg-white/70 backdrop-blur-sm p-2.5 text-[#241705] shadow-sm">
-                <Mail className="h-4 w-4 text-[#a46e10]" />
-                <span className="font-medium">hello@ateliernp.market</span>
+            {/* Center Polaroid */}
+            <div className="group relative z-10 rotate-0 transform transition-all duration-300 hover:scale-110 hover:z-20">
+              <div className="rounded-lg bg-white p-2 pb-5 shadow-2xl border border-white/20 w-24 sm:w-28">
+                <div className="aspect-square w-full overflow-hidden rounded bg-[#1A1A1A]">
+                  <img
+                    src="/products/atelier-diy-paint-kit-sea.jpg"
+                    alt="Plaster sculpture kit"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
-              <a
-                href="https://wa.me/917667233182?text=Hi%20Atelier%20NP%2C%20I%20want%20to%20place%20an%20order!"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2.5 rounded-xl border border-[#d4a338]/35 bg-[#faeed1] p-2.5 text-[#855a10] shadow-sm transition hover:bg-[#f5dfad]"
-              >
-                <Phone className="h-4 w-4 text-[#855a10]" />
-                <span className="font-bold">+91 76672 33182 · WhatsApp Orders</span>
-              </a>
-              <div className="flex items-center gap-2.5 rounded-xl border border-[#d4a338]/25 bg-white/70 backdrop-blur-sm p-2.5 text-[#241705] shadow-sm">
-                <MapPin className="h-4 w-4 text-[#a46e10]" />
-                <span className="font-medium">San Francisco, CA & Global Studios</span>
+            </div>
+
+            {/* Right Polaroid */}
+            <div className="group relative rotate-6 transform transition-all duration-300 hover:rotate-0 hover:scale-110 hover:z-20">
+              <div className="rounded-lg bg-white p-2 pb-5 shadow-2xl border border-white/20 w-24 sm:w-28">
+                <div className="aspect-square w-full overflow-hidden rounded bg-[#1A1A1A]">
+                  <img
+                    src="/products/atelier-ruby-glitter-keychains.jpg"
+                    alt="Artisan gold monogram"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#d4a338]/25 pt-8 text-xs font-semibold text-[#73562a] sm:flex-row">
-          <p>© {new Date().getFullYear()} Atelier NP Handmade Marketplace. Handcrafted with golden radiance.</p>
-          <div className="flex items-center gap-4 text-[11px]">
-            <a href="#about" className="hover:text-[#17120a] transition-colors">Privacy Policy</a>
-            <span>•</span>
-            <a href="#about" className="hover:text-[#17120a] transition-colors">Terms of Service</a>
-            <span>•</span>
-            <a href="#makers" className="hover:text-[#17120a] transition-colors">Artisan Ethics</a>
+        {/* Central Contact Headline (From Reference Image) */}
+        <div className="text-center space-y-3 pb-12 border-b border-[#222222]">
+          <a
+            href="mailto:hello@ateliernp.market"
+            className="block text-2xl sm:text-4xl lg:text-5xl font-sans font-medium tracking-tight text-white hover:text-[#D0C9BE] transition-colors"
+          >
+            hello@ateliernp.market
+          </a>
+          <a
+            href="https://wa.me/917667233182?text=Hi%20Atelier%20NP%2C%20I%20want%20to%20place%20an%20order!"
+            target="_blank"
+            rel="noreferrer"
+            className="block text-xl sm:text-3xl font-sans font-normal tracking-wide text-[#999999] hover:text-white transition-colors"
+          >
+            +91 76672 33182
+          </a>
+        </div>
+
+        {/* Navigation & Details Grid */}
+        <div className="pt-10 grid gap-10 md:grid-cols-3 items-center text-center md:text-left">
+          {/* Brand Note */}
+          <div className="space-y-2">
+            <p className="font-serif text-2xl font-bold text-white tracking-tight">Atelier NP</p>
+            <p className="text-xs text-[#888888] leading-relaxed max-w-xs mx-auto md:mx-0">
+              Where pure handmade craftsmanship meets modern luxury. Curated collections direct from verified independent creators.
+            </p>
+          </div>
+
+          {/* Minimal Links Row (From Attached Reference Image) */}
+          <div className="flex flex-wrap justify-center gap-6 text-xs font-bold uppercase tracking-[0.2em] text-[#CCCCCC]">
+            <a href="#home" className="hover:text-white transition-colors">Home</a>
+            <a href="#about" className="hover:text-white transition-colors">About</a>
+            <a href="#collection" className="hover:text-white transition-colors">Gallery</a>
+            <a href="#collection" className="hover:text-white transition-colors">Shop</a>
+            <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+          </div>
+
+          {/* Social Icons */}
+          <div className="flex justify-center md:justify-end items-center gap-3">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="grid h-10 w-10 place-items-center rounded-full border border-[#333333] bg-[#161616] text-[#BBBBBB] transition hover:border-white hover:bg-white hover:text-[#0E0E0E]"
+            >
+              <InstagramIcon className="h-4 w-4" />
+            </a>
+            <a
+              href="https://pinterest.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Pinterest"
+              className="grid h-10 w-10 place-items-center rounded-full border border-[#333333] bg-[#161616] text-[#BBBBBB] transition hover:border-white hover:bg-white hover:text-[#0E0E0E]"
+            >
+              <PinterestIcon className="h-4 w-4" />
+            </a>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Facebook"
+              className="grid h-10 w-10 place-items-center rounded-full border border-[#333333] bg-[#161616] text-[#BBBBBB] transition hover:border-white hover:bg-white hover:text-[#0E0E0E]"
+            >
+              <FacebookIcon className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+
+        {/* Bottom Copyright */}
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#1C1C1C] pt-8 text-[11px] text-[#666666]">
+          <p>© {new Date().getFullYear()} Atelier NP. All Rights Reserved.</p>
+          <div className="flex items-center gap-6">
+            <a href="#about" className="hover:text-[#AAAAAA] transition-colors">Privacy Policy</a>
+            <a href="#about" className="hover:text-[#AAAAAA] transition-colors">Terms of Service</a>
+            <a href="#makers" className="hover:text-[#AAAAAA] transition-colors">Artisan Ethics</a>
           </div>
         </div>
       </div>
     </footer>
   )
 }
-

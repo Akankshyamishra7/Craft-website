@@ -171,9 +171,9 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#fdf8ee] via-[#f7e8ce] to-[#ebd29b] text-[#241705]">
+    <div className="min-h-screen bg-[#F6F3EE] text-[#141414]">
       {/* Top Admin Header */}
-      <header className="sticky top-0 z-30 border-b border-[#d4a338]/30 bg-[#fffdf9]/90 shadow-sm backdrop-blur-md">
+      <header className="sticky top-0 z-30 border-b border-[#E5E0D8] bg-white/90 shadow-sm backdrop-blur-md">
         <div className="section-shell flex h-20 items-center justify-between gap-4">
           <div className="flex items-center gap-4">
             <Link

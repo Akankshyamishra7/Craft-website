@@ -29,27 +29,25 @@ export default function Newsletter() {
 
   return (
     <section id="newsletter" ref={ref} className={`section-shell py-14 sm:py-20 ${isVisible ? 'is-visible' : ''}`}>
-      <div className="reveal is-visible relative overflow-hidden rounded-[2.5rem] border border-[#d4a338]/35 bg-gradient-to-br from-[#fffdf8] via-[#faeed1] to-[#f5dfad] p-8 sm:p-12 lg:p-16 shadow-[0_20px_50px_rgba(133,90,16,0.15)]">
-        <div className="absolute -right-16 -top-16 h-64 w-64 rounded-full bg-[#d4a338]/15 blur-3xl pointer-events-none" />
-
+      <div className="reveal is-visible relative overflow-hidden rounded-[2.5rem] border border-[#DFCFA6]/60 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F5EEDC]/80 p-8 sm:p-12 lg:p-16 shadow-[0_10px_30px_rgba(180,135,45,0.06)]">
         <div className="relative grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
           <div>
             <span className="section-eyebrow">
-              <Sparkles className="h-3.5 w-3.5 text-[#a46e10]" /> Artisan Circle
+              <Sparkles className="h-3.5 w-3.5 text-[#141414]" /> Artisan Circle
             </span>
-            <h2 className="mt-3 text-4xl sm:text-5xl font-serif font-bold text-[#241705]">
+            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#141414]">
               Join the Soft Handmade Circle
             </h2>
-            <p className="mt-4 max-w-xl text-base leading-7 text-[#5e4318] sm:text-lg">
-              Get notified of limited batch drops, maker studio journals, and seasonal DIY tutorials. Plus receive a <strong className="text-[#a46e10] font-bold">₹150 voucher</strong> on your first order.
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-[#5A554E] sm:text-lg">
+              Get notified of limited batch drops, maker studio journals, and seasonal DIY tutorials. Plus receive a <strong className="text-[#141414] font-bold">₹150 voucher</strong> on your first order.
             </p>
             <div className="mt-5 flex items-center gap-3">
               <img
                 src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=300&q=80"
                 alt="Artisan studio box"
-                className="h-12 w-12 rounded-xl object-cover border border-[#d4a338]/30 shadow-soft"
+                className="h-12 w-12 rounded-xl object-cover border border-[#DFCFA6]/60 shadow-sm"
               />
-              <p className="text-xs font-semibold text-[#73562a]">
+              <p className="text-xs font-semibold text-[#8C827A]">
                 ✨ Handcrafted boutique packaging • Dispatched across India
               </p>
             </div>
@@ -57,16 +55,16 @@ export default function Newsletter() {
 
           <div>
             {isSubscribed ? (
-              <div className="rounded-3xl border border-[#d4a338]/30 bg-white/80 backdrop-blur-md p-6 shadow-soft text-center">
-                <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[#ebd29b]/60 text-[#855a10]">
-                  <CheckCircle2 className="h-6 w-6" />
+              <div className="rounded-3xl border border-[#DFCFA6]/60 bg-white/90 p-6 shadow-sm text-center">
+                <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-[#FAF6ED] border border-[#DFCFA6]/60 text-[#141414]">
+                  <CheckCircle2 className="h-6 w-6 text-[#141414]" />
                 </div>
-                <h3 className="mt-3 font-serif text-2xl font-bold text-[#241705]">You're on the list! ✨</h3>
-                <p className="mt-1 text-xs text-[#5e4318]">
+                <h3 className="mt-3 font-serif text-2xl font-bold text-[#141414]">You're on the list! ✨</h3>
+                <p className="mt-1 text-xs text-[#5A554E]">
                   Use coupon code below at checkout for ₹150 off:
                 </p>
                 <div className="mt-3 flex items-center justify-center gap-2">
-                  <span className="rounded-xl border border-dashed border-[#d4a338]/60 bg-[#faeed1] px-3.5 py-1.5 font-mono text-sm font-bold text-[#855a10]">
+                  <span className="rounded-xl border border-dashed border-[#DFCFA6] bg-[#FAF6ED] px-3.5 py-1.5 font-mono text-sm font-bold text-[#141414]">
                     WELCOME150
                   </span>
                   <button
@@ -81,19 +79,19 @@ export default function Newsletter() {
             ) : (
               <form onSubmit={handleSubscribe} className="flex flex-col gap-3 sm:flex-row">
                 <div className="relative flex-1">
-                  <Mail className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#a46e10]" />
+                  <Mail className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-[#8C827A]" />
                   <input
                     type="email"
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email address"
-                    className="h-14 w-full rounded-full border border-[#d4a338]/35 bg-white pl-12 pr-5 text-sm text-[#241705] outline-none shadow-sm transition placeholder:text-[#9e7d4a] focus:border-[#c59325] focus:ring-2 focus:ring-[#c59325]/20 font-medium"
+                    className="h-14 w-full rounded-full border border-[#DFCFA6]/70 bg-white pl-12 pr-5 text-sm text-[#141414] outline-none shadow-sm transition placeholder:text-[#8C827A] focus:border-[#D4AF37] font-medium"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="btn-primary h-14 px-8 text-sm font-bold shadow-glow shrink-0"
+                  className="btn-primary h-14 px-8 text-sm font-bold shrink-0 shadow-sm"
                 >
                   <Send className="h-4 w-4" />
                   Subscribe & Get ₹150
@@ -101,7 +99,7 @@ export default function Newsletter() {
               </form>
             )}
             {!isSubscribed && (
-              <p className="mt-2.5 text-center text-[11px] text-[#73562a] sm:text-left">
+              <p className="mt-2.5 text-center text-[11px] text-[#8C827A] sm:text-left">
                 🔒 We respect your privacy. Zero spam, unsubscribe anytime.
               </p>
             )}
@@ -111,4 +109,3 @@ export default function Newsletter() {
     </section>
   )
 }
-

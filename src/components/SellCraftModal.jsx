@@ -44,7 +44,7 @@ export default function SellCraftModal() {
       {isSellOpen ? (
         <motion.div
           key="sell-modal-backdrop"
-          className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-cocoa/50 p-4 backdrop-blur-md"
+          className="fixed inset-0 z-[100] flex items-center justify-center overflow-y-auto bg-black/60 p-4 backdrop-blur-sm"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -52,7 +52,7 @@ export default function SellCraftModal() {
         >
           <motion.div
             key="sell-modal-card"
-            className="relative my-8 w-full max-w-2xl overflow-hidden rounded-[2.2rem] bg-[#fdf9f0] border border-[#d4a338]/40 shadow-[0_25px_60px_rgba(133,90,16,0.25),0_0_30px_rgba(212,163,56,0.2)]"
+            className="relative my-8 w-full max-w-2xl overflow-hidden rounded-[2.2rem] bg-white border border-[#E5E0D8] shadow-2xl"
             initial={{ scale: 0.95, y: 20 }}
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.95, y: 20 }}
@@ -63,16 +63,16 @@ export default function SellCraftModal() {
               type="button"
               aria-label="Close sell modal"
               onClick={() => setIsSellOpen(false)}
-              className="absolute right-5 top-5 z-20 grid h-10 w-10 place-items-center rounded-full border border-[#d4a338]/30 bg-white/90 text-[#4a340e] shadow-soft transition hover:bg-white"
+              className="absolute right-5 top-5 z-20 grid h-10 w-10 place-items-center rounded-full border border-[#DDD7CE] bg-white text-[#141414] shadow-sm transition hover:bg-[#FAF8F5]"
             >
               <X className="h-5 w-5" />
             </button>
 
             {/* Header */}
-            <div className="border-b border-[#d4a338]/30 bg-gradient-to-r from-[#faeccd] via-[#f7e4b5] to-[#faeccd] px-6 py-6 sm:px-8 text-[#4a340e]">
+            <div className="border-b border-[#EAE5DC] bg-[#FAF8F5] px-6 py-6 sm:px-8 text-[#141414]">
               <span className="section-eyebrow">Artisan Creator Hub</span>
-              <h3 className="mt-2 font-serif text-3xl text-[#241705] font-bold">List Your Handmade Craft</h3>
-              <p className="mt-1 text-xs text-[#5e4318] sm:text-sm font-medium">
+              <h3 className="mt-2 font-serif text-3xl text-[#141414] font-bold">List Your Handmade Craft</h3>
+              <p className="mt-1 text-xs text-[#5A554E] sm:text-sm font-medium">
                 Join our collective of independent craft makers. Your listing will appear live in the collection immediately.
               </p>
             </div>
@@ -80,7 +80,7 @@ export default function SellCraftModal() {
             <form className="space-y-5 p-6 sm:p-8" onSubmit={submitProduct}>
               {/* Preset Image Chooser */}
               <div>
-                <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#241705]">
+                <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#141414]">
                   1. Select Photo Preset or Enter Image URL
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -93,8 +93,8 @@ export default function SellCraftModal() {
                         onClick={() => setFormState({ ...formState, image: img.url })}
                         className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
                           isSelected
-                            ? 'border-[#b8860b] bg-gradient-to-r from-[#fff3cf] via-[#e8bc57] to-[#c89122] text-[#1a1204] font-bold shadow-sm'
-                            : 'border-[#d4a338]/30 bg-white text-[#4a340e] hover:border-[#b8860b]'
+                            ? 'border-[#141414] bg-[#141414] text-white font-bold shadow-sm'
+                            : 'border-[#DDD7CE] bg-[#FAF8F5] text-[#5A554E] hover:border-[#141414]'
                         }`}
                       >
                         {isSelected && <Check className="h-3 w-3" />}
@@ -105,11 +105,11 @@ export default function SellCraftModal() {
                 </div>
 
                 <div className="relative mt-2.5">
-                  <ImageIcon className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8c5f0b]" />
+                  <ImageIcon className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8C827A]" />
                   <input
                     value={formState.image}
                     onChange={(e) => setFormState({ ...formState, image: e.target.value })}
-                    className="h-11 w-full rounded-xl border border-[#d4a338]/35 bg-white pl-10 pr-4 text-xs text-[#241705] outline-none focus:border-[#b8860b] focus:ring-1 focus:ring-[#e5be5e]/30 font-medium"
+                    className="h-11 w-full rounded-xl border border-[#DDD7CE] bg-[#FAF8F5] pl-10 pr-4 text-xs text-[#141414] outline-none focus:border-[#141414] focus:bg-white font-medium"
                     placeholder="https://images.unsplash.com/..."
                     required
                   />
@@ -119,22 +119,22 @@ export default function SellCraftModal() {
               {/* Title & Category */}
               <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1 block text-xs font-bold text-[#241705]">Craft Title</label>
+                  <label className="mb-1 block text-xs font-bold text-[#141414]">Craft Title</label>
                   <input
                     value={formState.title}
                     onChange={(e) => setFormState({ ...formState, title: e.target.value })}
-                    className="h-11 w-full rounded-xl border border-[#d4a338]/35 bg-white px-3.5 text-sm text-[#241705] outline-none focus:border-[#b8860b] focus:ring-1 focus:ring-[#e5be5e]/30"
+                    className="h-11 w-full rounded-xl border border-[#DDD7CE] bg-[#FAF8F5] px-3.5 text-sm text-[#141414] outline-none focus:border-[#141414] focus:bg-white font-medium"
                     placeholder="e.g. Handmade Resin Trinket Dish"
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="mb-1 block text-xs font-bold text-[#241705]">Category</label>
+                  <label className="mb-1 block text-xs font-bold text-[#141414]">Category</label>
                   <select
                     value={formState.category}
                     onChange={(e) => setFormState({ ...formState, category: e.target.value })}
-                    className="h-11 w-full rounded-xl border border-[#d4a338]/35 bg-white px-3.5 text-sm text-[#241705] outline-none focus:border-[#b8860b] focus:ring-1 focus:ring-[#e5be5e]/30"
+                    className="h-11 w-full rounded-xl border border-[#DDD7CE] bg-[#FAF8F5] px-3.5 text-sm text-[#141414] outline-none focus:border-[#141414] focus:bg-white font-medium"
                   >
                     {categories.map((c) => (
                       <option key={c} value={c}>
@@ -148,25 +148,25 @@ export default function SellCraftModal() {
               {/* Price & Description */}
               <div className="grid gap-4 sm:grid-cols-[1fr_130px]">
                 <div>
-                  <label className="mb-1 block text-xs font-bold text-[#241705]">Story & Materials Description</label>
+                  <label className="mb-1 block text-xs font-bold text-[#141414]">Story & Materials Description</label>
                   <textarea
                     rows={3}
                     value={formState.description}
                     onChange={(e) => setFormState({ ...formState, description: e.target.value })}
-                    className="w-full rounded-xl border border-[#d4a338]/35 bg-white p-3 text-xs leading-5 text-[#241705] outline-none focus:border-[#b8860b] focus:ring-1 focus:ring-[#e5be5e]/30"
+                    className="w-full rounded-xl border border-[#DDD7CE] bg-[#FAF8F5] p-3 text-xs leading-5 text-[#141414] outline-none focus:border-[#141414] focus:bg-white font-medium"
                     placeholder="Describe your handcrafting process, materials, scents, or styling notes..."
                     required
                   />
                 </div>
 
                 <div>
-                  <label className="mb-1 block text-xs font-bold text-[#241705]">Price (₹ INR)</label>
+                  <label className="mb-1 block text-xs font-bold text-[#141414]">Price (₹ INR)</label>
                   <input
                     type="number"
                     min="1"
                     value={formState.price}
                     onChange={(e) => setFormState({ ...formState, price: e.target.value })}
-                    className="h-11 w-full rounded-xl border border-[#d4a338]/35 bg-white px-3.5 text-sm font-bold text-[#241705] outline-none focus:border-[#b8860b] focus:ring-1 focus:ring-[#e5be5e]/30"
+                    className="h-11 w-full rounded-xl border border-[#DDD7CE] bg-[#FAF8F5] px-3.5 text-sm font-bold text-[#141414] outline-none focus:border-[#141414] focus:bg-white"
                     placeholder="499"
                     required
                   />
@@ -175,20 +175,20 @@ export default function SellCraftModal() {
 
               {/* Live Mini Preview */}
               {formState.title && (
-                <div className="flex items-center gap-3.5 rounded-2xl border border-[#d4a338]/30 bg-white p-3 shadow-sm">
+                <div className="flex items-center gap-3.5 rounded-2xl border border-[#DFCFA6]/60 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F5EEDC]/80 p-3 shadow-sm">
                   <img
                     src={formState.image}
                     alt="Preview"
-                    className="h-14 w-14 rounded-xl object-cover bg-[#fbf4e4]"
+                    className="h-14 w-14 rounded-xl object-cover bg-[#EFECE6] border border-[#DFCFA6]/40"
                   />
                   <div className="min-w-0 flex-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#8c5f0b]">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C827A]">
                       {formState.category}
                     </span>
-                    <p className="truncate text-sm font-bold text-[#241705]">{formState.title}</p>
-                    <p className="text-xs font-extrabold text-[#241705]">₹{formState.price}</p>
+                    <p className="truncate text-sm font-bold text-[#141414]">{formState.title}</p>
+                    <p className="text-xs font-extrabold text-[#141414]">₹{formState.price}</p>
                   </div>
-                  <span className="rounded-full bg-[#e5be5e]/20 border border-[#d4a338]/35 px-2.5 py-1 text-[10px] font-bold text-[#8c5f0b]">
+                  <span className="rounded-full bg-white border border-[#DDD7CE] px-2.5 py-1 text-[10px] font-bold text-[#141414]">
                     Live Preview
                   </span>
                 </div>
@@ -196,7 +196,7 @@ export default function SellCraftModal() {
 
               <button
                 type="submit"
-                className="btn-primary w-full py-3.5 text-sm shadow-lift"
+                className="btn-primary w-full py-3.5 text-sm shadow-sm"
               >
                 <PackagePlus className="h-4 w-4" />
                 Publish Live to Marketplace

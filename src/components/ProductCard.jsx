@@ -14,18 +14,18 @@ export default function ProductCard({
   className = '',
 }) {
   const formattedPrice = product.price
-    ? String(product.price).replace(/^[?,]/, '\u20B9')
-    : '\u20B9999'
+    ? String(product.price).replace(/^[?,]/, '₹')
+    : '₹999'
 
   return (
     <motion.article
       whileHover={{ y: -6 }}
       transition={{ duration: 0.25, ease: 'easeOut' }}
-      className={`group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-[#d4a338]/35 bg-gradient-to-b from-[#fffdfa]/95 via-[#fcf6e8]/95 to-[#f8ecce]/95 p-4 shadow-[0_12px_32px_rgba(133,90,16,0.10),0_0_15px_rgba(212,163,56,0.12)] backdrop-blur-xl transition-all duration-300 hover:border-[#b8860b] hover:shadow-[0_20px_45px_rgba(133,90,16,0.18),0_0_25px_rgba(212,163,56,0.25)] ${className}`}
+      className={`group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-[#DFCFA6]/60 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F5EEDC]/80 p-4 shadow-[0_10px_28px_rgba(180,135,45,0.06),0_1px_3px_rgba(220,185,110,0.12)] transition-all duration-300 hover:border-[#D4AF37]/70 hover:shadow-[0_18px_40px_rgba(180,135,45,0.12),0_0_20px_rgba(235,200,100,0.15)] ${className}`}
     >
       <div>
         {/* Image Container with Floating Action Pills */}
-        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.6rem] bg-[#fbf4e4] border border-[#d4a338]/25">
+        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.6rem] bg-[#F7F2E6] border border-[#E8DEC7]">
           <img
             src={product.image}
             alt={product.title}
@@ -36,18 +36,14 @@ export default function ProductCard({
             }}
             className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#241705]/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
           {/* Badges */}
           <div className="absolute left-3 top-3 flex flex-col items-start gap-1.5">
             {(product.badges || ['Handmade']).slice(0, 2).map((badge, idx) => (
               <span
                 key={badge}
-                className={`rounded-full border px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-sm ${
-                  idx === 0
-                    ? 'border-[#d4a338]/40 bg-white/95 text-[#241705]'
-                    : 'border-[#d4a338]/30 bg-white/85 text-[#8c5f0b]'
-                }`}
+                className="rounded-full border border-[#DFCFA6]/60 bg-white/95 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#141414] backdrop-blur-md shadow-sm"
               >
                 {badge}
               </span>
@@ -64,11 +60,11 @@ export default function ProductCard({
                 e.stopPropagation()
                 onWishlistToggle()
               }}
-              className="grid h-9 w-9 place-items-center rounded-full border border-[#d4a338]/30 bg-white/90 text-[#4a340e] shadow-soft backdrop-blur-md transition duration-200 hover:scale-110 hover:border-rose-500/50 hover:bg-rose-50 hover:text-rose-500"
+              className="grid h-9 w-9 place-items-center rounded-full border border-[#DFCFA6]/60 bg-white/95 text-[#141414] shadow-sm backdrop-blur-md transition duration-200 hover:scale-110 hover:border-rose-500/50 hover:bg-rose-50 hover:text-rose-500"
             >
               <Heart
                 className={`h-4 w-4 transition ${
-                  isWishlisted ? 'fill-rose-500 text-rose-500 scale-110' : 'text-[#63430b]'
+                  isWishlisted ? 'fill-rose-500 text-rose-500 scale-110' : 'text-[#141414]'
                 }`}
               />
             </button>
@@ -79,7 +75,7 @@ export default function ProductCard({
                 e.stopPropagation()
                 onQuickView()
               }}
-              className="grid h-9 w-9 place-items-center rounded-full border border-[#d4a338]/30 bg-white/90 text-[#4a340e] shadow-soft backdrop-blur-md transition duration-200 hover:scale-110 hover:border-[#b8860b] hover:bg-white hover:text-[#1a1204]"
+              className="grid h-9 w-9 place-items-center rounded-full border border-[#DFCFA6]/60 bg-white/95 text-[#141414] shadow-sm backdrop-blur-md transition duration-200 hover:scale-110 hover:border-[#141414] hover:bg-white"
             >
               <Eye className="h-4 w-4" />
             </button>
@@ -90,7 +86,7 @@ export default function ProductCard({
             <button
               type="button"
               onClick={() => onAddToCart(product, 1)}
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#fff3cf] via-[#e8bc57] to-[#c89122] py-2.5 text-xs font-bold text-[#1a1204] shadow-[0_4px_16px_rgba(200,145,34,0.35)] backdrop-blur-md transition hover:scale-105"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-[#141414] py-2.5 text-xs font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.2)] backdrop-blur-md transition hover:bg-[#2C2C2C]"
             >
               <ShoppingBag className="h-3.5 w-3.5 stroke-[2.2]" />
               Quick Add to Bag
@@ -101,35 +97,35 @@ export default function ProductCard({
         {/* Product Details */}
         <div className="mt-3.5 px-1">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#8c5f0b]">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#8C827A]">
               {product.category}
             </span>
             <div className="flex items-center gap-1">
-              <Star className="h-3.5 w-3.5 fill-[#b8860b] text-[#b8860b]" />
-              <span className="text-xs font-bold text-[#241705]">{product.rating ?? '4.9'}</span>
-              <span className="text-[10px] text-[#73562a]">({product.reviews ?? 48})</span>
+              <Star className="h-3.5 w-3.5 fill-[#141414] text-[#141414]" />
+              <span className="text-xs font-bold text-[#141414]">{product.rating ?? '4.9'}</span>
+              <span className="text-[10px] text-[#7A7369]">({product.reviews ?? 48})</span>
             </div>
           </div>
 
           <h3
             onClick={onQuickView}
-            className="mt-1 cursor-pointer truncate font-serif text-xl font-bold text-[#241705] transition hover:text-[#8c5f0b]"
+            className="mt-1 cursor-pointer truncate font-serif text-xl font-bold text-[#141414] transition hover:text-[#5A554E]"
           >
             {product.title}
           </h3>
 
-          <p className="mt-1 line-clamp-2 text-xs leading-5 text-[#5e4318]">
+          <p className="mt-1 line-clamp-2 text-xs leading-5 text-[#5A554E]">
             {product.description}
           </p>
         </div>
       </div>
 
       {/* Footer Price & Action */}
-      <div className="mt-4 border-t border-[#d4a338]/25 px-1 pt-3.5">
+      <div className="mt-4 border-t border-[#DFCFA6]/50 px-1 pt-3.5">
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-[10px] font-semibold text-[#73562a] block uppercase tracking-wider">Artisan Direct</span>
-            <p className="text-xl font-extrabold text-[#241705]">
+            <span className="text-[10px] font-semibold text-[#8C827A] block uppercase tracking-wider">Artisan Direct</span>
+            <p className="text-xl font-extrabold text-[#141414]">
               {formattedPrice}
             </p>
           </div>
@@ -139,7 +135,7 @@ export default function ProductCard({
               href={`https://wa.me/917667233182?text=Hi%20Atelier%20NP%2C%20I%20want%20to%20order%3A%20${encodeURIComponent(product.title)}%20%E2%80%94%20please%20confirm%20availability!`}
               target="_blank"
               rel="noreferrer"
-              className="rounded-full bg-gradient-to-r from-[#fff3cf] via-[#e8bc57] to-[#c89122] px-4 py-2 text-xs font-bold text-[#1a1204] transition-all duration-200 hover:scale-105 hover:shadow-[0_4px_16px_rgba(200,145,34,0.3)] flex items-center gap-1.5"
+              className="rounded-full bg-[#141414] px-4 py-2 text-xs font-bold text-white transition-all duration-200 hover:bg-[#2C2C2C] flex items-center gap-1.5 shadow-sm"
             >
               <MessageCircle className="h-3.5 w-3.5 stroke-[2.2]" /> Order Now
             </a>

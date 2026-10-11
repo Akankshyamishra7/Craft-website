@@ -13,12 +13,12 @@
   }
 
   body {
-    @apply bg-[#fbf5e7] text-[#241705] antialiased font-sans selection:bg-[#dfb457]/35 selection:text-[#1a1103] min-h-screen relative;
-    background: linear-gradient(135deg, #fdf8ee 0%, #f7e8ce 30%, #ebd29b 70%, #f9edd4 100%);
-    background-attachment: fixed;
+    @apply bg-[#F6F3EE] text-[#1A1A1A] antialiased font-sans min-h-screen relative;
+    background-color: #F6F3EE;
+    color: #1A1A1A;
   }
 
-  /* Radiant Luminous Golden Aurora Ambient Glows */
+  /* Subtle Warm Linen & Alabaster Ambient Atmosphere */
   body::before {
     content: '';
     position: fixed;
@@ -28,25 +28,25 @@
     transform: translate3d(0, 0, 0);
     backface-visibility: hidden;
     background-image:
-      radial-gradient(circle 900px at 0% 0%, rgba(245, 206, 115, 0.45), transparent 70%),
-      radial-gradient(circle 850px at 100% 5%, rgba(235, 185, 80, 0.38), transparent 65%),
-      radial-gradient(circle 950px at 50% 50%, rgba(250, 222, 142, 0.30), transparent 70%),
-      radial-gradient(circle 800px at 90% 90%, rgba(230, 178, 65, 0.38), transparent 65%),
-      radial-gradient(circle 750px at 10% 85%, rgba(245, 212, 128, 0.40), transparent 60%);
+      radial-gradient(circle 900px at 0% 0%, rgba(240, 235, 225, 0.65), transparent 70%),
+      radial-gradient(circle 850px at 100% 10%, rgba(235, 230, 218, 0.5), transparent 65%),
+      radial-gradient(circle 950px at 50% 50%, rgba(245, 241, 234, 0.45), transparent 70%),
+      radial-gradient(circle 800px at 90% 90%, rgba(238, 232, 222, 0.55), transparent 65%),
+      radial-gradient(circle 750px at 10% 85%, rgba(242, 237, 227, 0.6), transparent 60%);
     contain: strict;
   }
 
-  /* Delicate Warm Gilded Dot Grid overlay */
+  /* Minimalist Paper/Gallery Texture overlay */
   body::after {
     content: '';
     position: fixed;
     inset: 0;
     pointer-events: none;
     z-index: 0;
-    opacity: 0.35;
+    opacity: 0.18;
     background-image:
-      radial-gradient(circle at 1px 1px, rgba(184, 134, 11, 0.18) 1px, transparent 0);
-    background-size: 28px 28px;
+      radial-gradient(circle at 1px 1px, rgba(40, 35, 30, 0.15) 1px, transparent 0);
+    background-size: 32px 32px;
     contain: strict;
   }
 
@@ -54,27 +54,27 @@
   h2,
   h3,
   h4 {
-    @apply font-serif text-[#241705] tracking-tight;
+    @apply font-serif text-[#141414] tracking-tight;
   }
 
-  /* Refined Golden luxury scrollbar */
+  /* Minimalist Gallery Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #f7e8ce;
+    background: #EFECE6;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #fff2cc 0%, #e5be5e 50%, #b8860b 100%);
+    background: #D0C9BE;
     border-radius: 9999px;
-    border: 2px solid #f7e8ce;
+    border: 2px solid #EFECE6;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #ffffff 0%, #edd197 50%, #d4a338 100%);
+    background: #B5ADA1;
   }
 }
 
@@ -85,97 +85,95 @@
     z-index: 1;
   }
 
-  /* Frosted Gilded Glass Card with Warm Gold Border & Glow */
+  /* Editorial Light Golden Champagne Card */
   .glass-card {
-    @apply rounded-[2rem] backdrop-blur-xl transition-all duration-300;
-    background: linear-gradient(145deg, rgba(255, 252, 244, 0.90) 0%, rgba(250, 239, 214, 0.94) 100%);
-    border: 1px solid rgba(195, 145, 40, 0.32);
-    box-shadow: 0 16px 36px -10px rgba(133, 90, 16, 0.15), 0 0 20px -2px rgba(229, 190, 94, 0.25);
+    @apply rounded-[2rem] transition-all duration-300;
+    background: linear-gradient(150deg, #FFFFFF 0%, #FDFBF6 45%, #FBF6EB 100%);
+    border: 1px solid rgba(220, 192, 130, 0.45);
+    box-shadow: 0 10px 30px -10px rgba(180, 135, 45, 0.08), 0 0 1px 1px rgba(230, 205, 145, 0.15);
     transform: translateZ(0);
     backface-visibility: hidden;
   }
 
   .glass-card-hover {
-    @apply glass-card hover:-translate-y-1.5;
+    @apply glass-card hover:-translate-y-1;
     &:hover {
-      border-color: rgba(195, 145, 40, 0.55);
-      background: linear-gradient(145deg, rgba(255, 254, 250, 0.96) 0%, rgba(252, 243, 222, 0.98) 100%);
-      box-shadow: 0 24px 44px -10px rgba(133, 90, 16, 0.22), 0 0 28px rgba(229, 190, 94, 0.35);
+      border-color: rgba(205, 165, 85, 0.65);
+      background: linear-gradient(150deg, #FFFFFF 0%, #FCF8EE 40%, #FAF3E2 100%);
+      box-shadow: 0 18px 40px -12px rgba(180, 135, 45, 0.14), 0 0 20px -2px rgba(235, 200, 115, 0.22);
     }
   }
 
   .soft-card {
-    @apply rounded-[2rem] backdrop-blur-lg;
-    background: linear-gradient(145deg, rgba(255, 251, 241, 0.88) 0%, rgba(248, 235, 206, 0.92) 100%);
-    border: 1px solid rgba(195, 145, 40, 0.25);
-    box-shadow: 0 12px 28px -12px rgba(133, 90, 16, 0.12);
+    @apply rounded-[2rem];
+    background: linear-gradient(150deg, #FFFFFF 0%, #FAF6ED 100%);
+    border: 1px solid rgba(220, 192, 130, 0.38);
+    box-shadow: 0 8px 24px -10px rgba(180, 135, 45, 0.06);
     transform: translateZ(0);
   }
 
-  /* Delicate Rich Gold Pill Eyebrow */
+  /* Minimalist Gallery Eyebrow Pill */
   .section-eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em];
-    border: 1px solid rgba(184, 134, 11, 0.38);
-    background: linear-gradient(90deg, rgba(245, 223, 165, 0.65) 0%, rgba(235, 200, 115, 0.45) 100%);
-    color: #63430b;
-    box-shadow: 0 2px 10px rgba(184, 134, 11, 0.15);
+    @apply inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.22em];
+    border: 1px solid #DDD7CE;
+    background: #EFECE6;
+    color: #2D2A26;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
   }
 
-  /* Radiant Gold Primary Button */
+  /* Editorial Black Button (like "BUY TICKET ↗" in the reference image) */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-bold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer;
-    background: linear-gradient(135deg, #fff3cf 0%, #e8bc57 50%, #c89122 100%);
-    color: #1a1204;
-    box-shadow: 0 4px 18px rgba(200, 145, 34, 0.35), 0 2px 6px rgba(133, 90, 16, 0.2);
+    background: #141414;
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
     transform: translateZ(0);
   }
 
   .btn-primary:hover {
-    background: linear-gradient(135deg, #ffffff 0%, #fadb7d 50%, #d89f28 100%);
-    box-shadow: 0 6px 24px rgba(200, 145, 34, 0.45), 0 3px 8px rgba(133, 90, 16, 0.25);
-    color: #0d0a06;
+    background: #2B2B2B;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+    color: #FFFFFF;
   }
 
-  /* Gold Accent Button */
+  /* Elegant Gold Accent Button */
   .btn-gold {
     @apply inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-bold transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer;
-    background: linear-gradient(135deg, #fff3cf 0%, #e8bc57 50%, #c89122 100%);
-    color: #1a1204;
-    box-shadow: 0 4px 18px rgba(200, 145, 34, 0.35), 0 2px 6px rgba(133, 90, 16, 0.2);
-    transform: translateZ(0);
+    background: #141414;
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
   }
 
   .btn-gold:hover {
-    background: linear-gradient(135deg, #ffffff 0%, #fadb7d 50%, #d89f28 100%);
-    box-shadow: 0 6px 24px rgba(200, 145, 34, 0.45);
+    background: #2B2B2B;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
   }
 
-  /* Frosted Glass Secondary Button */
+  /* Clean Alabaster Secondary Button */
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold text-[#4a340b] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer backdrop-blur-md;
-    border: 1px solid rgba(184, 134, 11, 0.4);
-    background: rgba(255, 255, 255, 0.65);
-    box-shadow: 0 2px 10px rgba(184, 134, 11, 0.10);
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-semibold text-[#1A1A1A] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer;
+    border: 1px solid #D8D2C6;
+    background: #FFFFFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     transform: translateZ(0);
   }
 
   .btn-secondary:hover {
-    background: rgba(255, 245, 218, 0.95);
-    border-color: rgba(184, 134, 11, 0.6);
-    color: #1a1204;
-    box-shadow: 0 4px 16px rgba(184, 134, 11, 0.20);
+    background: #F3EFE8;
+    border-color: #C8BFB0;
+    color: #111111;
   }
 
   .btn-dark {
-    @apply inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-bold text-[#fcf6e8] transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer;
-    background: linear-gradient(135deg, #3d2b0e 0%, #241705 100%);
-    box-shadow: 0 4px 18px rgba(36, 23, 5, 0.3);
+    @apply inline-flex items-center justify-center gap-2.5 rounded-full px-7 py-3.5 text-sm font-bold text-white transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0 cursor-pointer;
+    background: #141414;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
     transform: translateZ(0);
   }
 
   .btn-dark:hover {
-    background: linear-gradient(135deg, #573e16 0%, #302008 100%);
-    box-shadow: 0 6px 22px rgba(36, 23, 5, 0.4);
+    background: #2C2C2C;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   }
 
   .reveal {
@@ -211,8 +209,8 @@
   background-image: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0,
-    rgba(255, 255, 255, 0.25) 20%,
-    rgba(255, 245, 218, 0.4) 60%,
+    rgba(255, 255, 255, 0.4) 20%,
+    rgba(245, 240, 230, 0.5) 60%,
     rgba(255, 255, 255, 0)
   );
   animation: shimmer 2.5s infinite;
