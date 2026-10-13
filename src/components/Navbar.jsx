@@ -47,25 +47,25 @@ export default function Navbar() {
   return (
     <>
       {/* Top Announcement Bar */}
-      <div className="relative z-50 bg-[#ECE8E1] border-b border-[#DDD7CE] py-2 text-[#3A3630]">
+      <div className="relative z-50 bg-gradient-to-r from-[#FAF4E4] via-[#F6EAC9] to-[#FAF4E4] border-b border-[#E8D6A7] py-2 text-[#4A380A]">
         <div className="section-shell flex items-center justify-between text-xs font-semibold gap-3">
           <div className="flex items-center gap-2 min-w-0">
-            <span className="grid h-4 w-4 shrink-0 place-items-center rounded-full bg-[#DDD7CE] text-[10px] text-[#141414]">★</span>
+            <span className="grid h-4 w-4 shrink-0 place-items-center rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B8860B] text-[10px] text-white shadow-sm">★</span>
             <span className="tracking-wide truncate">
-              Artisan Spring Drop Live &#8226; Use code <strong className="rounded bg-white/80 border border-[#DDD7CE] px-1.5 py-0.5 text-[#141414] font-mono">ATELIER10</strong> for 10% off
+              Artisan Spring Drop Live &#8226; Use code <strong className="rounded bg-white/90 border border-[#D4AF37]/60 px-1.5 py-0.5 text-[#735206] font-mono shadow-xs">ATELIER10</strong> for 10% off
             </span>
           </div>
-          <div className="hidden items-center gap-3.5 text-[11px] font-medium text-[#5A554E] sm:flex shrink-0">
-            <span className="text-[#141414] font-bold">✦ 100% Artisan Handcrafted</span>
-            <span className="text-[#DDD7CE]">&#8226;</span>
-            <span>Free Delivery Across India over <strong className="text-[#141414]">&#8377;1,499</strong></span>
-            <span className="text-[#DDD7CE]">&#8226;</span>
+          <div className="hidden items-center gap-3.5 text-[11px] font-medium text-[#6B531C] sm:flex shrink-0">
+            <span className="text-[#855E0D] font-bold">✦ 100% Artisan Handcrafted</span>
+            <span className="text-[#D8C7A0]">&#8226;</span>
+            <span>Free Delivery Across India over <strong className="text-[#5C4106]">&#8377;1,499</strong></span>
+            <span className="text-[#D8C7A0]">&#8226;</span>
             <Link
               href="/admin"
-              className="inline-flex items-center gap-1.5 rounded-full bg-white/80 border border-[#DDD7CE] px-2.5 py-0.5 text-[11px] font-semibold text-[#141414] hover:bg-white transition-all shadow-sm"
+              className="inline-flex items-center gap-1.5 rounded-full bg-white/90 border border-[#D4AF37]/50 px-2.5 py-0.5 text-[11px] font-semibold text-[#5C4106] hover:border-[#D4AF37] hover:bg-white transition-all shadow-xs"
               title="Open Admin & Operations Console"
             >
-              <LayoutDashboard className="h-3 w-3 text-[#5A554E]" />
+              <LayoutDashboard className="h-3 w-3 text-[#B8860B]" />
               <span>Admin Portal</span>
             </Link>
           </div>
@@ -73,19 +73,19 @@ export default function Navbar() {
       </div>
 
       {/* Main Sticky Header */}
-      <header className="sticky top-0 z-40 border-b border-[#E5E0D8] bg-[#FAF8F5]/90 shadow-[0_4px_25px_rgba(0,0,0,0.03)] backdrop-blur-2xl transition-all">
+      <header className="sticky top-0 z-40 border-b border-[#EEDBBA]/80 bg-[#FDFBF7]/95 shadow-[0_4px_25px_rgba(184,134,11,0.06)] backdrop-blur-md">
         <div className="section-shell">
           <div className="flex h-20 items-center justify-between gap-4">
             {/* Logo */}
             <a href="#home" className="group flex items-center gap-2.5 sm:gap-3 shrink-0">
-              <span className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-2xl bg-[#141414] text-white font-black text-lg sm:text-xl shadow-[0_4px_12px_rgba(0,0,0,0.15)] transition duration-300 group-hover:scale-105">
+              <span className="grid h-10 w-10 sm:h-11 sm:w-11 place-items-center rounded-2xl bg-gradient-to-br from-[#241A06] via-[#141414] to-[#382705] text-[#ECC872] border border-[#D4AF37]/50 font-black text-lg sm:text-xl shadow-[0_4px_16px_rgba(184,134,11,0.25)] transition-transform duration-200 group-hover:scale-105">
                 ✦
               </span>
               <div>
                 <span className="font-serif text-2xl sm:text-3xl font-extrabold tracking-tight text-[#141414] flex items-center gap-1.5 whitespace-nowrap">
-                  Atelier <span className="text-[#8C827A] font-light">NP</span>
+                  Atelier <span className="text-gold-gradient font-bold">NP</span>
                 </span>
-                <span className="block text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.25em] text-[#8C827A] whitespace-nowrap">
+                <span className="block text-[8px] sm:text-[9px] font-bold uppercase tracking-[0.25em] text-[#9E7A2E] whitespace-nowrap">
                   Luxury Craft Market
                 </span>
               </div>
@@ -97,10 +97,10 @@ export default function Navbar() {
                 <a
                   key={link.name}
                   href={link.href}
-                  className="relative whitespace-nowrap py-1 transition-colors duration-200 hover:text-[#141414] group"
+                  className="relative whitespace-nowrap py-1 transition-colors duration-200 hover:text-[#946B08] group"
                 >
                   <span>{link.name}</span>
-                  <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-[#141414] transition-all duration-300 group-hover:w-full rounded-full" />
+                  <span className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#B8860B] via-[#D4AF37] to-[#B8860B] transition-[width] duration-200 ease-out group-hover:w-full rounded-full" />
                 </a>
               ))}
             </nav>
@@ -111,20 +111,20 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setIsQuickSearchOpen(true)}
-                className="group inline-flex h-10 items-center gap-2 rounded-full border border-[#DDD7CE] bg-white px-3.5 text-xs font-semibold text-[#3A3630] shadow-sm transition hover:border-[#141414] hover:text-[#141414] shrink-0 whitespace-nowrap"
+                className="group inline-flex h-10 items-center gap-2 rounded-full border border-[#E5D7B7] bg-white px-3.5 text-xs font-semibold text-[#3A3630] shadow-sm transition hover:border-[#D4AF37] hover:shadow-[0_0_12px_rgba(212,175,55,0.2)] hover:text-[#141414] shrink-0 whitespace-nowrap"
                 title="Search crafts (⌘K)"
               >
-                <Search className="h-4 w-4 text-[#8C827A] transition-transform duration-200 group-hover:scale-110" />
+                <Search className="h-4 w-4 text-[#B8860B] transition-transform duration-200 group-hover:scale-110" />
                 <span className="hidden xl:inline text-[#3A3630]">Search crafts...</span>
                 <span className="xl:hidden text-[#3A3630]">Search</span>
-                <kbd className="hidden 2xl:inline-block rounded bg-[#EFECE6] border border-[#DDD7CE] px-1.5 py-0.5 text-[10px] text-[#5A554E] font-mono">⌘K</kbd>
+                <kbd className="hidden 2xl:inline-block rounded bg-[#F5EEDC] border border-[#E0D0AB] px-1.5 py-0.5 text-[10px] text-[#735206] font-mono">⌘K</kbd>
               </button>
 
               {/* Sell Your Craft */}
               <button
                 type="button"
                 onClick={() => setIsSellOpen(true)}
-                className="inline-flex h-10 items-center gap-1.5 rounded-full border border-[#DDD7CE] bg-white px-4 text-xs font-bold tracking-wide text-[#141414] shadow-sm transition hover:border-[#141414] hover:bg-[#141414] hover:text-white shrink-0 whitespace-nowrap"
+                className="inline-flex h-10 items-center gap-1.5 rounded-full border border-[#D4AF37]/60 bg-gradient-to-r from-[#FAF5E6] to-[#F5ECCF] px-4 text-xs font-bold tracking-wide text-[#4D3505] shadow-xs transition hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:text-[#171103] hover:shadow-[0_0_15px_rgba(212,175,55,0.35)] shrink-0 whitespace-nowrap"
               >
                 <Store className="h-4 w-4" />
                 <span>Sell Craft</span>
@@ -135,10 +135,10 @@ export default function Navbar() {
                 type="button"
                 aria-label="Open wishlist"
                 onClick={() => setIsWishlistOpen(true)}
-                className="relative grid h-10 w-10 place-items-center rounded-full border border-[#DDD7CE] bg-white text-[#3A3630] shadow-sm transition duration-200 hover:scale-105 hover:border-rose-500/50 hover:text-rose-500 shrink-0"
+                className="relative grid h-10 w-10 place-items-center rounded-full border border-[#E5D7B7] bg-white text-[#3A3630] shadow-sm transition duration-200 hover:scale-105 hover:border-rose-500/50 hover:text-rose-500 shrink-0"
                 title="Wishlist"
               >
-                <Heart className="h-4 w-4 xl:h-5 xl:w-5 text-[#5A554E] transition group-hover:text-rose-500" />
+                <Heart className="h-4 w-4 xl:h-5 xl:w-5 text-[#8C7A54] transition group-hover:text-rose-500" />
                 {mounted && wishlist.length > 0 && (
                   <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-rose-500 px-1 text-[10px] font-black text-white shadow-sm">
                     {wishlist.length}
@@ -151,12 +151,12 @@ export default function Navbar() {
                 type="button"
                 aria-label="Open shopping bag"
                 onClick={() => setIsCartOpen(true)}
-                className="relative inline-flex h-10 items-center gap-2 rounded-full bg-[#141414] px-4 text-xs font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.15)] transition duration-200 hover:-translate-y-0.5 hover:bg-[#2C2C2C] shrink-0 whitespace-nowrap"
+                className="relative inline-flex h-10 items-center gap-2 rounded-full bg-[#141414] border border-[#D4AF37]/50 px-4 text-xs font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.18),0_0_12px_rgba(212,175,55,0.22)] transition duration-200 hover:-translate-y-0.5 hover:border-[#D4AF37] hover:shadow-[0_6px_20px_rgba(0,0,0,0.25),0_0_18px_rgba(212,175,55,0.4)] hover:bg-[#241D0E] shrink-0 whitespace-nowrap"
               >
-                <ShoppingBag className="h-4 w-4 stroke-[2.2]" />
+                <ShoppingBag className="h-4 w-4 stroke-[2.2] text-[#ECC872]" />
                 <span>Bag</span>
                 {mounted && cartCount > 0 && (
-                  <span className="grid h-5 min-w-5 place-items-center rounded-full bg-white px-1.5 text-[11px] font-bold text-[#141414]">
+                  <span className="grid h-5 min-w-5 place-items-center rounded-full bg-gradient-to-r from-[#ECC872] to-[#D4AF37] px-1.5 text-[11px] font-bold text-[#141414]">
                     {cartCount}
                   </span>
                 )}

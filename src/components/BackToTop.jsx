@@ -34,11 +34,13 @@ export default function BackToTop() {
           type="button"
           aria-label="Back to top"
           onClick={scrollToTop}
-          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          initial={{ opacity: 0, scale: 0.8, y: 16 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, y: 20 }}
-          transition={{ duration: 0.2 }}
-          className="fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-[#222222] bg-[#141414] text-white shadow-xl transition-all duration-300 hover:scale-110 hover:bg-[#2C2C2C]"
+          exit={{ opacity: 0, scale: 0.8, y: 16 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
+          className="fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-[#D4AF37]/50 bg-gradient-to-br from-[#1A140B] to-[#0D0A05] text-[#F2D785] shadow-[0_4px_20px_rgba(212,175,55,0.35)] transition-colors duration-150 hover:border-[#D4AF37] hover:bg-[#2A1E0E] hover:text-[#FFF5D1] hover:shadow-[0_4px_25px_rgba(212,175,55,0.55)]"
         >
           <ArrowUp className="h-5 w-5 stroke-[2.5]" />
         </motion.button>

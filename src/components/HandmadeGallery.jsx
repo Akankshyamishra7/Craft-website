@@ -142,10 +142,10 @@ export default function HandmadeGallery() {
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
           <span className="section-eyebrow">
-            <Sparkles className="h-3.5 w-3.5 text-[#141414]" /> Curated Marketplace
+            <Sparkles className="h-3.5 w-3.5 text-[#B8860B]" /> Curated Marketplace
           </span>
           <h2 className="mt-3 text-4xl sm:text-5xl lg:text-6xl text-[#141414] font-serif tracking-tight font-bold">
-            Artisan Drops & <span className="italic font-normal">Handcrafted Pieces</span>
+            Artisan Drops & <span className="italic font-normal text-gold-gradient">Handcrafted Pieces</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5A554E] sm:text-lg font-medium">
             Discover one-of-a-kind silk jewelry, botanical UV resin, clean-burn soy candles, and bespoke gifts crafted in independent artisan studios.
@@ -165,8 +165,8 @@ export default function HandmadeGallery() {
                 }}
                 className={`group relative flex flex-col overflow-hidden rounded-2xl border text-left transition duration-300 ${
                   isSelected
-                    ? 'border-[#D4AF37] ring-2 ring-[#DFCFA6]/50 shadow-md bg-gradient-to-b from-[#FFFDF9] to-[#FAF5E8]'
-                    : 'border-[#DFCFA6]/60 bg-gradient-to-b from-white via-[#FCF9F1] to-[#FAF4E5] hover:border-[#D4AF37]/80 hover:shadow-md'
+                    ? 'border-[#D4AF37] ring-2 ring-[#D4AF37]/50 shadow-[0_8px_24px_rgba(184,134,11,0.18)] bg-gradient-to-b from-[#FFFDF8] via-[#FAF4E5] to-[#F5E8C4]'
+                    : 'border-[#D4AF37]/45 bg-gradient-to-b from-white via-[#FCF8EE] to-[#FAF3DE] hover:border-[#D4AF37] hover:shadow-[0_8px_24px_rgba(184,134,11,0.14)]'
                 }`}
               >
                 <div className="relative aspect-[16/10] w-full overflow-hidden bg-[#FAF6EC]">
@@ -184,7 +184,7 @@ export default function HandmadeGallery() {
                   </span>
                 </div>
                 <div className="flex items-center justify-between p-2.5 sm:p-3 bg-gradient-to-b from-white to-[#FAF6ED]">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#8C827A]">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#9E7314]">
                     {cat.badge}
                   </span>
                   <span className="text-[10px] text-[#141414] font-bold">
@@ -197,17 +197,17 @@ export default function HandmadeGallery() {
         </div>
 
         {/* Filter Toolbar */}
-        <div className="glass-card space-y-5 p-5 sm:p-6 border border-[#DFCFA6]/60 bg-gradient-to-b from-white via-[#FCF9F1] to-[#FAF4E5]">
+        <div className="glass-card space-y-5 p-5 sm:p-6 border border-[#D4AF37]/50 bg-gradient-to-b from-white via-[#FAF5E8] to-[#F7ECCF]/80 shadow-[0_12px_36px_rgba(184,134,11,0.10),0_0_15px_rgba(212,175,55,0.10)]">
           {/* Search + Category Tabs */}
           <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
             <div className="relative w-full lg:max-w-md">
-              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8C827A]" />
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-[#9E7314]" />
               <input
                 type="search"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search jewelry, candles, resin, soaps..."
-                className="h-12 w-full rounded-full border border-[#DDD7CE] bg-[#FAF8F5] pl-11 pr-4 text-xs text-[#141414] outline-none transition placeholder:text-[#8C827A] focus:border-[#141414] focus:bg-white sm:text-sm font-medium"
+                className="h-12 w-full rounded-full border border-[#E2D2AD] bg-[#FCFBF8] pl-11 pr-4 text-xs text-[#141414] outline-none transition placeholder:text-[#8C827A] focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]/40 focus:bg-white sm:text-sm font-medium shadow-xs"
               />
             </div>
 
@@ -222,8 +222,8 @@ export default function HandmadeGallery() {
                     onClick={() => setActiveCategory(cat)}
                     className={`rounded-full px-4 py-2 text-xs font-bold transition duration-200 ${
                       isActive
-                        ? 'bg-[#141414] text-white shadow-sm'
-                        : 'border border-[#DDD7CE] bg-white text-[#3A3630] hover:bg-[#F3EFE8] hover:text-[#141414]'
+                        ? 'bg-[#141414] border border-[#D4AF37]/70 text-[#ECC872] shadow-sm'
+                        : 'border border-[#E2D2AD] bg-white text-[#4A3810] hover:border-[#D4AF37] hover:bg-[#FAF4E5]'
                     }`}
                   >
                     {cat}
@@ -234,10 +234,10 @@ export default function HandmadeGallery() {
           </div>
 
           {/* Secondary Filter Row: Badge Chips + Sort + Layout Toggle */}
-          <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#EAE5DC] pt-4 text-xs">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#E8DEC7] pt-4 text-xs">
             {/* Tag Badges */}
             <div className="flex flex-wrap items-center gap-2">
-              <span className="font-bold text-[#5A554E]">Filter by:</span>
+              <span className="font-bold text-[#694806]">Filter by:</span>
               {BADGE_TAGS.map((tag) => {
                 const isSelected = activeBadge === tag
                 return (
@@ -247,8 +247,8 @@ export default function HandmadeGallery() {
                     onClick={() => setActiveBadge(tag)}
                     className={`rounded-full px-3 py-1 font-bold transition ${
                       isSelected
-                        ? 'bg-[#141414] text-white shadow-sm'
-                        : 'border border-[#DDD7CE] bg-[#FAF8F5] text-[#5A554E] hover:bg-[#EFECE6] hover:text-[#141414]'
+                        ? 'bg-[#141414] border border-[#D4AF37]/70 text-[#ECC872] shadow-sm'
+                        : 'border border-[#E2D2AD] bg-[#FAF8F2] text-[#695222] hover:border-[#D4AF37] hover:bg-[#F6ECDA]'
                     }`}
                   >
                     {tag}
@@ -367,7 +367,7 @@ export default function HandmadeGallery() {
             {MAKER_ARTICLES.map((article, i) => (
               <div
                 key={i}
-                className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-[#DFCFA6]/60 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F5EEDC]/80 p-4 transition-all duration-300 hover:border-[#D4AF37]/80 hover:shadow-[0_12px_32px_rgba(180,135,45,0.10)]"
+                className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-[#DFCFA6]/60 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F5EEDC]/80 p-4 transition-[border-color,box-shadow] duration-200 ease-out hover:border-[#D4AF37]/80 hover:shadow-[0_12px_32px_rgba(180,135,45,0.10)]"
               >
                 <div>
                   <div className="relative aspect-[16/10] overflow-hidden rounded-xl bg-[#EFECE6]">
@@ -442,10 +442,10 @@ export default function HandmadeGallery() {
             <motion.div
               key="quick-view-modal-card"
               className="relative my-8 w-full max-w-3xl overflow-hidden rounded-[2.2rem] bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F7F1E1] border border-[#DFCFA6]/70 shadow-[0_25px_60px_rgba(180,135,45,0.18)]"
-              initial={{ scale: 0.95, y: 20 }}
+              initial={{ scale: 0.95, y: 16 }}
               animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.95, y: 20 }}
-              transition={{ type: 'spring', stiffness: 260, damping: 26 }}
+              exit={{ scale: 0.95, y: 16 }}
+              transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
             >
               <button

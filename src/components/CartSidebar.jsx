@@ -70,16 +70,16 @@ export default function CartSidebar() {
 
           <motion.aside
             key="cart-sidebar"
-            className="fixed right-0 top-0 z-[90] flex h-full w-full max-w-md flex-col border-l border-[#E5E0D8] bg-[#FAF8F5] shadow-2xl"
+            className="fixed right-0 top-0 z-[90] flex h-full w-full max-w-md flex-col border-l border-[#D4AF37]/30 bg-[#FAF7F2] shadow-2xl"
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
-            transition={{ type: 'spring', stiffness: 280, damping: 30 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-[#EAE5DC] bg-white px-6 py-5">
+            <div className="flex items-center justify-between border-b border-[#DFCFA6]/60 bg-gradient-to-r from-white via-[#FDFBF7] to-[#FAF6ED] px-6 py-5">
               <div className="flex items-center gap-2.5">
-                <div className="grid h-9 w-9 place-items-center rounded-xl bg-[#141414] text-white font-extrabold">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-gradient-to-br from-[#D4AF37] to-[#996515] text-[#1A120B] font-extrabold shadow-[0_2px_10px_rgba(212,175,55,0.3)]">
                   <ShoppingBag className="h-5 w-5" />
                 </div>
                 <div>
@@ -93,28 +93,28 @@ export default function CartSidebar() {
                 type="button"
                 aria-label="Close cart"
                 onClick={() => setIsCartOpen(false)}
-                className="grid h-10 w-10 place-items-center rounded-full border border-[#DDD7CE] bg-white text-[#141414] shadow-sm transition hover:bg-[#FAF8F5]"
+                className="grid h-10 w-10 place-items-center rounded-full border border-[#DFCFA6]/60 bg-white text-[#141414] shadow-sm transition hover:bg-[#FAF6ED] hover:border-[#D4AF37]"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
             {/* Free Shipping Progress Ticker */}
-            <div className="border-b border-[#EAE5DC] bg-[#EFECE6] px-6 py-3">
-              <div className="flex items-center justify-between text-xs font-bold text-[#141414]">
+            <div className="border-b border-[#DFCFA6]/50 bg-gradient-to-r from-[#FAF5E8] to-[#F5ECD5] px-6 py-3">
+              <div className="flex items-center justify-between text-xs font-bold text-[#3E2D07]">
                 <span className="flex items-center gap-1.5">
-                  <Truck className="h-3.5 w-3.5 text-[#141414]" />
+                  <Truck className="h-3.5 w-3.5 text-[#B8860B]" />
                   {cartSubtotal >= freeShippingThreshold ? (
-                    <span className="text-[#141414]">🎉 You unlocked FREE Shipping!</span>
+                    <span className="text-[#875A10] font-extrabold">🎉 You unlocked Gilded Complimentary Shipping!</span>
                   ) : (
                     <span>Add ₹{Math.max(0, remainingForFreeShipping).toFixed(0)} more for FREE Shipping</span>
                   )}
                 </span>
-                <span className="text-[10px] text-[#8C827A] font-bold">{Math.round(freeShippingProgress)}%</span>
+                <span className="text-[10px] text-[#875A10] font-bold">{Math.round(freeShippingProgress)}%</span>
               </div>
-              <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-white/70">
+              <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-white/80 border border-[#DFCFA6]/40">
                 <motion.div
-                  className="h-full rounded-full bg-[#141414]"
+                  className="h-full rounded-full bg-gradient-to-r from-[#D4AF37] via-[#F2D785] to-[#B8860B] shadow-[0_0_8px_rgba(212,175,55,0.5)]"
                   initial={{ width: 0 }}
                   animate={{ width: `${freeShippingProgress}%` }}
                   transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -249,12 +249,12 @@ export default function CartSidebar() {
                             value={couponInput}
                             onChange={(e) => setCouponInput(e.target.value)}
                             placeholder="Coupon code..."
-                            className="h-9 w-full rounded-xl border border-[#DDD7CE] bg-[#FAF8F5] pl-8 pr-3 text-xs text-[#141414] outline-none focus:border-[#141414]"
+                            className="h-9 w-full rounded-xl border border-[#DFCFA6]/80 bg-[#FAF8F5] pl-8 pr-3 text-xs text-[#141414] outline-none transition focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]/40"
                           />
                         </div>
                         <button
                           type="submit"
-                          className="rounded-xl bg-[#141414] px-3.5 text-xs font-bold text-white transition hover:bg-[#2C2C2C] shadow-sm"
+                          className="rounded-xl bg-gradient-to-r from-[#1A120B] to-[#2E2010] border border-[#D4AF37]/40 px-3.5 text-xs font-bold text-[#F2D785] transition hover:border-[#D4AF37] hover:shadow-[0_0_10px_rgba(212,175,55,0.3)]"
                         >
                           Apply
                         </button>
@@ -266,7 +266,7 @@ export default function CartSidebar() {
                             key={code}
                             type="button"
                             onClick={() => applyCouponCode(code)}
-                            className="rounded-md border border-[#DDD7CE] bg-[#FAF8F5] px-1.5 py-0.5 font-bold text-[#141414] transition hover:bg-[#EFECE6]"
+                            className="rounded-md border border-[#DFCFA6]/60 bg-[#FAF8F5] px-1.5 py-0.5 font-bold text-[#5A451A] transition hover:bg-[#FAF5E8] hover:border-[#D4AF37] hover:text-[#875A10]"
                           >
                             {code}
                           </button>
@@ -277,15 +277,15 @@ export default function CartSidebar() {
                 </div>
 
                 {/* Gift Wrap Toggle */}
-                <div className="mb-4 flex items-center justify-between rounded-xl bg-gradient-to-r from-[#FFFDF9] to-[#FAF6ED] p-2.5 text-xs border border-[#DFCFA6]/60">
-                  <label className="flex cursor-pointer items-center gap-2 font-bold text-[#141414]">
+                <div className="mb-4 flex items-center justify-between rounded-xl bg-gradient-to-r from-[#FFFDF9] to-[#FAF6ED] p-2.5 text-xs border border-[#DFCFA6]/80 shadow-sm">
+                  <label className="flex cursor-pointer items-center gap-2 font-bold text-[#3E2D07]">
                     <input
                       type="checkbox"
                       checked={isGiftWrap}
                       onChange={(e) => setIsGiftWrap(e.target.checked)}
-                      className="accent-[#141414]"
+                      className="accent-[#B8860B]"
                     />
-                    <Gift className="h-3.5 w-3.5 text-[#141414]" /> Add Boutique Gift Wrap (+₹49)
+                    <Gift className="h-3.5 w-3.5 text-[#B8860B]" /> Add Gilded Boutique Gift Wrap (+₹49)
                   </label>
                 </div>
 
@@ -296,14 +296,14 @@ export default function CartSidebar() {
                     <span className="font-bold text-[#141414]">₹{cartSubtotal.toFixed(0)}</span>
                   </div>
                   {discountAmount > 0 && (
-                    <div className="flex justify-between font-bold text-[#141414]">
+                    <div className="flex justify-between font-bold text-[#B8860B]">
                       <span>Discount</span>
                       <span>-₹{discountAmount.toFixed(0)}</span>
                     </div>
                   )}
                   <div className="flex justify-between">
                     <span>Shipping</span>
-                    <span>{shippingCost === 0 ? <strong className="text-[#141414]">FREE</strong> : `₹${shippingCost.toFixed(0)}`}</span>
+                    <span>{shippingCost === 0 ? <strong className="text-[#875A10]">FREE</strong> : `₹${shippingCost.toFixed(0)}`}</span>
                   </div>
                   {giftWrapCost > 0 && (
                     <div className="flex justify-between">
@@ -311,16 +311,16 @@ export default function CartSidebar() {
                       <span>+₹{giftWrapCost.toFixed(0)}</span>
                     </div>
                   )}
-                  <div className="border-t border-[#EAE5DC] pt-2 flex justify-between text-base font-bold text-[#141414]">
+                  <div className="border-t border-[#DFCFA6]/60 pt-2 flex justify-between text-base font-bold text-[#141414]">
                     <span>Estimated Total</span>
-                    <span className="text-xl text-[#141414] font-extrabold">₹{cartFinalTotal.toFixed(0)}</span>
+                    <span className="text-xl text-[#875A10] font-extrabold">₹{cartFinalTotal.toFixed(0)}</span>
                   </div>
                 </div>
 
                 <button
                   type="button"
                   onClick={handleProceedToCheckout}
-                  className="btn-primary mt-4 w-full py-3.5 shadow-md"
+                  className="btn-gold mt-4 w-full py-3.5 shadow-[0_6px_20px_rgba(212,175,55,0.35)] justify-center font-bold tracking-wide"
                 >
                   Proceed to Secure Checkout
                   <ArrowRight className="h-4 w-4" />

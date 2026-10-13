@@ -164,10 +164,10 @@ export default function CraftCustomizer() {
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
           <span className="section-eyebrow">
-            <Sparkles className="h-3.5 w-3.5 text-[#141414]" /> Interactive Studio
+            <Sparkles className="h-3.5 w-3.5 text-[#B8860B]" /> Interactive Studio
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl text-[#141414] font-serif font-bold tracking-tight">
-            Design Your Bespoke Handmade Craft
+            Design Your Bespoke <span className="italic font-normal text-gold-gradient">Handmade Craft</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5A554E] sm:text-lg font-medium">
             Choose your artisan base piece, select a curated color mood, and personalize with custom engravings or gold leaf. We craft each one-of-a-kind piece from scratch.
@@ -175,13 +175,13 @@ export default function CraftCustomizer() {
         </div>
 
         {/* Studio Workspace */}
-        <div className="glass-card grid gap-8 overflow-hidden p-6 sm:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:p-10 border border-[#DFCFA6]/60 bg-gradient-to-b from-white via-[#FCF9F1] to-[#FAF4E5]">
+        <div className="glass-card grid gap-8 overflow-hidden p-6 sm:p-8 lg:grid-cols-[1.1fr_0.9fr] lg:p-10 border border-[#D4AF37]/50 bg-gradient-to-b from-white via-[#FAF5E8] to-[#F7ECCF]/80 shadow-[0_16px_45px_rgba(184,134,11,0.12),0_0_20px_rgba(212,175,55,0.10)]">
           {/* Controls Column */}
           <div className="space-y-8">
             {/* Step 1: Base Craft */}
             <div>
               <div className="flex items-center gap-2">
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-[#141414] text-xs font-bold text-white">
+                <span className="grid h-6 w-6 place-items-center rounded-full bg-gradient-to-br from-[#241A06] to-[#141414] border border-[#D4AF37]/50 text-xs font-black text-[#ECC872] shadow-xs">
                   1
                 </span>
                 <h3 className="font-serif text-2xl text-[#141414] font-bold">Choose Craft Base</h3>
@@ -314,16 +314,18 @@ export default function CraftCustomizer() {
           </div>
 
           {/* Live Preview Card */}
-          <div className="flex flex-col justify-between rounded-3xl border border-[#DFCFA6]/60 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F5EEDC]/80 p-6 lg:p-8 shadow-[0_10px_28px_rgba(180,135,45,0.06)]">
+          <div className="flex flex-col justify-between rounded-3xl border border-[#D4AF37]/55 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5E8] to-[#F6EBCE]/80 p-6 lg:p-8 shadow-[0_12px_32px_rgba(184,134,11,0.12),0_0_15px_rgba(212,175,55,0.10)]">
             <div>
               <div className="flex items-center justify-between">
-                <span className="section-eyebrow">Live Custom Preview</span>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#8C827A]">
+                <span className="section-eyebrow">
+                  <Sparkles className="h-3 w-3 text-[#B8860B]" /> Live Custom Preview
+                </span>
+                <span className="text-xs font-bold uppercase tracking-wider text-[#9E7314]">
                   1-of-1 Bespoke
                 </span>
               </div>
 
-              <div className="relative mt-5 aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#EFECE6] shadow-inner">
+              <div className="relative mt-5 aspect-[4/3] w-full overflow-hidden rounded-2xl bg-[#EFECE6] border border-[#E8DEC7] shadow-inner">
                 <img
                   src={selectedCraft.image}
                   alt={selectedCraft.title}
@@ -332,14 +334,14 @@ export default function CraftCustomizer() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
                 {/* Floating Palette Tag */}
-                <div className="absolute left-3.5 top-3.5 flex items-center gap-1.5 rounded-full border border-[#DFCFA6]/60 bg-white/95 px-3 py-1 text-xs font-bold text-[#141414] shadow-sm backdrop-blur-md">
-                  <Palette className="h-3.5 w-3.5 text-[#141414]" />
+                <div className="absolute left-3.5 top-3.5 flex items-center gap-1.5 rounded-full border border-[#D4AF37]/60 bg-white/95 px-3 py-1 text-xs font-bold text-[#141414] shadow-xs backdrop-blur-md">
+                  <Palette className="h-3.5 w-3.5 text-[#B8860B]" />
                   {selectedPalette.name}
                 </div>
 
                 {customText && (
-                  <div className="absolute bottom-3.5 left-3.5 right-3.5 rounded-xl border border-[#DFCFA6]/60 bg-white/95 p-2 text-center shadow-sm backdrop-blur-md">
-                    <p className="text-[10px] font-bold uppercase tracking-widest text-[#8C827A]">Custom Engraving</p>
+                  <div className="absolute bottom-3.5 left-3.5 right-3.5 rounded-xl border border-[#D4AF37]/60 bg-white/95 p-2 text-center shadow-xs backdrop-blur-md">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-[#946B08]">Custom Engraving</p>
                     <p className="font-serif text-sm font-semibold italic text-[#141414]">"{customText}"</p>
                   </div>
                 )}
@@ -349,13 +351,13 @@ export default function CraftCustomizer() {
                 <h4 className="font-serif text-2xl text-[#141414] font-bold">{selectedCraft.title}</h4>
                 <p className="text-xs leading-5 text-[#5A554E]">{selectedCraft.description}</p>
                 <div className="flex flex-wrap gap-1.5 pt-1">
-                  <span className="rounded-full bg-white/80 border border-[#DFCFA6]/60 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#141414]">
+                  <span className="rounded-full bg-white/90 border border-[#D4AF37]/50 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#735206]">
                     Palette: {selectedPalette.name}
                   </span>
                   {selectedAddons.map((id) => (
                     <span
                       key={id}
-                      className="rounded-full bg-white/80 border border-[#DFCFA6]/60 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#141414]"
+                      className="rounded-full bg-white/90 border border-[#D4AF37]/50 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#735206]"
                     >
                       {ADDONS.find((a) => a.id === id)?.name.split(' ')[0]}
                     </span>
@@ -364,7 +366,7 @@ export default function CraftCustomizer() {
               </div>
             </div>
 
-            <div className="mt-8 border-t border-[#DFCFA6]/50 pt-5">
+            <div className="mt-8 border-t border-[#E8DEC7] pt-5">
               <div className="flex items-baseline justify-between">
                 <div>
                   <p className="text-xs font-bold uppercase tracking-wider text-[#8C827A]">Total Craft Price</p>
@@ -373,7 +375,7 @@ export default function CraftCustomizer() {
                 <button
                   type="button"
                   onClick={handleAddCustomToBag}
-                  className="btn-primary shadow-sm"
+                  className="btn-gold shadow-sm"
                 >
                   <ShoppingBag className="h-4 w-4" />
                   Add Custom Craft to Bag

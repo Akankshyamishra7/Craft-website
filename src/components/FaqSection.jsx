@@ -45,10 +45,10 @@ export default function FaqSection() {
       <div className="reveal is-visible space-y-10">
         <div className="mx-auto max-w-2xl text-center">
           <span className="section-eyebrow">
-            <HelpCircle className="h-3.5 w-3.5 text-[#141414]" /> Questions & Answers
+            <HelpCircle className="h-3.5 w-3.5 text-[#B8860B]" /> Questions & Answers
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#141414] tracking-tight uppercase">
-            Frequently Asked Questions
+            Frequently Asked <span className="italic font-normal text-gold-gradient">Questions</span>
           </h2>
           <p className="mx-auto mt-4 text-base leading-relaxed text-[#5A554E]">
             Everything you need to know about custom orders, handmade materials, and our buyer protection guarantee.
@@ -62,19 +62,19 @@ export default function FaqSection() {
             return (
               <div
                 key={index}
-                className="overflow-hidden rounded-2xl border border-[#DFCFA6]/60 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F5EEDC]/80 transition duration-200 hover:border-[#D4AF37]/70 shadow-sm"
+                className="overflow-hidden rounded-2xl border border-[#D4AF37]/50 bg-gradient-to-b from-[#FFFDF8] via-[#FAF5E8] to-[#F7ECCF]/80 transition duration-200 hover:border-[#D4AF37] shadow-xs"
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                  className="flex w-full items-center justify-between p-5 text-left transition hover:bg-[#FAF3E2]/50"
+                  className="flex w-full items-center justify-between p-5 text-left transition hover:bg-[#FAF4E2]/70"
                 >
                   <span className="font-serif text-lg font-bold text-[#141414] sm:text-xl">
                     {faq.question}
                   </span>
                   <div
                     className={`grid h-8 w-8 shrink-0 place-items-center rounded-full transition duration-200 ${
-                      isOpen ? 'bg-[#141414] text-white' : 'bg-[#EFECE6] text-[#141414]'
+                      isOpen ? 'bg-[#141414] text-[#ECC872] border border-[#D4AF37]/60' : 'bg-[#FAF4E2] text-[#735206] border border-[#D4AF37]/40'
                     }`}
                   >
                     {isOpen ? <Minus className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
@@ -89,7 +89,7 @@ export default function FaqSection() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: 'easeInOut' }}
                     >
-                      <div className="border-t border-[#EAE5DC] px-5 pb-5 pt-3 text-sm leading-relaxed text-[#5A554E] sm:text-base">
+                      <div className="border-t border-[#E8DEC7] px-5 pb-5 pt-3 text-sm leading-relaxed text-[#5A554E] sm:text-base">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -101,10 +101,10 @@ export default function FaqSection() {
         </div>
 
         {/* Still Have Questions Banner */}
-        <div className="mx-auto max-w-lg rounded-2xl border border-[#DFCFA6]/60 bg-gradient-to-b from-[#FFFDF9] to-[#FAF6ED] p-4 text-center shadow-sm">
+        <div className="mx-auto max-w-lg rounded-2xl border border-[#D4AF37]/50 bg-gradient-to-b from-[#FFFDF8] to-[#FAF4E5] p-4 text-center shadow-xs">
           <p className="text-xs text-[#5A554E]">
             Still have questions about a custom piece?{' '}
-            <a href="#contact" className="font-bold text-[#141414] underline transition hover:text-[#5A554E]">
+            <a href="#contact" className="font-bold text-[#8F650D] underline transition hover:text-[#5C4106]">
               Contact our studio team →
             </a>
           </p>

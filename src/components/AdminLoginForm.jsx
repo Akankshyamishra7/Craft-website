@@ -102,12 +102,12 @@ export default function AdminLoginForm({ onLoginSuccess }) {
         <div className="overflow-hidden rounded-3xl border border-[#DFCFA6]/60 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F5EEDC]/80 p-8 shadow-[0_16px_40px_rgba(180,135,45,0.08)] sm:p-10">
           {/* Brand Header */}
           <div className="text-center">
-            <div className="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-3xl bg-[#141414] text-white text-2xl shadow-md">
+            <div className="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-3xl bg-gradient-to-br from-[#D4AF37] to-[#996515] text-[#1A120B] text-2xl font-bold shadow-[0_4px_16px_rgba(212,175,55,0.35)]">
               ✦
             </div>
 
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-[#DDD7CE] bg-[#FAF8F5] px-3 py-1 text-[11px] font-bold text-[#141414]">
-              <Sparkles className="h-3 w-3 text-[#8C827A]" />
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-[#DFCFA6]/80 bg-[#FAF7F0] px-3.5 py-1 text-[11px] font-bold text-[#875A10]">
+              <Sparkles className="h-3 w-3 text-[#B8860B]" />
               Creator & Staff Portal
             </div>
 
@@ -151,9 +151,8 @@ export default function AdminLoginForm({ onLoginSuccess }) {
 
             {/* Password */}
             <div>
-              <div className="flex items-center justify-between mb-1.5">
+              <div className="mb-1.5">
                 <label className="block text-xs font-bold text-[#141414]">Master Password</label>
-                <span className="text-[10px] font-medium text-[#8C827A]">Demo: admin123</span>
               </div>
               <div className="relative">
                 <Lock className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8C827A]" />
@@ -195,7 +194,7 @@ export default function AdminLoginForm({ onLoginSuccess }) {
             <button
               type="submit"
               disabled={isLoading}
-              className="btn-primary relative mt-2 w-full py-3.5 text-sm font-bold shadow-sm disabled:opacity-60 disabled:cursor-not-allowed"
+              className="btn-gold relative mt-2 w-full py-3.5 text-sm font-bold shadow-[0_6px_20px_rgba(212,175,55,0.35)] justify-center tracking-wide disabled:opacity-60 disabled:cursor-not-allowed"
             >
               {isLoading ? (
                 <span className="inline-flex items-center justify-center gap-2">

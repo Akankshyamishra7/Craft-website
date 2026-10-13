@@ -22,7 +22,7 @@ import BackToTop from './BackToTop'
 
 export default function HomePage() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden selection:bg-blossom selection:text-cocoa">
+    <div className="relative min-h-screen overflow-x-hidden selection:bg-[#D4AF37]/30 selection:text-[#382606]">
       {/* Toast Notifications */}
       <ToastContainer />
 

@@ -58,28 +58,28 @@ export default function QuickSearchModal() {
         >
           <motion.div
             key="quick-search-card"
-            className="w-full max-w-2xl overflow-hidden rounded-3xl border border-[#E5E0D8] bg-white shadow-2xl"
-            initial={{ scale: 0.95, y: -20 }}
+            className="w-full max-w-2xl overflow-hidden rounded-3xl border border-[#D4AF37]/40 bg-white shadow-[0_20px_60px_rgba(180,135,45,0.22)]"
+            initial={{ scale: 0.96, y: -12 }}
             animate={{ scale: 1, y: 0 }}
-            exit={{ scale: 0.95, y: -20 }}
-            transition={{ type: 'spring', stiffness: 280, damping: 28 }}
+            exit={{ scale: 0.96, y: -12 }}
+            transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Search Input Bar */}
-            <div className="relative border-b border-[#EAE5DC] p-4 sm:p-5">
-              <Search className="pointer-events-none absolute left-7 top-1/2 h-5 w-5 -translate-y-1/2 text-[#8C827A]" />
+            <div className="relative border-b border-[#DFCFA6]/60 bg-gradient-to-r from-[#FFFDF9] to-[#FAF6ED] p-4 sm:p-5">
+              <Search className="pointer-events-none absolute left-7 top-1/2 h-5 w-5 -translate-y-1/2 text-[#B8860B]" />
               <input
                 ref={inputRef}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Search handmade bangles, candles, soaps, resin..."
-                className="h-12 w-full rounded-2xl border border-[#DDD7CE] bg-[#FAF8F5] pl-12 pr-12 text-base text-[#141414] outline-none placeholder:text-[#8C827A] focus:border-[#141414] focus:bg-white font-medium"
+                className="h-12 w-full rounded-2xl border border-[#DFCFA6]/80 bg-white pl-12 pr-12 text-base text-[#141414] outline-none placeholder:text-[#8C827A] transition focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/30 font-medium"
               />
               {query && (
                 <button
                   type="button"
                   onClick={() => setQuery('')}
-                  className="absolute right-7 top-1/2 -translate-y-1/2 text-[#8C827A] transition hover:text-[#141414]"
+                  className="absolute right-7 top-1/2 -translate-y-1/2 text-[#8C827A] transition hover:text-[#B8860B]"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -87,16 +87,16 @@ export default function QuickSearchModal() {
             </div>
 
             {/* Quick Category Filter Bar */}
-            <div className="flex items-center gap-1.5 overflow-x-auto border-b border-[#EAE5DC] bg-white px-4 py-2.5 sm:px-6">
+            <div className="flex items-center gap-1.5 overflow-x-auto border-b border-[#DFCFA6]/40 bg-white px-4 py-2.5 sm:px-6">
               {['All', 'Jewelry', 'Home Decor', 'Beauty', 'Accessories'].map((cat) => (
                 <button
                   key={cat}
                   type="button"
                   onClick={() => setSelectedCategory(cat)}
-                  className={`rounded-full px-3 py-1 text-xs font-bold transition shrink-0 ${
+                  className={`rounded-full px-3.5 py-1 text-xs font-bold transition shrink-0 ${
                     selectedCategory === cat
-                      ? 'bg-[#141414] text-white shadow-sm'
-                      : 'bg-[#FAF8F5] text-[#5A554E] hover:bg-[#EFECE6]'
+                      ? 'bg-gradient-to-r from-[#D4AF37] to-[#B8860B] text-[#1A120B] shadow-[0_2px_10px_rgba(212,175,55,0.3)] font-extrabold'
+                      : 'border border-[#DFCFA6]/50 bg-[#FAF7F0] text-[#5A451A] hover:bg-[#FAF2DE] hover:border-[#D4AF37]/60'
                   }`}
                 >
                   {cat}
@@ -105,10 +105,10 @@ export default function QuickSearchModal() {
             </div>
 
             {/* Suggestions & Results List */}
-            <div className="max-h-[55vh] overflow-y-auto p-4 sm:p-6 bg-[#FAF8F5]">
+            <div className="max-h-[55vh] overflow-y-auto p-4 sm:p-6 bg-[#FAF7F2]">
               <div className="flex items-center justify-between pb-3 text-xs font-bold uppercase tracking-wider text-[#8C827A]">
                 <span>{query ? `Found ${searchResults.length} crafts` : 'Trending Artisan Pieces'}</span>
-                <span className="text-[10px] text-[#8C827A] font-semibold">Press ESC to exit</span>
+                <span className="text-[10px] text-[#B8860B] font-semibold">Press ESC to exit</span>
               </div>
 
               {searchResults.length === 0 ? (
@@ -123,7 +123,7 @@ export default function QuickSearchModal() {
                     return (
                       <div
                         key={product.id}
-                        className="group flex items-center gap-3 rounded-2xl border border-[#DFCFA6]/60 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F5EEDC]/80 p-2.5 shadow-sm transition hover:border-[#D4AF37]/80"
+                        className="group flex items-center gap-3 rounded-2xl border border-[#DFCFA6]/80 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F5EEDC]/90 p-2.5 shadow-sm transition hover:border-[#D4AF37]"
                       >
                         <img
                           src={product.image}
@@ -131,19 +131,19 @@ export default function QuickSearchModal() {
                           onError={(e) => {
                             e.currentTarget.src = fallbackCraftImage
                           }}
-                          className="h-16 w-16 shrink-0 rounded-xl object-cover bg-[#F6F3EE]"
+                          className="h-16 w-16 shrink-0 rounded-xl object-cover bg-[#F6F3EE] border border-[#DFCFA6]/40"
                         />
                         <div className="min-w-0 flex-1">
                           <p className="truncate text-sm font-bold text-[#141414]">{product.title}</p>
                           <p className="text-[10px] uppercase tracking-wider text-[#8C827A] font-bold">{product.category}</p>
-                          <p className="mt-0.5 text-xs font-extrabold text-[#141414]">{product.price}</p>
+                          <p className="mt-0.5 text-xs font-extrabold text-[#875A10]">{product.price}</p>
                         </div>
 
                         <div className="flex flex-col gap-1 pr-1">
                           <button
                             type="button"
                             onClick={() => toggleWishlist(product.id)}
-                            className="grid h-7 w-7 place-items-center rounded-full bg-[#FAF8F5] text-[#5A554E] transition hover:text-rose-500"
+                            className="grid h-7 w-7 place-items-center rounded-full bg-[#FAF8F5] text-[#5A554E] transition hover:text-rose-500 border border-[#DFCFA6]/40"
                           >
                             <Heart className={`h-3.5 w-3.5 ${wish ? 'fill-rose-500 text-rose-500' : ''}`} />
                           </button>
@@ -153,7 +153,7 @@ export default function QuickSearchModal() {
                               addToCart(product, 1)
                               setIsQuickSearchOpen(false)
                             }}
-                            className="grid h-7 w-7 place-items-center rounded-full bg-[#141414] text-white transition hover:bg-[#2C2C2C] shadow-sm"
+                            className="grid h-7 w-7 place-items-center rounded-full bg-gradient-to-r from-[#1A120B] to-[#2E2010] border border-[#D4AF37]/40 text-[#F2D785] transition hover:border-[#D4AF37] hover:shadow-[0_0_8px_rgba(212,175,55,0.3)]"
                           >
                             <ShoppingBag className="h-3.5 w-3.5" />
                           </button>

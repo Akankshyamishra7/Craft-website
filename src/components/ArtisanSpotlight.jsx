@@ -51,10 +51,10 @@ export default function ArtisanSpotlight() {
       <div className="reveal is-visible space-y-10">
         <div className="mx-auto max-w-3xl text-center">
           <span className="section-eyebrow">
-            <Award className="h-3.5 w-3.5 text-[#141414]" /> Meet the Makers
+            <Award className="h-3.5 w-3.5 text-[#B8860B]" /> Meet the Makers
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl text-[#141414] font-serif font-bold">
-            Real Craftspeople Behind Every Creation
+            Real Craftspeople Behind <span className="italic font-normal text-gold-gradient">Every Creation</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5A554E] sm:text-lg font-medium">
             Every piece in the Atelier NP marketplace is designed and sculpted by independent artisans. When you buy, you directly support their creative studios.
@@ -65,9 +65,9 @@ export default function ArtisanSpotlight() {
           {ARTISANS.map((artisan) => (
             <article
               key={artisan.id}
-              className="group overflow-hidden rounded-[2rem] border border-[#DFCFA6]/60 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F5EEDC]/80 p-5 shadow-[0_8px_24px_rgba(180,135,45,0.06)] transition-all duration-300 hover:border-[#D4AF37]/70 hover:shadow-md"
+              className="group overflow-hidden rounded-[2rem] border border-[#D4AF37]/50 bg-gradient-to-b from-[#FFFDF8] via-[#FAF5E8] to-[#F7ECCF]/80 p-5 shadow-[0_10px_28px_rgba(184,134,11,0.08),0_0_12px_rgba(212,175,55,0.08)] transition-[border-color,box-shadow] duration-200 ease-out hover:border-[#D4AF37] hover:shadow-[0_16px_36px_rgba(184,134,11,0.20),0_0_20px_rgba(212,175,55,0.25)]"
             >
-              <div className="relative h-44 w-full overflow-hidden rounded-2xl bg-[#F6F3EE]">
+              <div className="relative h-44 w-full overflow-hidden rounded-2xl bg-[#F6F3EE] border border-[#E8DEC7]">
                 <img
                   src={artisan.cover}
                   alt={artisan.name}
@@ -80,10 +80,10 @@ export default function ArtisanSpotlight() {
 
                 <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
                   <span className="flex items-center gap-1 text-xs font-semibold">
-                    <MapPin className="h-3.5 w-3.5 text-white" /> {artisan.location}
+                    <MapPin className="h-3.5 w-3.5 text-[#ECC872]" /> {artisan.location}
                   </span>
                   <span className="flex items-center gap-1 text-xs font-bold text-white">
-                    <Star className="h-3.5 w-3.5 fill-white text-white" /> {artisan.rating} ({artisan.reviews})
+                    <Star className="h-3.5 w-3.5 fill-[#D4AF37] text-[#D4AF37]" /> {artisan.rating} ({artisan.reviews})
                   </span>
                 </div>
               </div>
@@ -95,14 +95,14 @@ export default function ArtisanSpotlight() {
                     alt={artisan.name}
                     className="h-14 w-14 rounded-full border-2 border-white object-cover shadow-md"
                   />
-                  <span className="rounded-full bg-[#FAF5E8] border border-[#DFCFA6]/60 px-3 py-1 text-[11px] font-bold text-[#141414]">
+                  <span className="rounded-full bg-white/95 border border-[#D4AF37]/50 px-3 py-1 text-[11px] font-bold text-[#735206] shadow-xs">
                     {artisan.experience}
                   </span>
                 </div>
 
                 <div className="mt-3">
                   <h3 className="font-serif text-2xl font-bold text-[#141414]">{artisan.name}</h3>
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#8C827A]">
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#9E7314]">
                     {artisan.role}
                   </p>
                   <p className="mt-3 text-xs leading-5 text-[#5A554E] line-clamp-3">
@@ -110,12 +110,12 @@ export default function ArtisanSpotlight() {
                   </p>
                 </div>
 
-                <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-[#EAE5DC] pt-3.5">
+                <div className="mt-4 flex flex-wrap items-center justify-between gap-2 border-t border-[#E8DEC7] pt-3.5">
                   <div className="flex flex-wrap gap-1.5">
                     {artisan.badges.map((b) => (
                       <span
                         key={b}
-                        className="rounded-full bg-[#FAF8F5] border border-[#DDD7CE] px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#141414]"
+                        className="rounded-full bg-white/90 border border-[#D4AF37]/45 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-[#694806]"
                       >
                         {b}
                       </span>
@@ -124,7 +124,7 @@ export default function ArtisanSpotlight() {
 
                   <a
                     href="#collection"
-                    className="inline-flex items-center gap-1 text-[11px] font-bold text-[#141414] transition hover:text-[#5A554E]"
+                    className="inline-flex items-center gap-1 text-[11px] font-bold text-[#8F650D] transition hover:text-[#4D3505]"
                   >
                     <span>View Crafts</span>
                     <ArrowRight className="h-3 w-3" />

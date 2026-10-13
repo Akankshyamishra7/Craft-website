@@ -1,6 +1,5 @@
 "use client"
 
-import { motion } from 'framer-motion'
 import { Eye, Heart, MessageCircle, ShoppingBag, Star } from 'lucide-react'
 import { fallbackCraftImage } from '../utils/fallbackImage'
 
@@ -18,10 +17,8 @@ export default function ProductCard({
     : '₹999'
 
   return (
-    <motion.article
-      whileHover={{ y: -6 }}
-      transition={{ duration: 0.25, ease: 'easeOut' }}
-      className={`group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-[#DFCFA6]/60 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F5EEDC]/80 p-4 shadow-[0_10px_28px_rgba(180,135,45,0.06),0_1px_3px_rgba(220,185,110,0.12)] transition-all duration-300 hover:border-[#D4AF37]/70 hover:shadow-[0_18px_40px_rgba(180,135,45,0.12),0_0_20px_rgba(235,200,100,0.15)] ${className}`}
+    <article
+      className={`group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-[#D4AF37]/50 bg-gradient-to-b from-[#FFFDF9] via-[#FAF5E8] to-[#F7ECCF]/80 p-4 shadow-[0_10px_28px_rgba(184,134,11,0.08),0_0_12px_rgba(212,175,55,0.08)] transform-gpu transition-[transform,box-shadow,border-color] duration-200 ease-out hover:-translate-y-1.5 hover:border-[#D4AF37] hover:shadow-[0_16px_38px_rgba(184,134,11,0.20),0_0_22px_rgba(212,175,55,0.28)] will-change-transform ${className}`}
     >
       <div>
         {/* Image Container with Floating Action Pills */}
@@ -43,7 +40,7 @@ export default function ProductCard({
             {(product.badges || ['Handmade']).slice(0, 2).map((badge, idx) => (
               <span
                 key={badge}
-                className="rounded-full border border-[#DFCFA6]/60 bg-white/95 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#141414] backdrop-blur-md shadow-sm"
+                className="rounded-full border border-[#D4AF37]/50 bg-white/95 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#694806] backdrop-blur-md shadow-xs"
               >
                 {badge}
               </span>
@@ -60,11 +57,11 @@ export default function ProductCard({
                 e.stopPropagation()
                 onWishlistToggle()
               }}
-              className="grid h-9 w-9 place-items-center rounded-full border border-[#DFCFA6]/60 bg-white/95 text-[#141414] shadow-sm backdrop-blur-md transition duration-200 hover:scale-110 hover:border-rose-500/50 hover:bg-rose-50 hover:text-rose-500"
+              className="grid h-9 w-9 place-items-center rounded-full border border-[#D4AF37]/50 bg-white/95 text-[#3D2C0A] shadow-xs backdrop-blur-md transition duration-200 hover:scale-110 hover:border-rose-500/50 hover:bg-rose-50 hover:text-rose-500"
             >
               <Heart
                 className={`h-4 w-4 transition ${
-                  isWishlisted ? 'fill-rose-500 text-rose-500 scale-110' : 'text-[#141414]'
+                  isWishlisted ? 'fill-rose-500 text-rose-500 scale-110' : 'text-[#3D2C0A]'
                 }`}
               />
             </button>
@@ -75,7 +72,7 @@ export default function ProductCard({
                 e.stopPropagation()
                 onQuickView()
               }}
-              className="grid h-9 w-9 place-items-center rounded-full border border-[#DFCFA6]/60 bg-white/95 text-[#141414] shadow-sm backdrop-blur-md transition duration-200 hover:scale-110 hover:border-[#141414] hover:bg-white"
+              className="grid h-9 w-9 place-items-center rounded-full border border-[#D4AF37]/50 bg-white/95 text-[#3D2C0A] shadow-xs backdrop-blur-md transition duration-200 hover:scale-110 hover:border-[#D4AF37] hover:bg-white"
             >
               <Eye className="h-4 w-4" />
             </button>
@@ -86,9 +83,9 @@ export default function ProductCard({
             <button
               type="button"
               onClick={() => onAddToCart(product, 1)}
-              className="flex w-full items-center justify-center gap-2 rounded-full bg-[#141414] py-2.5 text-xs font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.2)] backdrop-blur-md transition hover:bg-[#2C2C2C]"
+              className="flex w-full items-center justify-center gap-2 rounded-full bg-[#141414] border border-[#D4AF37]/60 py-2.5 text-xs font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.2),0_0_10px_rgba(212,175,55,0.22)] backdrop-blur-md transition hover:bg-[#251D0B] hover:border-[#D4AF37]"
             >
-              <ShoppingBag className="h-3.5 w-3.5 stroke-[2.2]" />
+              <ShoppingBag className="h-3.5 w-3.5 stroke-[2.2] text-[#ECC872]" />
               Quick Add to Bag
             </button>
           </div>
@@ -97,11 +94,11 @@ export default function ProductCard({
         {/* Product Details */}
         <div className="mt-3.5 px-1">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#8C827A]">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#9E7314]">
               {product.category}
             </span>
             <div className="flex items-center gap-1">
-              <Star className="h-3.5 w-3.5 fill-[#141414] text-[#141414]" />
+              <Star className="h-3.5 w-3.5 fill-[#D4AF37] text-[#B8860B]" />
               <span className="text-xs font-bold text-[#141414]">{product.rating ?? '4.9'}</span>
               <span className="text-[10px] text-[#7A7369]">({product.reviews ?? 48})</span>
             </div>
@@ -109,7 +106,7 @@ export default function ProductCard({
 
           <h3
             onClick={onQuickView}
-            className="mt-1 cursor-pointer truncate font-serif text-xl font-bold text-[#141414] transition hover:text-[#5A554E]"
+            className="mt-1 cursor-pointer truncate font-serif text-xl font-bold text-[#141414] transition hover:text-[#946B08]"
           >
             {product.title}
           </h3>
@@ -121,7 +118,7 @@ export default function ProductCard({
       </div>
 
       {/* Footer Price & Action */}
-      <div className="mt-4 border-t border-[#DFCFA6]/50 px-1 pt-3.5">
+      <div className="mt-4 border-t border-[#E8DEC7] px-1 pt-3.5">
         <div className="flex items-center justify-between">
           <div>
             <span className="text-[10px] font-semibold text-[#8C827A] block uppercase tracking-wider">Artisan Direct</span>
@@ -135,13 +132,13 @@ export default function ProductCard({
               href={`https://wa.me/917667233182?text=Hi%20Atelier%20NP%2C%20I%20want%20to%20order%3A%20${encodeURIComponent(product.title)}%20%E2%80%94%20please%20confirm%20availability!`}
               target="_blank"
               rel="noreferrer"
-              className="rounded-full bg-[#141414] px-4 py-2 text-xs font-bold text-white transition-all duration-200 hover:bg-[#2C2C2C] flex items-center gap-1.5 shadow-sm"
+              className="rounded-full bg-[#141414] border border-[#D4AF37]/50 px-4 py-2 text-xs font-bold text-white transition-colors duration-150 hover:bg-[#251D0B] hover:border-[#D4AF37] hover:shadow-[0_0_12px_rgba(212,175,55,0.3)] flex items-center gap-1.5 shadow-xs"
             >
-              <MessageCircle className="h-3.5 w-3.5 stroke-[2.2]" /> Order Now
+              <MessageCircle className="h-3.5 w-3.5 stroke-[2.2] text-[#ECC872]" /> Order Now
             </a>
           </div>
         </div>
       </div>
-    </motion.article>
+    </article>
   )
 }

@@ -43,27 +43,27 @@ export default function Hero() {
 
   return (
     <section id="home" ref={ref} className={`section-shell pt-4 sm:pt-8 ${isVisible ? 'is-visible' : ''}`}>
-      <div className="reveal is-visible relative overflow-hidden rounded-[2.5rem] border border-[#E2D4B5]/60 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F5EED8]/80 p-6 sm:p-10 lg:p-14 shadow-[0_14px_40px_rgba(180,135,45,0.06)]">
-        {/* Subtle Light Golden Ambient Glow Spheres */}
-        <div className="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-[#F5E6C7]/30 blur-3xl pointer-events-none" />
-        <div className="absolute -right-20 top-1/4 h-80 w-80 rounded-full bg-[#FAF0D8]/40 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-[#F3E5C5]/30 blur-3xl pointer-events-none" />
+      <div className="reveal is-visible relative overflow-hidden rounded-[2.5rem] border border-[#D4AF37]/50 bg-gradient-to-b from-[#FFFDF8] via-[#FAF4E5] to-[#F7ECCF]/90 p-6 sm:p-10 lg:p-14 shadow-[0_18px_45px_rgba(184,134,11,0.10),0_0_25px_rgba(212,175,55,0.10)]">
+        {/* Radiant Warm Golden Ambient Glow Spheres */}
+        <div className="absolute -left-20 -top-20 h-80 w-80 rounded-full bg-[#F5DE98]/40 blur-3xl pointer-events-none" />
+        <div className="absolute -right-20 top-1/4 h-80 w-80 rounded-full bg-[#FAD97A]/35 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-[#E8C86A]/30 blur-3xl pointer-events-none" />
 
         <div className="relative grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
           {/* Text Content */}
           <div className="max-w-2xl">
             <div className="flex flex-wrap items-center gap-2.5">
               <span className="section-eyebrow">
-                <Sparkles className="h-3.5 w-3.5 text-[#141414]" /> Handcrafted With Soul
+                <Sparkles className="h-3.5 w-3.5 text-[#B8860B]" /> Handcrafted With Soul
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#DDD7CE] bg-white px-3.5 py-1 text-xs font-bold text-[#141414] shadow-sm">
-                <Users className="h-3.5 w-3.5 text-[#8C827A]" /> 240+ Verified Makers
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-[#D4AF37]/45 bg-gradient-to-r from-white to-[#FDF9EE] px-3.5 py-1 text-xs font-bold text-[#4D3605] shadow-xs">
+                <Users className="h-3.5 w-3.5 text-[#B8860B]" /> 240+ Verified Makers
               </span>
             </div>
 
             <h1 className="mt-6 text-5xl leading-[1.05] tracking-tight text-[#141414] sm:text-6xl lg:text-7xl font-serif font-bold">
               Where Art Meets <br />
-              <span className="italic font-normal text-[#141414]">
+              <span className="italic font-normal text-gold-gradient">
                 Imagination.
               </span>
             </h1>
@@ -86,13 +86,13 @@ export default function Hero() {
                 href="#customize"
                 className="btn-secondary py-4 px-7 text-sm font-bold tracking-wide"
               >
-                <Sparkles className="h-4 w-4 text-[#8C827A]" />
+                <Sparkles className="h-4 w-4 text-[#B8860B]" />
                 <span>Custom Craft Studio</span>
               </a>
             </div>
 
             {/* Social Proof Badges */}
-            <div className="mt-10 flex flex-wrap items-center gap-6 border-t border-[#E5E0D8] pt-6">
+            <div className="mt-10 flex flex-wrap items-center gap-6 border-t border-[#E8DCC2] pt-6">
               <div className="flex items-center gap-2">
                 <div className="flex -space-x-2">
                   {[
@@ -109,20 +109,20 @@ export default function Hero() {
                   ))}
                 </div>
                 <div className="text-xs">
-                  <div className="flex items-center gap-0.5 text-[#141414]">
+                  <div className="flex items-center gap-0.5 text-[#B8860B]">
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <Star key={i} className="h-3.5 w-3.5 fill-[#141414] text-[#141414]" />
+                      <Star key={i} className="h-3.5 w-3.5 fill-[#D4AF37] text-[#B8860B]" />
                     ))}
                   </div>
                   <p className="font-bold text-[#141414]">4.9/5 &#8226; 3,400+ Verified Reviews</p>
                 </div>
               </div>
 
-              <div className="hidden h-8 w-px bg-[#DDD7CE] sm:block" />
+              <div className="hidden h-8 w-px bg-[#E2D2B0] sm:block" />
 
               <div className="text-xs font-semibold text-[#5A554E]">
                 <p className="font-bold text-[#141414] flex items-center gap-1.5">
-                  <Leaf className="h-3.5 w-3.5 text-[#141414]" /> 100% Eco Packaging
+                  <Leaf className="h-3.5 w-3.5 text-[#855E0D]" /> 100% Eco Packaging
                 </p>
                 <p className="text-[#7A7369]">Biodegradable boxes & honeycomb wrap</p>
               </div>
@@ -132,43 +132,50 @@ export default function Hero() {
           {/* Interactive Floating Showcase */}
           <div className="relative mx-auto h-[460px] w-full max-w-[540px] lg:h-[520px]">
             {/* Center Artisan Ambient Disc */}
-            <div className="absolute inset-8 rounded-[3rem] bg-[#EFECE6] border border-[#DDD7CE] shadow-[0_8px_30px_rgba(0,0,0,0.03)]" />
+            <div className="absolute inset-8 rounded-[3rem] bg-gradient-to-br from-[#FAF5E8] to-[#F5EBD0] border border-[#D4AF37]/45 shadow-[0_8px_30px_rgba(184,134,11,0.08)]" />
 
             {/* Showcase Floating Cards */}
             {showcaseItems.map((item, idx) => (
-              <motion.div
+              <div
                 key={item.title}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: idx * 0.15 }}
-                className={`absolute overflow-hidden rounded-[2rem] border border-[#E2D4B5]/70 bg-gradient-to-b from-white via-[#FCF9F1] to-[#FAF3E2] p-2.5 shadow-[0_12px_32px_rgba(180,135,45,0.08)] transition duration-300 hover:scale-105 hover:border-[#D4AF37] ${item.className}`}
+                className={`absolute ${item.className}`}
               >
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[1.4rem]">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    onError={(e) => {
-                      e.currentTarget.src = fallbackCraftImage
-                    }}
-                    className="h-full w-full object-cover"
-                  />
-                  <div className="absolute inset-x-2 bottom-2 flex items-center justify-between rounded-full bg-white/95 border border-[#E2D4B5] px-3 py-1.5 text-[10px] font-bold text-[#141414] shadow-sm backdrop-blur-md">
-                    <span className="truncate max-w-[90px]">{item.title}</span>
-                    <span className="text-[#141414] font-black">{item.price}</span>
+                <motion.div
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.45, delay: idx * 0.12, ease: 'easeOut' }}
+                  whileHover={{ scale: 1.04 }}
+                  className="overflow-hidden rounded-[2rem] border border-[#D4AF37]/60 bg-gradient-to-b from-white via-[#FCF8EE] to-[#F7ECCF] p-2.5 shadow-[0_14px_36px_rgba(184,134,11,0.14),0_0_15px_rgba(212,175,55,0.12)] transition-colors duration-200 hover:border-[#D4AF37]"
+                >
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-[1.4rem]">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      onError={(e) => {
+                        e.currentTarget.src = fallbackCraftImage
+                      }}
+                      className="h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-x-2 bottom-2 flex items-center justify-between rounded-full bg-white/95 border border-[#D4AF37]/50 px-3 py-1.5 text-[10px] font-bold text-[#141414] shadow-sm">
+                      <span className="truncate max-w-[90px]">{item.title}</span>
+                      <span className="text-[#9E7314] font-black">{item.price}</span>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              </div>
             ))}
 
             {/* Floating Center Pill */}
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#E2D4B5] bg-gradient-to-b from-white to-[#FAF5E8] px-6 py-4 text-center shadow-[0_10px_30px_rgba(180,135,45,0.10)] backdrop-blur-2xl animate-floaty">
-              <div className="flex items-center gap-3">
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-[#141414] text-white font-black text-sm">
-                  ★
-                </span>
-                <div className="text-left">
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-[#8C827A]">Limited Drop</p>
-                  <p className="font-serif text-lg font-bold text-[#141414]">Spring Artisan Edition</p>
+            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 pointer-events-none">
+              <div className="rounded-full border border-[#D4AF37]/75 bg-gradient-to-b from-white via-[#FFFDF8] to-[#FAF3DE] px-6 py-4 text-center shadow-[0_12px_36px_rgba(184,134,11,0.20),0_0_20px_rgba(212,175,55,0.25)] animate-floaty">
+                <div className="flex items-center gap-3">
+                  <span className="grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-[#241A06] to-[#141414] border border-[#D4AF37]/60 text-[#ECC872] font-black text-sm shadow-xs">
+                    ★
+                  </span>
+                  <div className="text-left">
+                    <p className="text-[10px] font-bold uppercase tracking-widest text-[#946B08]">Limited Drop</p>
+                    <p className="font-serif text-lg font-bold text-[#141414]">Spring Artisan Edition</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -176,7 +183,7 @@ export default function Hero() {
         </div>
 
         {/* Value Perks Row */}
-        <div className="mt-12 grid grid-cols-2 gap-3.5 border-t border-[#E2D4B5]/60 pt-8 sm:grid-cols-4">
+        <div className="mt-12 grid grid-cols-2 gap-3.5 border-t border-[#E8DCC2] pt-8 sm:grid-cols-4">
           {[
             { icon: HeartHandshake, title: 'Direct from Makers', desc: 'Zero middlemen markup' },
             { icon: Sparkles, title: 'Bespoke Customization', desc: 'Engraving & color choices' },
@@ -185,10 +192,10 @@ export default function Hero() {
           ].map((perk, i) => (
             <div
               key={i}
-              className="flex items-center gap-3 rounded-2xl border border-[#E2D4B5]/60 bg-gradient-to-b from-white to-[#FAF6ED] p-3.5 shadow-sm transition-all duration-300 hover:border-[#D4AF37]/70 hover:shadow-md"
+              className="flex items-center gap-3 rounded-2xl border border-[#D4AF37]/45 bg-gradient-to-b from-white via-[#FCF9EE] to-[#FAF4E2] p-3.5 shadow-xs transition-[border-color,box-shadow] duration-200 ease-out hover:border-[#D4AF37] hover:shadow-[0_8px_20px_rgba(184,134,11,0.12)]"
             >
-              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#EFECE6] border border-[#DDD7CE] text-[#141414]">
-                <perk.icon className="h-5 w-5 text-[#141414]" />
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-[#FAF4E2] to-[#F5E8C4] border border-[#D4AF37]/40 text-[#8F650D]">
+                <perk.icon className="h-5 w-5 text-[#8F650D]" />
               </div>
               <div>
                 <p className="text-xs font-bold text-[#141414]">{perk.title}</p>

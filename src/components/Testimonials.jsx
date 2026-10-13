@@ -42,22 +42,22 @@ export default function Testimonials() {
         {/* Editorial Featured Quote (Matching top-left of reference image) */}
         <div className="mx-auto max-w-4xl text-center px-4 space-y-4">
           <div className="flex justify-center">
-            <Quote className="h-10 w-10 text-[#DDD7CE] rotate-180" />
+            <Quote className="h-10 w-10 text-[#D4AF37]/60 rotate-180" />
           </div>
           <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight text-[#141414] leading-snug uppercase">
             &ldquo;Each piece feels meaningful, intentional, and full of heart. The craftsmanship is both beautiful and inspiring.&rdquo;
           </blockquote>
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#8C827A]">
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#9E7A2E]">
             Emma Thompson &#8226; Interior Designer
           </p>
         </div>
 
         <div className="mx-auto max-w-2xl text-center pt-6">
           <span className="section-eyebrow">
-            <Heart className="h-3.5 w-3.5 text-[#141414]" /> Collector Love
+            <Heart className="h-3.5 w-3.5 text-[#B8860B]" /> Collector Love
           </span>
           <h2 className="mt-3 text-3xl sm:text-4xl text-[#141414] font-serif font-bold">
-            Loved by Handmade Lovers Worldwide
+            Loved by Handmade <span className="italic font-normal text-gold-gradient">Lovers Worldwide</span>
           </h2>
           <p className="mx-auto mt-3 text-sm leading-relaxed text-[#5A554E]">
             Read authentic reviews from collectors who cherish thoughtful artisan craftsmanship.
@@ -68,17 +68,17 @@ export default function Testimonials() {
           {TESTIMONIALS_DATA.map((t, idx) => (
             <article
               key={idx}
-              className="flex flex-col justify-between rounded-[2rem] border border-[#DFCFA6]/60 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F5EEDC]/80 p-6 sm:p-7 shadow-[0_8px_24px_rgba(180,135,45,0.06)] transition-all duration-300 hover:border-[#D4AF37]/70 hover:shadow-md"
+              className="flex flex-col justify-between rounded-[2rem] border border-[#D4AF37]/50 bg-gradient-to-b from-[#FFFDF8] via-[#FAF5E8] to-[#F7ECCF]/80 p-6 sm:p-7 shadow-[0_10px_28px_rgba(184,134,11,0.08),0_0_12px_rgba(212,175,55,0.08)] transition-[border-color,box-shadow] duration-200 ease-out hover:border-[#D4AF37] hover:shadow-[0_16px_36px_rgba(184,134,11,0.18),0_0_20px_rgba(212,175,55,0.22)]"
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <div className="flex text-[#141414]">
+                  <div className="flex text-[#D4AF37]">
                     {Array.from({ length: t.rating }).map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-[#141414]" />
+                      <Star key={i} className="h-4 w-4 fill-[#D4AF37] text-[#B8860B]" />
                     ))}
                   </div>
-                  <span className="flex items-center gap-1 rounded-full bg-[#FAF5E8] border border-[#DFCFA6]/60 px-2.5 py-0.5 text-[10px] font-bold text-[#141414]">
-                    <CheckCircle2 className="h-3 w-3 text-[#141414]" /> Verified Purchase
+                  <span className="flex items-center gap-1 rounded-full bg-white/95 border border-[#D4AF37]/50 px-2.5 py-0.5 text-[10px] font-bold text-[#735206] shadow-xs">
+                    <CheckCircle2 className="h-3 w-3 text-[#B8860B]" /> Verified Purchase
                   </span>
                 </div>
 
@@ -92,7 +92,7 @@ export default function Testimonials() {
                   <img
                     src={t.avatar}
                     alt={t.name}
-                    className="h-11 w-11 rounded-full border border-[#DDD7CE] object-cover shadow-sm"
+                    className="h-11 w-11 rounded-full border border-[#D4AF37]/50 object-cover shadow-sm"
                   />
                   <div>
                     <h4 className="font-serif text-lg font-bold text-[#141414]">{t.name}</h4>
@@ -100,7 +100,7 @@ export default function Testimonials() {
                   </div>
                 </div>
                 {t.craft && (
-                  <span className="hidden sm:inline-block rounded-full bg-[#FAF8F5] border border-[#DDD7CE] px-2.5 py-1 text-[10px] font-bold text-[#141414]">
+                  <span className="hidden sm:inline-block rounded-full bg-white/90 border border-[#D4AF37]/45 px-2.5 py-1 text-[10px] font-bold text-[#694806]">
                     {t.craft}
                   </span>
                 )}
