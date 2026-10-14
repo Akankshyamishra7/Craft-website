@@ -2,7 +2,7 @@ import { categories } from '../data/products'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 import ProductCard from './ProductCard'
 
-function ProductGrid({ products }) {
+function ProductGrid({ products }: { products: any[] }) {
   const { ref, isVisible } = useRevealOnScroll()
 
   return (

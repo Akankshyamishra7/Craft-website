@@ -618,7 +618,7 @@ export default function AdminPage() {
               <p className="mt-1 text-xs text-cocoa-muted">Currently active discounts available in store checkout</p>
 
               <div className="mt-5 space-y-3">
-                {Object.values(availableCoupons).map((c) => (
+                {Object.values(availableCoupons as Record<string, any>).map((c: any) => (
                   <div
                     key={c.code}
                     className="flex items-center justify-between rounded-2xl border border-white/[0.08] bg-white/[0.04] p-3.5 shadow-sm"

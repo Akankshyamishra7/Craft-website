@@ -1,11 +1,47 @@
-export const categories = [
+export interface Product {
+  id: number | string
+  title: string
+  price: string
+  category: string
+  image: string
+  badges?: string[]
+  description?: string
+  stock?: number
+  palette?: string
+  personalization?: string
+  rating?: number
+  reviewsCount?: number
+  isBestSeller?: boolean
+  isLimitedDrop?: boolean
+}
+
+export interface CategoryGroup {
+  title: string
+  badge: string
+  description: string
+  accent: string
+  image: string
+}
+
+export interface InspirationTile {
+  title: string
+  image: string
+}
+
+export interface Testimonial {
+  name: string
+  role: string
+  quote: string
+}
+
+export const categories: string[] = [
   'Handmade Jewelry',
   'DIY Home Decor & Crafts',
   'Beauty DIY Products',
   'Cute Handmade Accessories',
 ]
 
-export const categoryGroups = [
+export const categoryGroups: CategoryGroup[] = [
   {
     title: 'Handmade Jewelry',
     badge: 'Artisan Talisman',

@@ -1,9 +1,10 @@
 /* eslint-disable react-refresh/only-export-components */
 
+import type { Metadata } from 'next'
 import '../index.css'
 import { MarketplaceProvider } from '../context/MarketplaceContext'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Atelier NP | Luxury Handmade & Bespoke Craft Marketplace',
   description:
     'Discover genuine artisan handmade jewelry, pressed floral resin, clean aromatherapy soy candles, and bespoke custom crafts direct from independent creators.',
@@ -18,7 +19,7 @@ export const metadata = {
   ],
 }
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>

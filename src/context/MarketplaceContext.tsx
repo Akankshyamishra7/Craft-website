@@ -194,8 +194,8 @@ export function MarketplaceProvider({ children }) {
     })
   }
 
-  const addToCart = (product, quantity = 1, customization = null) => {
-    const safeQuantity = Math.max(1, Number.parseInt(quantity, 10) || 1)
+  const addToCart = (product: any, quantity: number | string = 1, customization: any = null) => {
+    const safeQuantity = Math.max(1, Math.floor(Number(quantity)) || 1)
     const cartItemId = customization ? `${product.id}-${Date.now()}` : product.id
 
     setCart((current) => {

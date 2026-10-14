@@ -1,4 +1,16 @@
-function Icon({ children, title, className = '' }) {
+import React from 'react'
+
+interface IconProps {
+  children?: React.ReactNode
+  title?: string
+  className?: string
+}
+
+interface BaseIconProps {
+  className?: string
+}
+
+function Icon({ children, title, className = '' }: IconProps) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -17,7 +29,7 @@ function Icon({ children, title, className = '' }) {
   )
 }
 
-export function SearchIcon({ className = '' }) {
+export function SearchIcon({ className = '' }: BaseIconProps) {
   return (
     <Icon title="Search" className={className}>
       <circle cx="11" cy="11" r="6.5" />
@@ -26,7 +38,7 @@ export function SearchIcon({ className = '' }) {
   )
 }
 
-export function CartIcon({ className = '' }) {
+export function CartIcon({ className = '' }: BaseIconProps) {
   return (
     <Icon title="Cart" className={className}>
       <path d="M5 6h2l1.25 8.25a2 2 0 0 0 2 1.75h6.8a2 2 0 0 0 2-1.58L20 9H8" />
@@ -36,7 +48,7 @@ export function CartIcon({ className = '' }) {
   )
 }
 
-export function HeartIcon({ className = '' }) {
+export function HeartIcon({ className = '' }: BaseIconProps) {
   return (
     <Icon title="Wishlist" className={className}>
       <path
@@ -48,16 +60,16 @@ export function HeartIcon({ className = '' }) {
   )
 }
 
-export function EyeIcon({ className = '' }) {
+export function EyeIcon({ className = '' }: BaseIconProps) {
   return (
     <Icon title="Quick view" className={className}>
-      <path d="M2.5 12s3.2-6 9.5-6 9.5 6 9.5 6-3.2 6-9.5 6-9.5-6-9.5-6Z" />
+      <path d="M2.5 12s3.2-6 9.5-6 9.5 6 9.5 6-3.2 6-9.5 6-9.5-6Z" />
       <circle cx="12" cy="12" r="2.5" />
     </Icon>
   )
 }
 
-export function MenuIcon({ className = '' }) {
+export function MenuIcon({ className = '' }: BaseIconProps) {
   return (
     <Icon title="Menu" className={className}>
       <path d="M4 7h16" />
@@ -67,7 +79,7 @@ export function MenuIcon({ className = '' }) {
   )
 }
 
-export function CloseIcon({ className = '' }) {
+export function CloseIcon({ className = '' }: BaseIconProps) {
   return (
     <Icon title="Close" className={className}>
       <path d="M6 6l12 12" />
@@ -76,7 +88,7 @@ export function CloseIcon({ className = '' }) {
   )
 }
 
-export function FacebookIcon({ className = '' }) {
+export function FacebookIcon({ className = '' }: BaseIconProps) {
   return (
     <Icon title="Facebook" className={className}>
       <path d="M14 8h2V5.5A2.5 2.5 0 0 0 13.5 3H12a4 4 0 0 0-4 4v1H5v3h3v10h4v-10h3l1-3z" />
@@ -84,7 +96,7 @@ export function FacebookIcon({ className = '' }) {
   )
 }
 
-export function InstagramIcon({ className = '' }) {
+export function InstagramIcon({ className = '' }: BaseIconProps) {
   return (
     <Icon title="Instagram" className={className}>
       <rect x="5" y="5" width="14" height="14" rx="4" />
@@ -94,7 +106,7 @@ export function InstagramIcon({ className = '' }) {
   )
 }
 
-export function PinterestIcon({ className = '' }) {
+export function PinterestIcon({ className = '' }: BaseIconProps) {
   return (
     <Icon title="Pinterest" className={className}>
       <path d="M12 3a9 9 0 0 0-3.2 17.4c-.1-.8-.2-2 .1-2.9l1.4-5.8s-.4-.8-.4-2c0-1.8 1-3.2 2.2-3.2 1 0 1.4.7 1.4 1.5 0 .9-.6 2.4-.9 3.8-.2 1.1.6 2 1.8 2 2.2 0 3.7-2.9 3.7-6.3C18.1 5.8 15.4 3 12 3z" />

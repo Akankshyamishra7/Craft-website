@@ -3,15 +3,27 @@
 import { Eye, Heart, MessageCircle, ShoppingBag, Star } from 'lucide-react'
 import { fallbackCraftImage } from '../utils/fallbackImage'
 
+import { Product } from '../data/products'
+
+export interface ProductCardProps {
+  product: Product | any
+  isWishlisted?: boolean
+  onWishlistToggle?: () => void
+  onQuickView?: () => void
+  onAddToCart?: (product: any, quantity?: number) => void
+  onBuyNow?: (product: any) => void
+  className?: string
+}
+
 export default function ProductCard({
   product,
-  isWishlisted,
+  isWishlisted = false,
   onWishlistToggle,
   onQuickView,
   onAddToCart,
   onBuyNow,
   className = '',
-}) {
+}: ProductCardProps) {
   const formattedPrice = product.price
     ? String(product.price).replace(/^[?,]/, '₹')
     : '₹999'
@@ -55,7 +67,7 @@ export default function ProductCard({
               aria-label={`Save ${product.title} to wishlist`}
               onClick={(e) => {
                 e.stopPropagation()
-                onWishlistToggle()
+                onWishlistToggle?.()
               }}
               className="grid h-9 w-9 place-items-center rounded-full border border-[#D4AF37]/50 bg-white/95 text-[#3D2C0A] shadow-xs backdrop-blur-md transition duration-200 hover:scale-110 hover:border-rose-500/50 hover:bg-rose-50 hover:text-rose-500"
             >
@@ -70,7 +82,7 @@ export default function ProductCard({
               aria-label={`Quick view ${product.title}`}
               onClick={(e) => {
                 e.stopPropagation()
-                onQuickView()
+                onQuickView?.()
               }}
               className="grid h-9 w-9 place-items-center rounded-full border border-[#D4AF37]/50 bg-white/95 text-[#3D2C0A] shadow-xs backdrop-blur-md transition duration-200 hover:scale-110 hover:border-[#D4AF37] hover:bg-white"
             >
@@ -82,7 +94,7 @@ export default function ProductCard({
           <div className="absolute inset-x-3 bottom-3 translate-y-2 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
             <button
               type="button"
-              onClick={() => onAddToCart(product, 1)}
+              onClick={() => onAddToCart?.(product, 1)}
               className="flex w-full items-center justify-center gap-2 rounded-full bg-[#141414] border border-[#D4AF37]/60 py-2.5 text-xs font-bold text-white shadow-[0_4px_14px_rgba(0,0,0,0.2),0_0_10px_rgba(212,175,55,0.22)] backdrop-blur-md transition hover:bg-[#251D0B] hover:border-[#D4AF37]"
             >
               <ShoppingBag className="h-3.5 w-3.5 stroke-[2.2] text-[#ECC872]" />
@@ -105,7 +117,7 @@ export default function ProductCard({
           </div>
 
           <h3
-            onClick={onQuickView}
+            onClick={() => onQuickView?.()}
             className="mt-1 cursor-pointer truncate font-serif text-xl font-bold text-[#141414] transition hover:text-[#946B08]"
           >
             {product.title}

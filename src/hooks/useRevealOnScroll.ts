@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
-export function useRevealOnScroll() {
-  const ref = useRef(null)
+export function useRevealOnScroll<T extends HTMLElement = HTMLElement>() {
+  const ref = useRef<T | null>(null)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {

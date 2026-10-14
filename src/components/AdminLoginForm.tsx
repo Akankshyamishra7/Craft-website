@@ -13,7 +13,7 @@ import {
   Sparkles,
 } from 'lucide-react'
 
-export default function AdminLoginForm({ onLoginSuccess }) {
+export default function AdminLoginForm({ onLoginSuccess }: { onLoginSuccess?: () => void } = {}) {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)

@@ -2,7 +2,21 @@
 
 import ProductCard from './ProductCard'
 
-function CategorySection({ category, products, wishlistedIds, onWishlistToggle, onQuickView }) {
+interface CategorySectionProps {
+  category: any
+  products: any[]
+  wishlistedIds: Set<any> | any
+  onWishlistToggle: (id: any) => void
+  onQuickView: (product: any) => void
+}
+
+function CategorySection({
+  category,
+  products,
+  wishlistedIds,
+  onWishlistToggle,
+  onQuickView,
+}: CategorySectionProps) {
   return (
     <section className="soft-card overflow-hidden p-5 sm:p-6 lg:p-8">
       <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
