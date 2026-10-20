@@ -4,8 +4,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
-        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Playfair Display', 'Cormorant Garamond', 'Georgia', 'serif'],
+        sans: ['var(--font-sans)', 'Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
+        display: ['var(--font-display)', 'Cinzel', 'Playfair Display', 'serif'],
       },
       boxShadow: {
         soft: '0 8px 24px -10px rgba(20, 20, 20, 0.06)',

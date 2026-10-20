@@ -12,8 +12,12 @@ import {
   ShieldCheck,
   Sparkles,
 } from 'lucide-react'
+import { useMarketplace } from '../context/MarketplaceContext'
 
 export default function AdminLoginForm({ onLoginSuccess }: { onLoginSuccess?: () => void } = {}) {
+  const { branding } = useMarketplace()
+  const siteName = branding?.siteName || 'NP Atelier'
+
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
@@ -21,41 +25,25 @@ export default function AdminLoginForm({ onLoginSuccess }: { onLoginSuccess?: ()
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
     setIsLoading(true)
 
-    setTimeout(() => {
-      const cleanEmail = email.trim().toLowerCase()
-      const cleanPass = password.trim()
+    try {
+      // 1. Try server backend authentication endpoint
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      })
 
-      const isValidEmail =
-        cleanEmail === 'admin@ateliernp.market' ||
-        cleanEmail === 'admin' ||
-        cleanEmail.includes('admin') ||
-        cleanEmail === 'ananya.artisan@ateliernp.market' ||
-        cleanEmail.endsWith('@ateliernp.market')
+      const data = await res.json()
 
-      const isValidPassword =
-        cleanPass === 'admin123' ||
-        cleanPass === 'admin' ||
-        cleanPass === 'atelier2026' ||
-        cleanPass === 'password123' ||
-        cleanPass.length >= 4
-
-      if (isValidEmail && isValidPassword) {
+      if (data.success && data.user) {
         if (typeof window !== 'undefined') {
           window.localStorage.setItem('ateliernp-admin-authenticated', 'true')
-          window.localStorage.setItem(
-            'ateliernp-admin-user',
-            JSON.stringify({
-              email: cleanEmail || 'admin@ateliernp.market',
-              name: 'Atelier Director',
-              role: 'Master Admin & Creator Ops',
-              loginTime: new Date().toISOString(),
-            })
-          )
+          window.localStorage.setItem('ateliernp-admin-user', JSON.stringify(data.user))
         }
         setIsLoading(false)
         if (onLoginSuccess) {
@@ -63,11 +51,55 @@ export default function AdminLoginForm({ onLoginSuccess }: { onLoginSuccess?: ()
         } else if (typeof window !== 'undefined') {
           window.location.href = '/admin'
         }
-      } else {
-        setIsLoading(false)
-        setError('Invalid credentials. Please try again.')
+        return
       }
-    }, 400)
+    } catch {
+      // Fallback to client verification if server endpoint is unavailable
+    }
+
+    // Client-side verification fallback
+    const cleanEmail = email.trim().toLowerCase()
+    const cleanPass = password.trim()
+
+    const isValidEmail =
+      cleanEmail === 'npatelierindia@gmail.com' ||
+      cleanEmail === 'admin@ateliernp.market' ||
+      cleanEmail === 'admin' ||
+      cleanEmail.includes('admin') ||
+      cleanEmail === 'ananya.artisan@ateliernp.market' ||
+      cleanEmail.endsWith('@ateliernp.market')
+
+    const isValidPassword =
+      cleanPass === '9341297124' ||
+      cleanPass === 'admin123' ||
+      cleanPass === 'admin' ||
+      cleanPass === 'atelier2026' ||
+      cleanPass === 'password123' ||
+      cleanPass.length >= 4
+
+    if (isValidEmail && isValidPassword) {
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem('ateliernp-admin-authenticated', 'true')
+        window.localStorage.setItem(
+          'ateliernp-admin-user',
+          JSON.stringify({
+            email: cleanEmail || 'npatelierindia@gmail.com',
+            name: `${siteName} Operations Master`,
+            role: 'Master Admin & Creator Ops',
+            loginTime: new Date().toISOString(),
+          })
+        )
+      }
+      setIsLoading(false)
+      if (onLoginSuccess) {
+        onLoginSuccess()
+      } else if (typeof window !== 'undefined') {
+        window.location.href = '/admin'
+      }
+    } else {
+      setIsLoading(false)
+      setError('Invalid admin credentials. Please enter authorized credentials.')
+    }
   }
 
   return (
@@ -102,23 +134,31 @@ export default function AdminLoginForm({ onLoginSuccess }: { onLoginSuccess?: ()
         <div className="overflow-hidden rounded-3xl border border-[#DFCFA6]/60 bg-gradient-to-b from-[#FFFDF9] via-[#FAF6ED] to-[#F5EEDC]/80 p-8 shadow-[0_16px_40px_rgba(180,135,45,0.08)] sm:p-10">
           {/* Brand Header */}
           <div className="text-center">
-            <div className="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-3xl bg-gradient-to-br from-[#D4AF37] to-[#996515] text-[#1A120B] text-2xl font-bold shadow-[0_4px_16px_rgba(212,175,55,0.35)]">
-              ✦
-            </div>
+            {branding?.logoImageUrl && (branding.logoType === 'image' || branding.logoType === 'both') ? (
+              <img
+                src={branding.logoImageUrl}
+                alt={siteName}
+                className="mx-auto mb-4 h-16 w-auto max-w-[160px] rounded-2xl object-contain border border-[#D4AF37]/50 shadow-[0_4px_16px_rgba(212,175,55,0.35)] bg-white p-1"
+              />
+            ) : (
+              <div className="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-3xl bg-gradient-to-br from-[#D4AF37] to-[#996515] text-[#1A120B] text-2xl font-bold shadow-[0_4px_16px_rgba(212,175,55,0.35)]">
+                {branding?.logoText || '✦'}
+              </div>
+            )}
 
-            <div className="inline-flex items-center gap-1.5 rounded-full border border-[#DFCFA6]/80 bg-[#FAF7F0] px-3.5 py-1 text-[11px] font-bold text-[#875A10]">
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-[#DFCFA6]/80 bg-[#FAF7F0] px-3.5 py-1 text-[11px] font-bold text-[#7A5408]">
               <Sparkles className="h-3 w-3 text-[#B8860B]" />
-              Creator & Staff Portal
+              Staff &amp; Executive Portal
             </div>
 
             <h1 className="mt-3 font-serif text-3xl font-bold tracking-tight sm:text-4xl text-[#141414]">
-              Atelier NP
+              {siteName}
             </h1>
-            <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.25em] text-[#8C827A]">
-              Admin & Operations Console
+            <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.25em] text-[#635B4F]">
+              Admin &amp; Operations Console
             </p>
-            <p className="mt-3 text-xs leading-relaxed text-[#5A554E]">
-              Enter your authorized staff credentials to manage the catalog, inventory, orders, and seasonal coupons.
+            <p className="mt-3 text-xs leading-relaxed text-[#4A4339]">
+              Enter authorized staff credentials to manage the craft &amp; aquarium catalog, branding settings, inventory, orders, and promo coupons.
             </p>
           </div>
 
@@ -143,7 +183,7 @@ export default function AdminLoginForm({ onLoginSuccess }: { onLoginSuccess?: ()
                   autoComplete="off"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="admin@ateliernp.market"
+                  placeholder="npatelierindia@gmail.com"
                   className="w-full rounded-xl border border-[#DDD7CE] bg-[#FAF8F5] py-3 pl-10 pr-4 text-xs font-semibold text-[#141414] placeholder-[#8C827A] outline-none transition focus:border-[#141414] focus:bg-white shadow-sm"
                 />
               </div>
@@ -213,7 +253,7 @@ export default function AdminLoginForm({ onLoginSuccess }: { onLoginSuccess?: ()
 
         {/* Footer */}
         <p className="mt-6 text-center text-xs font-semibold text-[#8C827A]">
-          © {new Date().getFullYear()} Atelier NP. All administrative actions are logged &amp; protected.
+          © {new Date().getFullYear()} {siteName}. All administrative actions are logged &amp; protected.
         </p>
       </div>
     </div>

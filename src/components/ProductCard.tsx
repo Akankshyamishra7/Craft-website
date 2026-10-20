@@ -106,24 +106,29 @@ export default function ProductCard({
         {/* Product Details */}
         <div className="mt-3.5 px-1">
           <div className="flex items-center justify-between gap-2">
-            <span className="text-[11px] font-bold uppercase tracking-wider text-[#9E7314]">
+            <span
+              className={`text-[11px] font-bold uppercase tracking-[0.16em] ${
+                product.department === 'aquarium' ? 'text-teal-800' : 'text-[#7A5408]'
+              }`}
+            >
               {product.category}
             </span>
             <div className="flex items-center gap-1">
               <Star className="h-3.5 w-3.5 fill-[#D4AF37] text-[#B8860B]" />
               <span className="text-xs font-bold text-[#141414]">{product.rating ?? '4.9'}</span>
-              <span className="text-[10px] text-[#7A7369]">({product.reviews ?? 48})</span>
+              <span className="text-[10px] text-[#6B6357]">({product.reviews ?? 48})</span>
             </div>
           </div>
 
           <h3
             onClick={() => onQuickView?.()}
-            className="mt-1 cursor-pointer truncate font-serif text-xl font-bold text-[#141414] transition hover:text-[#946B08]"
+            className="mt-1.5 cursor-pointer truncate font-serif text-lg sm:text-xl font-bold tracking-tight text-[#141414] transition-colors duration-200 hover:text-[#7A5408]"
+            title={product.title}
           >
             {product.title}
           </h3>
 
-          <p className="mt-1 line-clamp-2 text-xs leading-5 text-[#5A554E]">
+          <p className="mt-1 line-clamp-2 text-xs leading-relaxed text-[#524B40]">
             {product.description}
           </p>
         </div>
@@ -133,18 +138,26 @@ export default function ProductCard({
       <div className="mt-4 border-t border-[#E8DEC7] px-1 pt-3.5">
         <div className="flex items-center justify-between">
           <div>
-            <span className="text-[10px] font-semibold text-[#8C827A] block uppercase tracking-wider">Artisan Direct</span>
-            <p className="text-xl font-extrabold text-[#141414]">
+            <span
+              className={`text-[10px] font-bold block uppercase tracking-wider ${
+                product.department === 'aquarium' ? 'text-teal-800' : 'text-[#756C5E]'
+              }`}
+            >
+              {product.department === 'aquarium' ? 'Aquatics Direct' : 'Artisan Direct'}
+            </span>
+            <p className="text-xl font-extrabold text-[#141414] tracking-tight">
               {formattedPrice}
             </p>
           </div>
 
           <div className="flex gap-1.5">
             <a
-              href={`https://wa.me/917667233182?text=Hi%20Atelier%20NP%2C%20I%20want%20to%20order%3A%20${encodeURIComponent(product.title)}%20%E2%80%94%20please%20confirm%20availability!`}
+              href={`https://wa.me/919341297124?text=Hi%20NP%20Atelier%2C%20I%20want%20to%20order%3A%20${encodeURIComponent(
+                product.title
+              )}%20%E2%80%94%20please%20confirm%20availability!`}
               target="_blank"
               rel="noreferrer"
-              className="rounded-full bg-[#141414] border border-[#D4AF37]/50 px-4 py-2 text-xs font-bold text-white transition-colors duration-150 hover:bg-[#251D0B] hover:border-[#D4AF37] hover:shadow-[0_0_12px_rgba(212,175,55,0.3)] flex items-center gap-1.5 shadow-xs"
+              className="rounded-full bg-[#141414] border border-[#D4AF37]/50 px-4 py-2 text-xs font-semibold text-white transition-all duration-200 hover:bg-[#251D0B] hover:border-[#D4AF37] hover:shadow-[0_0_14px_rgba(212,175,55,0.3)] active:scale-95 flex items-center gap-1.5 shadow-xs"
             >
               <MessageCircle className="h-3.5 w-3.5 stroke-[2.2] text-[#ECC872]" /> Order Now
             </a>

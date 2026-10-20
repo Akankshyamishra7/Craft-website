@@ -1,26 +1,56 @@
 "use client"
 
 import { createContext, useContext, useEffect, useMemo, useState, useCallback } from 'react'
-import { handmadeProducts } from '../data/products'
+import {
+  allInitialProducts,
+  aquariumCategories,
+  craftCategories,
+  Product,
+} from '../data/products'
 
-const MarketplaceContext = createContext(null)
+export interface BrandingSettings {
+  siteName: string
+  tagline: string
+  logoType: 'icon' | 'image' | 'both'
+  logoText: string
+  logoImageUrl: string
+  announcementText: string
+  contactEmail: string
+  contactPhone: string
+  currency: string
+}
+
+export const DEFAULT_BRANDING: BrandingSettings = {
+  siteName: 'NP Atelier',
+  tagline: 'Luxury Crafts & Exotic Aquatics',
+  logoType: 'icon',
+  logoText: 'NP',
+  logoImageUrl: '',
+  announcementText: 'Handcrafted Artisan Drops & Exotic Aquatics Live • Code ATELIER10 for 10% off',
+  contactEmail: 'npatelierindia@gmail.com',
+  contactPhone: '+91 93412 97124',
+  currency: '₹',
+}
+
+const MarketplaceContext = createContext<any>(null)
 
 const STORAGE_KEYS = {
   auth: 'ateliernp-auth-user-v1',
   cart: 'ateliernp-cart-v1',
   wishlist: 'ateliernp-wishlist-v1',
-  products: 'ateliernp-products-v3',
-  orders: 'ateliernp-orders-v1',
+  products: 'ateliernp-products-v4',
+  orders: 'ateliernp-orders-v2',
   coupons: 'ateliernp-coupons-v1',
+  branding: 'ateliernp-branding-v2',
 }
 
 const DEFAULT_COUPONS = {
-  ATELIER10: { code: 'ATELIER10', type: 'percent', value: 10, label: '10% Off Atelier Drop' },
-  CRAFTY10: { code: 'CRAFTY10', type: 'percent', value: 10, label: '10% Off Artisan Drop' },
+  ATELIER10: { code: 'ATELIER10', type: 'percent', value: 10, label: '10% Off Atelier & Aquatics Drop' },
+  AQUA15: { code: 'AQUA15', type: 'percent', value: 15, label: '15% Off Fish & Aquarium Gear' },
+  CRAFTY10: { code: 'CRAFTY10', type: 'percent', value: 10, label: '10% Off Artisan Crafts' },
   HANDMADE20: { code: 'HANDMADE20', type: 'percent', value: 20, label: '20% Off Spring Sale' },
   FREESHIP: { code: 'FREESHIP', type: 'shipping', value: 0, label: 'Free Delivery Across India' },
   WELCOME150: { code: 'WELCOME150', type: 'fixed', value: 150, label: '₹150 Off First Order' },
-  WELCOME5: { code: 'WELCOME5', type: 'fixed', value: 150, label: '₹150 Off First Order' },
 }
 
 const SEED_ORDERS = [
@@ -28,36 +58,72 @@ const SEED_ORDERS = [
     orderId: 'CRFT-849201',
     date: 'Aug 24, 2026',
     items: [
-      { id: 1, title: 'Silk Thread Bangles', price: '₹499', quantity: 2, image: 'https://images.unsplash.com/photo-1617038220319-276d3cfab638?auto=format&fit=crop&w=800&q=80', category: 'Handmade Jewelry' },
-      { id: 9, title: 'Scented Candles', price: '₹449', quantity: 1, image: 'https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=800&q=80', category: 'DIY Home Decor & Crafts' },
+      {
+        id: 1,
+        title: 'Atelier NP Sea Life DIY Paint Kit',
+        price: '₹449',
+        quantity: 2,
+        image: '/products/atelier-diy-paint-kit-sea.jpg',
+        category: 'Beauty DIY Products',
+        department: 'crafts',
+      },
+      {
+        id: 102,
+        title: 'Samurai Koi Halfmoon Plakat Betta (Show Grade)',
+        price: '₹899',
+        quantity: 1,
+        image: 'https://images.unsplash.com/photo-1522069169874-c58ec4b76be5?auto=format&fit=crop&w=800&q=80',
+        category: 'Live Freshwater Fish',
+        department: 'aquarium',
+      },
     ],
-    subtotal: 1447,
-    discount: 145,
+    subtotal: 1797,
+    discount: 180,
     shipping: 0,
     giftWrap: 49,
-    total: 1351,
-    customer: { fullName: 'Pooja Verma', email: 'pooja.verma@example.in', city: 'Bengaluru, Karnataka', phone: '+91 98765 43210' },
-    status: 'Handcrafting & Packing',
+    total: 1666,
+    customer: {
+      fullName: 'Pooja Verma',
+      email: 'pooja.verma@example.in',
+      city: 'Bengaluru, Karnataka',
+      phone: '+91 98765 43210',
+      address: '42 Lotus Boulevard, Indiranagar',
+    },
+    status: 'Aquatic Packing & Oxygenation',
     estimatedDelivery: 'Aug 29, 2026',
   },
   {
     orderId: 'CRFT-773194',
     date: 'Aug 23, 2026',
     items: [
-      { id: 2, title: 'Resin Earrings', price: '₹649', quantity: 1, image: 'https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=800&q=80', category: 'Handmade Jewelry' },
+      {
+        id: 105,
+        title: 'Ultra-Clear Rimless 60P Low-Iron Glass Aquarium (64 Liters)',
+        price: '₹4,499',
+        quantity: 1,
+        image: 'https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=800&q=80',
+        category: 'Aquariums & Nano Tanks',
+        department: 'aquarium',
+      },
     ],
-    subtotal: 649,
+    subtotal: 4499,
     discount: 0,
     shipping: 0,
     giftWrap: 0,
-    total: 649,
-    customer: { fullName: 'Rohan Mehra', email: 'rohan.mehra@example.in', city: 'Mumbai, Maharashtra', phone: '+91 98200 12345' },
-    status: 'Shipped',
+    total: 4499,
+    customer: {
+      fullName: 'Rohan Mehra',
+      email: 'rohan.mehra@example.in',
+      city: 'Mumbai, Maharashtra',
+      phone: '+91 98200 12345',
+      address: '15 Sea View Apartments, Bandra West',
+    },
+    status: 'Shipped (Express Courier)',
     estimatedDelivery: 'Aug 27, 2026',
   },
 ]
 
-function safeReadStorage(key, fallbackValue) {
+function safeReadStorage<T>(key: string, fallbackValue: T): T {
   if (typeof window === 'undefined') {
     return fallbackValue
   }
@@ -66,17 +132,18 @@ function safeReadStorage(key, fallbackValue) {
     const storedValue = window.localStorage.getItem(key)
     if (!storedValue) return fallbackValue
     const parsed = JSON.parse(storedValue)
-    // If it's a product array, ensure any stale '$' is cleaned to '₹' and missing flagship products are included
+
+    // Ensure all products include missing seed items and clean currency
     if (Array.isArray(parsed) && key === STORAGE_KEYS.products) {
-      const storedIds = new Set(parsed.map((p) => p.id))
-      const missingDefaults = handmadeProducts.filter((hp) => !storedIds.has(hp.id))
+      const storedIds = new Set(parsed.map((p) => String(p.id)))
+      const missingDefaults = allInitialProducts.filter((p) => !storedIds.has(String(p.id)))
       const combined = [...missingDefaults, ...parsed]
       return combined.map((p) => ({
         ...p,
         price: typeof p.price === 'string' && p.price.includes('$')
           ? p.price.replace('$', '₹')
           : p.price,
-      }))
+      })) as unknown as T
     }
     return parsed
   } catch {
@@ -93,15 +160,17 @@ function buildAvatar(name = '') {
     .join('')
 }
 
-export function MarketplaceProvider({ children }) {
-  const [products, setProducts] = useState(() => safeReadStorage(STORAGE_KEYS.products, handmadeProducts))
-  const [cart, setCart] = useState(() => safeReadStorage(STORAGE_KEYS.cart, []))
-  const [wishlist, setWishlist] = useState(() => safeReadStorage(STORAGE_KEYS.wishlist, [1, 2, 9]))
-  const [user, setUser] = useState(() => safeReadStorage(STORAGE_KEYS.auth, null))
-  const [orders, setOrders] = useState(() => safeReadStorage(STORAGE_KEYS.orders, SEED_ORDERS))
-  const [availableCoupons, setAvailableCoupons] = useState(() => safeReadStorage(STORAGE_KEYS.coupons, DEFAULT_COUPONS))
-  const [appliedCoupon, setAppliedCoupon] = useState(null)
+export function MarketplaceProvider({ children }: { children: React.ReactNode }) {
+  const [branding, setBranding] = useState<BrandingSettings>(DEFAULT_BRANDING)
+  const [products, setProducts] = useState<Product[]>(allInitialProducts)
+  const [cart, setCart] = useState<any[]>([])
+  const [wishlist, setWishlist] = useState<any[]>([1, 102, 105])
+  const [user, setUser] = useState<any>(null)
+  const [orders, setOrders] = useState<any[]>(SEED_ORDERS)
+  const [availableCoupons, setAvailableCoupons] = useState<any>(DEFAULT_COUPONS)
+  const [appliedCoupon, setAppliedCoupon] = useState<any>(null)
   const [isGiftWrap, setIsGiftWrap] = useState(false)
+  const [activeDepartment, setActiveDepartment] = useState<'all' | 'crafts' | 'aquarium'>('all')
 
   // Drawer / Modal toggles
   const [isCartOpen, setIsCartOpen] = useState(false)
@@ -112,9 +181,9 @@ export function MarketplaceProvider({ children }) {
   const [isQuickSearchOpen, setIsQuickSearchOpen] = useState(false)
 
   // Toasts
-  const [toasts, setToasts] = useState([])
+  const [toasts, setToasts] = useState<any[]>([])
 
-  const showToast = useCallback(({ title, message, type = 'info' }) => {
+  const showToast = useCallback(({ title, message, type = 'info' }: { title: string; message: string; type?: string }) => {
     const id = Date.now() + Math.random().toString(36).substring(2, 6)
     setToasts((current) => [...current, { id, title, message, type }])
 
@@ -123,40 +192,155 @@ export function MarketplaceProvider({ children }) {
     }, 4000)
   }, [])
 
-  const removeToast = useCallback((id) => {
+  const removeToast = useCallback((id: string | number) => {
     setToasts((current) => current.filter((t) => t.id !== id))
   }, [])
 
+  // Sync state to local storage
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEYS.products, JSON.stringify(products))
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(STORAGE_KEYS.branding, JSON.stringify(branding))
+      document.title = `${branding.siteName} | ${branding.tagline}`
+    }
+  }, [branding])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(STORAGE_KEYS.products, JSON.stringify(products))
+    }
   }, [products])
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(cart))
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(STORAGE_KEYS.cart, JSON.stringify(cart))
+    }
   }, [cart])
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEYS.wishlist, JSON.stringify(wishlist))
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(STORAGE_KEYS.wishlist, JSON.stringify(wishlist))
+    }
   }, [wishlist])
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEYS.orders, JSON.stringify(orders))
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(STORAGE_KEYS.orders, JSON.stringify(orders))
+    }
   }, [orders])
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEYS.coupons, JSON.stringify(availableCoupons))
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(STORAGE_KEYS.coupons, JSON.stringify(availableCoupons))
+    }
   }, [availableCoupons])
 
   useEffect(() => {
-    if (user) {
-      window.localStorage.setItem(STORAGE_KEYS.auth, JSON.stringify(user))
-    } else {
-      window.localStorage.removeItem(STORAGE_KEYS.auth)
+    if (typeof window !== 'undefined') {
+      if (user) {
+        window.localStorage.setItem(STORAGE_KEYS.auth, JSON.stringify(user))
+      } else {
+        window.localStorage.removeItem(STORAGE_KEYS.auth)
+      }
     }
   }, [user])
 
+  // Hydrate from localStorage on client mount, then sync with backend API
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const storedBranding = safeReadStorage<BrandingSettings | null>(STORAGE_KEYS.branding, null)
+      if (storedBranding && storedBranding.siteName) {
+        setBranding(storedBranding)
+      }
+
+      const storedCart = safeReadStorage<any[] | null>(STORAGE_KEYS.cart, null)
+      if (storedCart) setCart(storedCart)
+
+      const storedWishlist = safeReadStorage<any[] | null>(STORAGE_KEYS.wishlist, null)
+      if (storedWishlist) setWishlist(storedWishlist)
+
+      const storedUser = safeReadStorage<any>(STORAGE_KEYS.auth, null)
+      if (storedUser) setUser(storedUser)
+
+      const storedOrders = safeReadStorage<any[] | null>(STORAGE_KEYS.orders, null)
+      if (storedOrders) setOrders(storedOrders)
+
+      const storedCoupons = safeReadStorage<any>(STORAGE_KEYS.coupons, null)
+      if (storedCoupons) setAvailableCoupons(storedCoupons)
+    }
+
+    // 1. Fetch Branding
+    fetch('/api/settings')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.success && data?.settings) {
+          setBranding((prev) => ({ ...prev, ...data.settings }))
+        }
+      })
+      .catch(() => {})
+
+    // 2. Fetch Products
+    fetch('/api/products')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.success && Array.isArray(data?.products) && data.products.length > 0) {
+          setProducts(data.products)
+        }
+      })
+      .catch(() => {})
+
+    // 3. Fetch Orders
+    fetch('/api/orders')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.success && Array.isArray(data?.orders)) {
+          setOrders(data.orders)
+        }
+      })
+      .catch(() => {})
+  }, [])
+
+  const updateBranding = async (newBranding: Partial<BrandingSettings>) => {
+    setBranding((current) => {
+      const updated = { ...current, ...newBranding }
+      if (typeof window !== 'undefined') {
+        window.localStorage.setItem(STORAGE_KEYS.branding, JSON.stringify(updated))
+        document.title = `${updated.siteName} | ${updated.tagline}`
+      }
+      return updated
+    })
+
+    try {
+      const res = await fetch('/api/settings', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newBranding),
+      })
+      const data = await res.json()
+      if (data?.success && data?.settings) {
+        setBranding(data.settings)
+      }
+    } catch (err) {
+      console.error('Failed to sync branding to server:', err)
+    }
+
+    showToast({
+      title: 'Branding Updated Live! 🎨',
+      message: 'New store name & logo applied permanently across the entire website.',
+      type: 'success',
+    })
+  }
+
+  const resetBranding = async () => {
+    await updateBranding(DEFAULT_BRANDING)
+    showToast({
+      title: 'Branding Reset',
+      message: 'Storefront branding restored to default settings.',
+      type: 'info',
+    })
+  }
+
   const productLookup = useMemo(() => {
-    const map = new Map()
+    const map = new Map<string | number, Product>()
     for (const item of products) {
       map.set(item.id, item)
     }
@@ -165,21 +349,21 @@ export function MarketplaceProvider({ children }) {
 
   const wishlistedProducts = useMemo(
     () => wishlist.map((id) => productLookup.get(id)).filter(Boolean),
-    [wishlist, productLookup],
+    [wishlist, productLookup]
   )
 
-  const isWishlisted = useCallback((id) => wishlist.includes(id), [wishlist])
+  const isWishlisted = useCallback((id: string | number) => wishlist.includes(id), [wishlist])
 
-  const toggleWishlist = (productId) => {
+  const toggleWishlist = (productId: string | number) => {
     const product = productLookup.get(productId)
-    const title = product?.title || 'Craft item'
+    const title = product?.title || 'Item'
 
     setWishlist((current) => {
       const exists = current.includes(productId)
       if (exists) {
         showToast({
           title: 'Removed from Saved',
-          message: `${title} was removed from your saved items.`,
+          message: `${title} was removed from your favorites.`,
           type: 'info',
         })
         return current.filter((id) => id !== productId)
@@ -187,7 +371,7 @@ export function MarketplaceProvider({ children }) {
 
       showToast({
         title: 'Saved to Wishlist! 💖',
-        message: `${title} was added to your curated favorites.`,
+        message: `${title} added to your curated list.`,
         type: 'success',
       })
       return [...current, productId]
@@ -200,9 +384,7 @@ export function MarketplaceProvider({ children }) {
 
     setCart((current) => {
       const existingIndex = current.findIndex((item) => {
-        if (customization) {
-          return false
-        }
+        if (customization) return false
         return item.productId === product.id && !item.customization
       })
 
@@ -222,6 +404,7 @@ export function MarketplaceProvider({ children }) {
           productId: product.id,
           quantity: safeQuantity,
           customization,
+          department: product.department || (aquariumCategories.includes(product.category) ? 'aquarium' : 'crafts'),
         },
       ]
     })
@@ -233,8 +416,8 @@ export function MarketplaceProvider({ children }) {
     })
   }
 
-  const setCartQuantity = (cartItemId, quantity) => {
-    const targetQty = Number.parseInt(quantity, 10) || 0
+  const setCartQuantity = (cartItemId: string | number, quantity: number | string) => {
+    const targetQty = Number.parseInt(String(quantity), 10) || 0
     if (targetQty <= 0) {
       removeFromCart(cartItemId)
       return
@@ -247,7 +430,7 @@ export function MarketplaceProvider({ children }) {
     )
   }
 
-  const removeFromCart = (cartItemId) => {
+  const removeFromCart = (cartItemId: string | number) => {
     setCart((current) => current.filter((item) => (item.cartItemId || item.productId) !== cartItemId))
     showToast({
       title: 'Item Removed',
@@ -262,6 +445,7 @@ export function MarketplaceProvider({ children }) {
     setCart((current) => {
       const next = [...current]
       for (const prod of wishlistedProducts) {
+        if (!prod) continue
         const existingIdx = next.findIndex((item) => item.productId === prod.id && !item.customization)
         if (existingIdx > -1) {
           next[existingIdx].quantity += 1
@@ -271,6 +455,7 @@ export function MarketplaceProvider({ children }) {
             productId: prod.id,
             quantity: 1,
             customization: null,
+            department: prod.department || (aquariumCategories.includes(prod.category) ? 'aquarium' : 'crafts'),
           })
         }
       }
@@ -283,7 +468,7 @@ export function MarketplaceProvider({ children }) {
 
     showToast({
       title: 'Wishlist Moved to Bag! 🎁',
-      message: `${wishlistedProducts.length} handcrafted items moved to your bag.`,
+      message: `${wishlistedProducts.length} items moved to your bag.`,
       type: 'cart',
     })
   }
@@ -293,19 +478,18 @@ export function MarketplaceProvider({ children }) {
       cart
         .map((item) => {
           const product = productLookup.get(item.productId)
-          if (!product) {
-            return null
-          }
+          if (!product) return null
 
           return {
             ...product,
             cartItemId: item.cartItemId || item.productId,
             customization: item.customization,
             quantity: item.quantity,
+            department: product.department || item.department || (aquariumCategories.includes(product.category) ? 'aquarium' : 'crafts'),
           }
         })
         .filter(Boolean),
-    [cart, productLookup],
+    [cart, productLookup]
   )
 
   const cartRawSubtotal = useMemo(
@@ -314,7 +498,7 @@ export function MarketplaceProvider({ children }) {
         const amount = Number.parseFloat(String(item.price).replace(/[^0-9.]/g, '')) || 0
         return total + amount * item.quantity
       }, 0),
-    [cartItems],
+    [cartItems]
   )
 
   const discountAmount = useMemo(() => {
@@ -329,7 +513,7 @@ export function MarketplaceProvider({ children }) {
   }, [appliedCoupon, cartRawSubtotal])
 
   const shippingCost = useMemo(() => {
-    if (cartRawSubtotal >= 499 || appliedCoupon?.type === 'shipping' || cartItems.length === 0) {
+    if (cartRawSubtotal >= 1499 || appliedCoupon?.type === 'shipping' || cartItems.length === 0) {
       return 0
     }
     return 49
@@ -339,12 +523,12 @@ export function MarketplaceProvider({ children }) {
 
   const cartFinalTotal = useMemo(
     () => Math.max(0, cartRawSubtotal - discountAmount + shippingCost + giftWrapCost),
-    [cartRawSubtotal, discountAmount, shippingCost, giftWrapCost],
+    [cartRawSubtotal, discountAmount, shippingCost, giftWrapCost]
   )
 
   const cartCount = useMemo(() => cartItems.reduce((total, item) => total + item.quantity, 0), [cartItems])
 
-  const applyCouponCode = (code) => {
+  const applyCouponCode = (code: string) => {
     const cleanCode = code.trim().toUpperCase()
     if (availableCoupons[cleanCode]) {
       setAppliedCoupon(availableCoupons[cleanCode])
@@ -357,7 +541,7 @@ export function MarketplaceProvider({ children }) {
     }
     showToast({
       title: 'Invalid Code',
-      message: 'Code not recognized. Try ATELIER10 or FREESHIP',
+      message: 'Code not recognized. Try ATELIER10 or AQUA15',
       type: 'error',
     })
     return { success: false, message: 'Invalid coupon code.' }
@@ -372,15 +556,15 @@ export function MarketplaceProvider({ children }) {
     })
   }
 
-  const addCoupon = (newCoupon) => {
-    const code = newCoupon.code.trim().toUpperCase()
-    setAvailableCoupons((current) => ({
+  const addCoupon = (coupon: any) => {
+    const code = coupon.code.trim().toUpperCase()
+    setAvailableCoupons((current: any) => ({
       ...current,
       [code]: {
         code,
-        type: newCoupon.type || 'percent',
-        value: Number(newCoupon.value) || 10,
-        label: newCoupon.label || `${newCoupon.value}% Discount`,
+        type: coupon.type || 'percent',
+        value: Number(coupon.value) || 10,
+        label: coupon.label || `${coupon.value}% Discount`,
       },
     }))
     showToast({
@@ -390,8 +574,8 @@ export function MarketplaceProvider({ children }) {
     })
   }
 
-  const deleteCoupon = (code) => {
-    setAvailableCoupons((current) => {
+  const deleteCoupon = (code: string) => {
+    setAvailableCoupons((current: any) => {
       const next = { ...current }
       delete next[code]
       return next
@@ -405,7 +589,8 @@ export function MarketplaceProvider({ children }) {
 
   const clearCart = () => setCart([])
 
-  const createOrder = (orderData) => {
+  const createOrder = async (orderData: any) => {
+    const hasAquariumItem = cartItems.some((i: any) => i.department === 'aquarium')
     const newOrder = {
       orderId: `CRFT-${Math.floor(100000 + Math.random() * 900000)}`,
       date: new Date().toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' }),
@@ -416,8 +601,8 @@ export function MarketplaceProvider({ children }) {
       giftWrap: giftWrapCost,
       total: cartFinalTotal,
       customer: orderData,
-      status: 'Handcrafting & Packing',
-      estimatedDelivery: new Date(Date.now() + 5 * 86400000).toLocaleDateString('en-IN', {
+      status: hasAquariumItem ? 'Aquatic Packing & Oxygenation' : 'Handcrafting & Packing',
+      estimatedDelivery: new Date(Date.now() + 4 * 86400000).toLocaleDateString('en-IN', {
         month: 'short',
         day: 'numeric',
       }),
@@ -427,19 +612,40 @@ export function MarketplaceProvider({ children }) {
     clearCart()
     setAppliedCoupon(null)
 
+    try {
+      await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newOrder),
+      })
+    } catch (err) {
+      console.error('Failed to sync new order to server:', err)
+    }
+
     showToast({
       title: 'Order Confirmed! 🌟',
-      message: `Your order #${newOrder.orderId} is being prepared by our makers.`,
+      message: `Order #${newOrder.orderId} placed successfully. We are preparing your shipment!`,
       type: 'success',
     })
 
     return newOrder
   }
 
-  const updateOrderStatus = (orderId, newStatus) => {
+  const updateOrderStatus = async (orderId: string, newStatus: string) => {
     setOrders((current) =>
       current.map((order) => (order.orderId === orderId ? { ...order, status: newStatus } : order))
     )
+
+    try {
+      await fetch('/api/orders', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ orderId, status: newStatus }),
+      })
+    } catch (err) {
+      console.error('Failed to sync order status to server:', err)
+    }
+
     showToast({
       title: 'Order Status Updated',
       message: `Order #${orderId} marked as "${newStatus}".`,
@@ -447,7 +653,7 @@ export function MarketplaceProvider({ children }) {
     })
   }
 
-  const login = ({ name, email }) => {
+  const login = ({ name, email }: { name: string; email: string }) => {
     const cleanedName = name.trim()
     const cleanedEmail = email.trim().toLowerCase()
 
@@ -461,7 +667,7 @@ export function MarketplaceProvider({ children }) {
 
     showToast({
       title: `Welcome, ${cleanedName}! 🌸`,
-      message: 'Signed in to your Atelier NP account.',
+      message: `Signed in to ${branding.siteName}.`,
       type: 'success',
     })
   }
@@ -470,76 +676,123 @@ export function MarketplaceProvider({ children }) {
     setUser(null)
     showToast({
       title: 'Signed Out',
-      message: 'Come back soon for more handmade drops!',
+      message: 'Come back soon for more handcrafted & aquatic drops!',
       type: 'info',
     })
   }
 
-  const addProduct = (productData) => {
-    const rawPrice = productData.price.trim()
+  const addProduct = async (productData: any) => {
+    const rawPrice = String(productData.price || '').trim()
     const formattedPrice = rawPrice.startsWith('₹') ? rawPrice : `₹${rawPrice}`
 
-    const nextProduct = {
+    const isAquarium =
+      productData.department === 'aquarium' ||
+      aquariumCategories.includes(productData.category)
+
+    const nextProduct: Product = {
       id: Date.now(),
       title: productData.title.trim(),
-      description: productData.description.trim(),
+      description: (productData.description || '').trim(),
+      department: isAquarium ? 'aquarium' : 'crafts',
       category: productData.category.trim(),
+      subCategory: productData.subCategory || productData.category.trim(),
       price: formattedPrice,
-      image: productData.image.trim(),
-      badges: productData.badges || ['New', 'Artisan Maker', 'Handmade'],
+      image:
+        productData.image?.trim() ||
+        (isAquarium
+          ? 'https://images.unsplash.com/photo-1544943910-4c1dc44a0b38?auto=format&fit=crop&w=800&q=80'
+          : '/products/ceramic-mug.jpg'),
+      badges: productData.badges || ['New', 'In Stock'],
       rating: 5.0,
       reviews: 1,
-      stock: productData.stock || 25,
+      stock: productData.stock !== undefined ? Number(productData.stock) : 25,
       isUserCreated: true,
-      artisanName: productData.artisanName || user?.name || 'Local Maker',
+      artisanName: productData.artisanName || user?.name || (isAquarium ? 'Aquatic Master' : 'Local Artisan'),
+      aquaticSpecs: productData.aquaticSpecs,
     }
 
     setProducts((current) => [nextProduct, ...current])
 
+    try {
+      await fetch('/api/products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(nextProduct),
+      })
+    } catch (err) {
+      console.error('Failed to sync new product to server:', err)
+    }
+
     showToast({
-      title: 'Craft Listed Live! 🎨',
-      message: `"${nextProduct.title}" is now available in the collection.`,
+      title: 'Product Listed Live! 🎨',
+      message: `"${nextProduct.title}" is now available in ${nextProduct.category}.`,
       type: 'success',
     })
   }
 
-  const editProduct = (productId, updatedData) => {
+  const editProduct = async (productId: string | number, updatedData: any) => {
+    let updatedItem: any = null
     setProducts((current) =>
       current.map((prod) => {
         if (prod.id === productId) {
           let updatedPrice = prod.price
           if (updatedData.price) {
-            const raw = updatedData.price.trim()
+            const raw = String(updatedData.price).trim()
             updatedPrice = raw.startsWith('₹') ? raw : `₹${raw}`
           }
 
-          return {
+          const isAquarium =
+            updatedData.department === 'aquarium' ||
+            aquariumCategories.includes(updatedData.category || prod.category)
+
+          updatedItem = {
             ...prod,
             ...updatedData,
+            department: isAquarium ? 'aquarium' : 'crafts',
             price: updatedPrice,
           }
+          return updatedItem
         }
         return prod
       })
     )
 
+    if (updatedItem) {
+      try {
+        await fetch('/api/products', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(updatedItem),
+        })
+      } catch (err) {
+        console.error('Failed to sync edited product to server:', err)
+      }
+    }
+
     showToast({
       title: 'Product Updated! ✏️',
-      message: `Craft details saved successfully.`,
+      message: 'Product details saved & updated permanently.',
       type: 'success',
     })
   }
 
-  const deleteProduct = (productId) => {
+  const deleteProduct = async (productId: string | number) => {
     setProducts((current) => current.filter((prod) => prod.id !== productId))
+
+    try {
+      await fetch(`/api/products?id=${productId}`, { method: 'DELETE' })
+    } catch (err) {
+      console.error('Failed to sync deleted product to server:', err)
+    }
+
     showToast({
       title: 'Product Deleted',
-      message: 'Craft has been removed from marketplace.',
+      message: 'Product removed from marketplace and database.',
       type: 'info',
     })
   }
 
-  const addReview = (productId, review) => {
+  const addReview = (productId: string | number, review: any) => {
     setProducts((current) =>
       current.map((prod) => {
         if (prod.id === productId) {
@@ -558,12 +811,15 @@ export function MarketplaceProvider({ children }) {
 
     showToast({
       title: 'Review Posted! ⭐',
-      message: 'Thank you for sharing your feedback with the artisan community.',
+      message: 'Thank you for sharing your feedback with the community.',
       type: 'success',
     })
   }
 
   const value = {
+    branding,
+    updateBranding,
+    resetBranding,
     products,
     cartItems,
     cartSubtotal: cartRawSubtotal,
@@ -581,6 +837,8 @@ export function MarketplaceProvider({ children }) {
     orders,
     user,
     toasts,
+    activeDepartment,
+    setActiveDepartment,
     isCartOpen,
     isWishlistOpen,
     isAuthOpen,

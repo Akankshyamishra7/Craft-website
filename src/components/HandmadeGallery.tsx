@@ -5,45 +5,65 @@ import { AnimatePresence, motion } from 'framer-motion'
 import {
   ArrowUpRight,
   BookOpen,
+  CheckCircle2,
+  Droplets,
+  Fish,
   Grid2X2,
   Heart,
+  Info,
   LayoutGrid,
   Minus,
   Package,
   Plus,
   Search,
+  ShieldCheck,
   SlidersHorizontal,
   Sparkles,
   Star,
+  Waves,
   X,
 } from 'lucide-react'
 import ProductCard from './ProductCard'
-import { categoryGroups, inspirationTiles } from '../data/products'
+import {
+  aquariumCategories,
+  aquariumCategoryGroups,
+  craftCategories,
+  categoryGroups,
+  inspirationTiles,
+  Product,
+} from '../data/products'
 import { useRevealOnScroll } from '../hooks/useRevealOnScroll'
 import { useMarketplace } from '../context/MarketplaceContext'
 import { fallbackCraftImage } from '../utils/fallbackImage'
 
-const allCategories = ['All', ...categoryGroups.map((c) => c.title)]
-const BADGE_TAGS = ['All', 'Trending', 'New', 'Handmade', 'Under ₹1,500']
+const BADGE_TAGS = [
+  'All',
+  'Live Arrival Guarantee',
+  'Captive Bred',
+  'Trending',
+  'New',
+  'Optiwhite Glass',
+  'Under ₹1,500',
+]
 
 const MAKER_ARTICLES = [
   {
-    title: '10 Easy DIY Craft Ideas to Try This Weekend',
+    title: 'The Aquascaper’s Blueprint: Crafting a High-Clarity Planted Nature Aquarium',
+    date: 'February 14, 2026',
+    image: 'https://images.unsplash.com/photo-1546026423-cc4642628d2b?auto=format&fit=crop&w=700&q=80',
+    category: 'Aquascaping Masterclass',
+  },
+  {
+    title: '10 Easy DIY Craft Ideas to Elevate Your Home Sanctuary',
     date: 'January 18, 2026',
     image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=700&q=80',
     category: 'DIY Home Decor',
   },
   {
-    title: 'The Art of Botanical Resin: Beginner’s Guide',
+    title: 'The Art of Botanical UV Resin & Floral Preservation',
     date: 'May 12, 2026',
-    image: 'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=700&q=80',
-    category: 'Resin Art',
-  },
-  {
-    title: 'Choosing the Right Tools for Your Craft',
-    date: 'August 21, 2026',
-    image: 'https://images.unsplash.com/photo-1543257580-7269da773bf5?auto=format&fit=crop&w=700&q=80',
-    category: 'Studio Guide',
+    image: 'https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=700&q=80',
+    category: 'Resin Art Studio',
   },
 ]
 
@@ -51,6 +71,9 @@ export default function HandmadeGallery() {
   const { ref, isVisible } = useRevealOnScroll()
   const {
     products,
+    branding,
+    activeDepartment,
+    setActiveDepartment,
     addToCart,
     toggleWishlist,
     isWishlisted,
@@ -63,7 +86,7 @@ export default function HandmadeGallery() {
   const [sortBy, setSortBy] = useState('featured')
   const [searchTerm, setSearchTerm] = useState('')
   const [layoutMode, setLayoutMode] = useState('grid')
-  const [quickViewProduct, setQuickViewProduct] = useState(null)
+  const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null)
   const [quickViewQuantity, setQuickViewQuantity] = useState(1)
   const [activeQuickTab, setActiveQuickTab] = useState('details')
 
@@ -72,12 +95,66 @@ export default function HandmadeGallery() {
   const [reviewRating, setReviewRating] = useState(5)
   const [reviewComment, setReviewComment] = useState('')
 
+  // Determine which showcase cards to show based on department
+  const currentCategoryGroups = useMemo(() => {
+    if (activeDepartment === 'aquarium') {
+      return aquariumCategoryGroups
+    }
+    if (activeDepartment === 'crafts') {
+      return categoryGroups
+    }
+    // Mixed: show 2 aquatic + 2 craft
+    return [
+      aquariumCategoryGroups[0],
+      categoryGroups[0],
+      aquariumCategoryGroups[2],
+      categoryGroups[1],
+    ]
+  }, [activeDepartment])
+
+  // Dynamic Category Pills based on active department
+  const categoryPills = useMemo(() => {
+    if (activeDepartment === 'aquarium') {
+      return ['All Aquatics', ...aquariumCategories]
+    }
+    if (activeDepartment === 'crafts') {
+      return ['All Crafts', ...craftCategories]
+    }
+    return [
+      'All',
+      'Live Freshwater Fish',
+      'Marine & Saltwater Fish',
+      'Aquariums & Nano Tanks',
+      'Handmade Jewelry',
+      'DIY Home Decor & Crafts',
+      'Beauty DIY Products',
+      'Cute Handmade Accessories',
+    ]
+  }, [activeDepartment])
+
   const filteredProducts = useMemo(() => {
     const query = searchTerm.trim().toLowerCase()
 
-    let result = products.filter((product) => {
+    let result = products.filter((product: Product) => {
+      // Department filter
+      if (activeDepartment === 'aquarium') {
+        const isAqua =
+          product.department === 'aquarium' ||
+          aquariumCategories.includes(product.category)
+        if (!isAqua) return false
+      } else if (activeDepartment === 'crafts') {
+        const isCraft =
+          product.department === 'crafts' ||
+          craftCategories.includes(product.category) ||
+          (!product.department && !aquariumCategories.includes(product.category))
+        if (!isCraft) return false
+      }
+
       // Category filter
-      const matchesCategory = activeCategory === 'All' || product.category === activeCategory
+      let matchesCategory = true
+      if (activeCategory !== 'All' && activeCategory !== 'All Aquatics' && activeCategory !== 'All Crafts') {
+        matchesCategory = product.category === activeCategory
+      }
 
       // Badge / Tag filter
       let matchesBadge = true
@@ -103,25 +180,25 @@ export default function HandmadeGallery() {
 
     // Sorting
     if (sortBy === 'price-asc') {
-      result.sort((a, b) => {
+      result.sort((a: Product, b: Product) => {
         const pA = Number.parseFloat(String(a.price).replace(/[^0-9.]/g, '')) || 0
         const pB = Number.parseFloat(String(b.price).replace(/[^0-9.]/g, '')) || 0
         return pA - pB
       })
     } else if (sortBy === 'price-desc') {
-      result.sort((a, b) => {
+      result.sort((a: Product, b: Product) => {
         const pA = Number.parseFloat(String(a.price).replace(/[^0-9.]/g, '')) || 0
         const pB = Number.parseFloat(String(b.price).replace(/[^0-9.]/g, '')) || 0
         return pB - pA
       })
     } else if (sortBy === 'rating') {
-      result.sort((a, b) => (b.rating || 4.8) - (a.rating || 4.8))
+      result.sort((a: Product, b: Product) => (b.rating || 4.8) - (a.rating || 4.8))
     }
 
     return result
-  }, [activeCategory, activeBadge, products, searchTerm, sortBy])
+  }, [activeDepartment, activeCategory, activeBadge, products, searchTerm, sortBy])
 
-  const handlePostReview = (e) => {
+  const handlePostReview = (e: React.FormEvent) => {
     e.preventDefault()
     if (!quickViewProduct || !reviewName.trim()) return
 
@@ -141,20 +218,73 @@ export default function HandmadeGallery() {
       <div className="reveal is-visible space-y-12">
         {/* Section Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="section-eyebrow">
-            <Sparkles className="h-3.5 w-3.5 text-[#B8860B]" /> Curated Marketplace
-          </span>
-          <h2 className="mt-3 text-4xl sm:text-5xl lg:text-6xl text-[#141414] font-serif tracking-tight font-bold">
-            Artisan Drops & <span className="italic font-normal text-gold-gradient">Handcrafted Pieces</span>
+          <div className="section-eyebrow mb-3.5">
+            <Sparkles className="h-3.5 w-3.5 text-[#B8860B]" />
+            <span>Curated Marketplace & Living Waters</span>
+          </div>
+          <h2 className="heading-1">
+            Artisan Drops & <span className="italic font-normal text-gold-gradient">Aquatic Wonders</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5A554E] sm:text-lg font-medium">
-            Discover one-of-a-kind silk jewelry, botanical UV resin, clean-burn soy candles, and bespoke gifts crafted in independent artisan studios.
+          <p className="body-lead mx-auto mt-4 max-w-2xl text-[#4A4339]">
+            Explore handcrafted jewelry, aromatherapy soy candles, and bespoke creations alongside exotic captive-bred fish, ultra-clear low-iron aquariums, and living aquascapes.
           </p>
+
+          {/* Department Switcher Tabs (All | Crafts | Fish & Aquarium) */}
+          <div className="mt-8 flex justify-center">
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-[#D4AF37]/50 bg-white/90 p-1.5 shadow-[0_6px_20px_rgba(184,134,11,0.12)] backdrop-blur-md">
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveDepartment?.('all')
+                  setActiveCategory('All')
+                }}
+                className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold transition duration-200 ${
+                  activeDepartment === 'all'
+                    ? 'bg-[#141414] text-[#ECC872] shadow-sm'
+                    : 'text-[#5A554E] hover:text-[#141414] hover:bg-[#FAF6ED]'
+                }`}
+              >
+                <Sparkles className="h-3.5 w-3.5" />
+                <span>All Departments</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveDepartment?.('crafts')
+                  setActiveCategory('All Crafts')
+                }}
+                className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold transition duration-200 ${
+                  activeDepartment === 'crafts'
+                    ? 'bg-gradient-to-r from-[#D4AF37] to-[#B8860B] text-[#1A120B] shadow-[0_2px_10px_rgba(212,175,55,0.35)]'
+                    : 'text-[#5A554E] hover:text-[#141414] hover:bg-[#FAF6ED]'
+                }`}
+              >
+                <span>🎨 Handmade Crafts</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setActiveDepartment?.('aquarium')
+                  setActiveCategory('All Aquatics')
+                }}
+                className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold transition duration-200 ${
+                  activeDepartment === 'aquarium'
+                    ? 'bg-gradient-to-r from-[#008080] via-[#0F52BA] to-[#008080] text-white shadow-[0_4px_16px_rgba(15,82,186,0.35)]'
+                    : 'text-[#5A554E] hover:text-[#141414] hover:bg-[#FAF6ED]'
+                }`}
+              >
+                <Fish className="h-4 w-4 text-cyan-300" />
+                <span>🐠 Fish & Aquarium</span>
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Visual Category Showcase Cards */}
         <div className="grid grid-cols-2 gap-3.5 sm:grid-cols-4 sm:gap-4">
-          {categoryGroups.map((cat) => {
+          {currentCategoryGroups.map((cat) => {
             const isSelected = activeCategory === cat.title
             return (
               <button
@@ -178,16 +308,16 @@ export default function HandmadeGallery() {
                     }}
                     className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
                   <span className="absolute bottom-2 left-2.5 right-2.5 truncate font-serif text-xs sm:text-sm font-bold text-white">
                     {cat.title}
                   </span>
                 </div>
                 <div className="flex items-center justify-between p-2.5 sm:p-3 bg-gradient-to-b from-white to-[#FAF6ED]">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#9E7314]">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#7A5408] truncate max-w-[120px]">
                     {cat.badge}
                   </span>
-                  <span className="text-[10px] text-[#141414] font-bold">
+                  <span className="text-[10px] text-[#141414] font-bold shrink-0">
                     {isSelected ? 'Selected ✓' : 'Browse →'}
                   </span>
                 </div>
@@ -206,15 +336,19 @@ export default function HandmadeGallery() {
                 type="search"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search jewelry, candles, resin, soaps..."
+                placeholder="Search fish, aquariums, plants, candles, jewelry..."
                 className="h-12 w-full rounded-full border border-[#E2D2AD] bg-[#FCFBF8] pl-11 pr-4 text-xs text-[#141414] outline-none transition placeholder:text-[#8C827A] focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37]/40 focus:bg-white sm:text-sm font-medium shadow-xs"
               />
             </div>
 
-            {/* Category Pills */}
+            {/* Dynamic Category Pills */}
             <div className="flex flex-wrap gap-2">
-              {allCategories.map((cat) => {
-                const isActive = activeCategory === cat
+              {categoryPills.map((cat) => {
+                const isActive =
+                  activeCategory === cat ||
+                  (cat === 'All Aquatics' && activeCategory === 'All Aquatics') ||
+                  (cat === 'All Crafts' && activeCategory === 'All Crafts') ||
+                  (cat === 'All' && activeCategory === 'All')
                 return (
                   <button
                     key={cat}
@@ -304,20 +438,21 @@ export default function HandmadeGallery() {
         {filteredProducts.length === 0 ? (
           <div className="glass-card flex flex-col items-center justify-center p-12 text-center">
             <Package className="h-12 w-12 text-[#8C827A]" />
-            <h3 className="mt-4 font-serif text-2xl font-bold text-[#141414]">No Crafts Found</h3>
+            <h3 className="mt-4 font-serif text-2xl font-bold text-[#141414]">No Items Found</h3>
             <p className="mt-2 text-sm text-[#5A554E]">
-              Try adjusting your search filters or browse another category.
+              Try adjusting your category or filter selection.
             </p>
             <button
               type="button"
               onClick={() => {
+                setActiveDepartment?.('all')
                 setActiveCategory('All')
                 setActiveBadge('All')
                 setSearchTerm('')
               }}
               className="btn-primary mt-6 text-xs"
             >
-              Reset Filters
+              Reset All Filters
             </button>
           </div>
         ) : (
@@ -328,7 +463,7 @@ export default function HandmadeGallery() {
                 : 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5'
             }`}
           >
-            {filteredProducts.map((prod) => (
+            {filteredProducts.map((prod: Product) => (
               <ProductCard
                 key={prod.id}
                 product={prod}
@@ -337,6 +472,7 @@ export default function HandmadeGallery() {
                 onQuickView={() => {
                   setQuickViewProduct(prod)
                   setQuickViewQuantity(1)
+                  setActiveQuickTab('details')
                 }}
                 onAddToCart={(p, qty) => addToCart(p, qty)}
                 onBuyNow={(p) => {
@@ -348,21 +484,21 @@ export default function HandmadeGallery() {
           </div>
         )}
 
-        {/* INSPIRATION FOR EVERY MAKER (Matching user's reference image) */}
+        {/* INSPIRATION & JOURNALS */}
         <section id="inspiration" className="glass-card overflow-hidden p-6 sm:p-10 lg:p-12 border border-[#DFCFA6]/60 bg-gradient-to-b from-white via-[#FCF9F1] to-[#FAF4E5]">
           <div className="text-center max-w-2xl mx-auto">
             <span className="section-eyebrow">
-              <BookOpen className="h-3.5 w-3.5 text-[#141414]" /> Maker Journals
+              <BookOpen className="h-3.5 w-3.5 text-[#141414]" /> Maker & Aquarist Journals
             </span>
             <h3 className="mt-3 text-3xl sm:text-4xl text-[#141414] font-serif font-bold tracking-tight">
-              Inspiration for Every Maker
+              Inspiration for Every Creator & Aquarist
             </h3>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#5A554E]">
-              Explore tactile textures, studio journals, and beginner DIY tutorials from our creative artisan collective.
+              Explore tactile textures, nature aquascaping guides, and artisanal craft tutorials from our creative collective.
             </p>
           </div>
 
-          {/* 3 Editorial Cards like attached reference image */}
+          {/* 3 Editorial Cards */}
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {MAKER_ARTICLES.map((article, i) => (
               <div
@@ -391,17 +527,17 @@ export default function HandmadeGallery() {
                 </div>
                 <div className="mt-4 pt-3 border-t border-[#EAE5DC] flex items-center justify-between">
                   <span className="text-xs font-bold uppercase tracking-wider text-[#141414] flex items-center gap-1 group-hover:underline">
-                    Read More <ArrowUpRight className="h-3.5 w-3.5 stroke-[2.5]" />
+                    Read Journal <ArrowUpRight className="h-3.5 w-3.5 stroke-[2.5]" />
                   </span>
                 </div>
               </div>
             ))}
           </div>
 
-          {/* Additional tactile moodboard preview tiles */}
+          {/* Tactile Studio Moodboard preview tiles */}
           <div className="mt-8 pt-8 border-t border-[#EAE5DC]">
             <p className="text-xs font-bold uppercase tracking-widest text-[#8C827A] text-center mb-4">
-              Tactile Studio Moodboard
+              Tactile Studio & Living Water Moodboard
             </p>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
               {inspirationTiles.slice(0, 6).map((tile) => (
@@ -468,24 +604,39 @@ export default function HandmadeGallery() {
                     }}
                     className="h-full w-full object-cover"
                   />
-                  <div className="absolute left-4 top-4 flex flex-wrap gap-1.5">
+                  <div className="absolute left-4 top-4 flex flex-col gap-1.5">
                     {(quickViewProduct.badges || ['Handmade']).map((b) => (
                       <span
                         key={b}
-                        className="rounded-full bg-white/95 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#141414] shadow-sm"
+                        className="rounded-full bg-white/95 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#141414] shadow-sm backdrop-blur-sm"
                       >
                         {b}
                       </span>
                     ))}
+                  </div>
+
+                  {/* Stock status badge */}
+                  <div className="absolute bottom-4 left-4">
+                    <span className="rounded-full bg-emerald-600 px-3 py-1 text-[10px] font-bold text-white shadow-md">
+                      ● {quickViewProduct.stock ?? 20} in stock
+                    </span>
                   </div>
                 </div>
 
                 {/* Details & Interactive Tabs */}
                 <div className="flex flex-col justify-between p-6 sm:p-8">
                   <div>
-                    <span className="text-[11px] font-bold uppercase tracking-widest text-[#8C827A]">
-                      {quickViewProduct.category}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[11px] font-bold uppercase tracking-widest text-[#8C827A]">
+                        {quickViewProduct.category}
+                      </span>
+                      {quickViewProduct.department === 'aquarium' && (
+                        <span className="rounded-full bg-cyan-100 px-2 py-0.5 text-[9px] font-bold text-cyan-800">
+                          Aquatic Specimen
+                        </span>
+                      )}
+                    </div>
+
                     <h3 className="mt-1 font-serif text-2xl font-bold text-[#141414] sm:text-3xl">
                       {quickViewProduct.title}
                     </h3>
@@ -495,7 +646,7 @@ export default function HandmadeGallery() {
                         <span className="text-2xl font-extrabold text-[#141414]">
                           {quickViewProduct.price}
                         </span>
-                        <span className="ml-2 text-xs text-[#8C827A]">Taxes & shipping calculated at checkout</span>
+                        <span className="ml-2 text-xs text-[#8C827A]">Free shipping over ₹1,499</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <Star className="h-4 w-4 fill-[#141414] text-[#141414]" />
@@ -509,15 +660,17 @@ export default function HandmadeGallery() {
                     {/* Quick Tabs */}
                     <div className="mt-4 flex border-b border-[#EAE5DC]">
                       {[
-                        { id: 'details', label: 'Story & Craft' },
-                        { id: 'materials', label: 'Materials' },
-                        { id: 'reviews', label: 'Reviews' },
+                        { id: 'details', label: 'Story & Description' },
+                        quickViewProduct.aquaticSpecs
+                          ? { id: 'specs', label: 'Aquatic Parameters' }
+                          : { id: 'materials', label: 'Materials' },
+                        { id: 'reviews', label: 'Customer Reviews' },
                       ].map((tab) => (
                         <button
                           key={tab.id}
                           type="button"
                           onClick={() => setActiveQuickTab(tab.id)}
-                          className={`border-b-2 px-4 py-2 text-xs font-bold transition ${
+                          className={`border-b-2 px-3 sm:px-4 py-2 text-xs font-bold transition ${
                             activeQuickTab === tab.id
                               ? 'border-[#141414] text-[#141414]'
                               : 'border-transparent text-[#8C827A] hover:text-[#141414]'
@@ -529,16 +682,65 @@ export default function HandmadeGallery() {
                     </div>
 
                     {/* Tab Content */}
-                    <div className="mt-4 min-h-[120px] text-xs leading-relaxed text-[#5A554E]">
+                    <div className="mt-4 min-h-[140px] text-xs leading-relaxed text-[#4A4339]">
                       {activeQuickTab === 'details' && (
-                        <p>{quickViewProduct.description}</p>
+                        <div className="space-y-3">
+                          <p>{quickViewProduct.description}</p>
+                          {quickViewProduct.department === 'aquarium' && (
+                            <div className="flex items-center gap-2 rounded-xl bg-cyan-50 border border-cyan-200 p-2.5 text-cyan-900 font-semibold">
+                              <ShieldCheck className="h-4 w-4 text-cyan-700 shrink-0" />
+                              <span>Live Arrival Guarantee: Oxygenated bagging + climate controlled thermal transit pack.</span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {activeQuickTab === 'specs' && quickViewProduct.aquaticSpecs && (
+                        <div className="grid grid-cols-2 gap-2 text-xs">
+                          {quickViewProduct.aquaticSpecs.waterType && (
+                            <div className="rounded-xl bg-white/80 border border-[#E5E0D8] p-2.5">
+                              <span className="text-[10px] font-bold text-[#8C827A] uppercase block">Water Type</span>
+                              <span className="font-bold text-[#141414]">{quickViewProduct.aquaticSpecs.waterType}</span>
+                            </div>
+                          )}
+                          {quickViewProduct.aquaticSpecs.careLevel && (
+                            <div className="rounded-xl bg-white/80 border border-[#E5E0D8] p-2.5">
+                              <span className="text-[10px] font-bold text-[#8C827A] uppercase block">Care Level</span>
+                              <span className="font-bold text-[#141414]">{quickViewProduct.aquaticSpecs.careLevel}</span>
+                            </div>
+                          )}
+                          {quickViewProduct.aquaticSpecs.temperament && (
+                            <div className="rounded-xl bg-white/80 border border-[#E5E0D8] p-2.5">
+                              <span className="text-[10px] font-bold text-[#8C827A] uppercase block">Temperament</span>
+                              <span className="font-bold text-[#141414]">{quickViewProduct.aquaticSpecs.temperament}</span>
+                            </div>
+                          )}
+                          {quickViewProduct.aquaticSpecs.tankSize && (
+                            <div className="rounded-xl bg-white/80 border border-[#E5E0D8] p-2.5">
+                              <span className="text-[10px] font-bold text-[#8C827A] uppercase block">Minimum Tank</span>
+                              <span className="font-bold text-[#141414]">{quickViewProduct.aquaticSpecs.tankSize}</span>
+                            </div>
+                          )}
+                          {quickViewProduct.aquaticSpecs.diet && (
+                            <div className="col-span-2 rounded-xl bg-white/80 border border-[#E5E0D8] p-2.5">
+                              <span className="text-[10px] font-bold text-[#8C827A] uppercase block">Diet / Nutrition</span>
+                              <span className="font-bold text-[#141414]">{quickViewProduct.aquaticSpecs.diet}</span>
+                            </div>
+                          )}
+                          {quickViewProduct.aquaticSpecs.dimensions && (
+                            <div className="col-span-2 rounded-xl bg-white/80 border border-[#E5E0D8] p-2.5">
+                              <span className="text-[10px] font-bold text-[#8C827A] uppercase block">Dimensions / Flow</span>
+                              <span className="font-bold text-[#141414]">{quickViewProduct.aquaticSpecs.dimensions}</span>
+                            </div>
+                          )}
+                        </div>
                       )}
 
                       {activeQuickTab === 'materials' && (
                         <ul className="space-y-1.5 list-disc pl-4 text-xs">
-                          <li>Hand-cast non-toxic botanical resins and natural waxes</li>
-                          <li>100% genuine natural dried flowers pressed in boutique studios</li>
-                          <li>Plastic-free biodegradable packaging & recycled kraft box</li>
+                          <li>Handcrafted with studio-grade natural resins, organic soy waxes, and pure silk threads.</li>
+                          <li>100% genuine pressed wild botanicals sealed with crystal clarity.</li>
+                          <li>Recyclable, plastic-free boutique packaging and personalized gift notes.</li>
                         </ul>
                       )}
 
@@ -546,21 +748,21 @@ export default function HandmadeGallery() {
                         <div className="space-y-3">
                           <div className="rounded-xl border border-[#E5E0D8] bg-[#FAF8F5] p-2.5">
                             <div className="flex items-center justify-between">
-                              <span className="font-bold text-[#141414]">Elena R.</span>
-                              <div className="flex text-[#141414]">
+                              <span className="font-bold text-[#141414]">Verified Buyer</span>
+                              <div className="flex text-[#D4AF37]">
                                 {Array.from({ length: 5 }).map((_, i) => (
-                                  <Star key={i} className="h-3 w-3 fill-[#141414]" />
+                                  <Star key={i} className="h-3 w-3 fill-[#D4AF37]" />
                                 ))}
                               </div>
                             </div>
                             <p className="mt-1 text-xs text-[#5A554E]">
-                              "The craftsmanship is remarkable. The textures and packaging exceeded my expectations!"
+                              "Outstanding quality. Exceeded expectations in every detail!"
                             </p>
                           </div>
 
                           {/* Post Review Form */}
                           <form onSubmit={handlePostReview} className="space-y-2 rounded-xl border border-[#E5E0D8] bg-[#FAF8F5] p-3">
-                            <p className="text-xs font-bold text-[#141414]">Leave a Review for Maker</p>
+                            <p className="text-xs font-bold text-[#141414]">Leave a Review</p>
                             <div className="flex gap-2">
                               <input
                                 required
@@ -626,7 +828,7 @@ export default function HandmadeGallery() {
                           addToCart(quickViewProduct, quickViewQuantity)
                           setQuickViewProduct(null)
                         }}
-                        className="btn-primary flex-1 py-3 text-xs"
+                        className="btn-primary flex-1 py-3 text-xs justify-center"
                       >
                         Add {quickViewQuantity} to Bag
                       </button>

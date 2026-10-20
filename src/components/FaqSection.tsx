@@ -47,10 +47,10 @@ export default function FaqSection() {
           <span className="section-eyebrow">
             <HelpCircle className="h-3.5 w-3.5 text-[#B8860B]" /> Questions & Answers
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#141414] tracking-tight uppercase">
+          <h2 className="heading-1 mt-3.5">
             Frequently Asked <span className="italic font-normal text-gold-gradient">Questions</span>
           </h2>
-          <p className="mx-auto mt-4 text-base leading-relaxed text-[#5A554E]">
+          <p className="body-lead mx-auto mt-4 text-[#4A4339]">
             Everything you need to know about custom orders, handmade materials, and our buyer protection guarantee.
           </p>
         </div>
@@ -89,7 +89,7 @@ export default function FaqSection() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: 'easeInOut' }}
                     >
-                      <div className="border-t border-[#E8DEC7] px-5 pb-5 pt-3 text-sm leading-relaxed text-[#5A554E] sm:text-base">
+                      <div className="border-t border-[#E8DEC7] px-5 pb-5 pt-3 text-sm leading-relaxed text-[#4A4339] sm:text-base">
                         {faq.answer}
                       </div>
                     </motion.div>
@@ -102,9 +102,9 @@ export default function FaqSection() {
 
         {/* Still Have Questions Banner */}
         <div className="mx-auto max-w-lg rounded-2xl border border-[#D4AF37]/50 bg-gradient-to-b from-[#FFFDF8] to-[#FAF4E5] p-4 text-center shadow-xs">
-          <p className="text-xs text-[#5A554E]">
+          <p className="text-xs text-[#4A4339]">
             Still have questions about a custom piece?{' '}
-            <a href="#contact" className="font-bold text-[#8F650D] underline transition hover:text-[#5C4106]">
+            <a href="#contact" className="font-bold text-[#7A5408] underline transition hover:text-[#5C4106]">
               Contact our studio team →
             </a>
           </p>

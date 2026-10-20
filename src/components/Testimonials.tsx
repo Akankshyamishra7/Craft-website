@@ -39,15 +39,15 @@ export default function Testimonials() {
   return (
     <section id="about" ref={ref} className={`section-shell py-16 sm:py-24 ${isVisible ? 'is-visible' : ''}`}>
       <div className="reveal is-visible space-y-12">
-        {/* Editorial Featured Quote (Matching top-left of reference image) */}
+        {/* Editorial Featured Quote */}
         <div className="mx-auto max-w-4xl text-center px-4 space-y-4">
           <div className="flex justify-center">
             <Quote className="h-10 w-10 text-[#D4AF37]/60 rotate-180" />
           </div>
-          <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight text-[#141414] leading-snug uppercase">
+          <blockquote className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight text-[#141414] leading-snug">
             &ldquo;Each piece feels meaningful, intentional, and full of heart. The craftsmanship is both beautiful and inspiring.&rdquo;
           </blockquote>
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#9E7A2E]">
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#7A5408]">
             Emma Thompson &#8226; Interior Designer
           </p>
         </div>
@@ -56,10 +56,10 @@ export default function Testimonials() {
           <span className="section-eyebrow">
             <Heart className="h-3.5 w-3.5 text-[#B8860B]" /> Collector Love
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl text-[#141414] font-serif font-bold">
+          <h2 className="heading-1 mt-3.5">
             Loved by Handmade <span className="italic font-normal text-gold-gradient">Lovers Worldwide</span>
           </h2>
-          <p className="mx-auto mt-3 text-sm leading-relaxed text-[#5A554E]">
+          <p className="body-lead mx-auto mt-3 max-w-2xl text-[#4A4339]">
             Read authentic reviews from collectors who cherish thoughtful artisan craftsmanship.
           </p>
         </div>
@@ -68,7 +68,7 @@ export default function Testimonials() {
           {TESTIMONIALS_DATA.map((t, idx) => (
             <article
               key={idx}
-              className="flex flex-col justify-between rounded-[2rem] border border-[#D4AF37]/50 bg-gradient-to-b from-[#FFFDF8] via-[#FAF5E8] to-[#F7ECCF]/80 p-6 sm:p-7 shadow-[0_10px_28px_rgba(184,134,11,0.08),0_0_12px_rgba(212,175,55,0.08)] transition-[border-color,box-shadow] duration-200 ease-out hover:border-[#D4AF37] hover:shadow-[0_16px_36px_rgba(184,134,11,0.18),0_0_20px_rgba(212,175,55,0.22)]"
+              className="flex flex-col justify-between rounded-[2rem] border border-[#D4AF37]/50 bg-gradient-to-b from-[#FFFDF8] via-[#FAF5E8] to-[#F7ECCF]/80 p-6 sm:p-7 shadow-[0_10px_28px_rgba(184,134,11,0.08),0_0_12px_rgba(212,175,55,0.08)] transition-[border-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-1 hover:border-[#D4AF37] hover:shadow-[0_16px_36px_rgba(184,134,11,0.18),0_0_20px_rgba(212,175,55,0.22)]"
             >
               <div>
                 <div className="flex items-center justify-between">
@@ -82,7 +82,7 @@ export default function Testimonials() {
                   </span>
                 </div>
 
-                <p className="mt-4 font-serif text-lg italic leading-relaxed text-[#141414] sm:text-xl font-medium">
+                <p className="mt-4 font-serif text-base sm:text-lg italic leading-relaxed text-[#141414]">
                   &ldquo;{t.quote}&rdquo;
                 </p>
               </div>
@@ -95,8 +95,8 @@ export default function Testimonials() {
                     className="h-11 w-11 rounded-full border border-[#D4AF37]/50 object-cover shadow-sm"
                   />
                   <div>
-                    <h4 className="font-serif text-lg font-bold text-[#141414]">{t.name}</h4>
-                    <p className="text-[11px] text-[#8C827A] font-medium">{t.role}</p>
+                    <h4 className="heading-4">{t.name}</h4>
+                    <p className="text-[11px] text-[#635B4F] font-medium">{t.role}</p>
                   </div>
                 </div>
                 {t.craft && (

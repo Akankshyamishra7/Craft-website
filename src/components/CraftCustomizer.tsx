@@ -166,10 +166,10 @@ export default function CraftCustomizer() {
           <span className="section-eyebrow">
             <Sparkles className="h-3.5 w-3.5 text-[#B8860B]" /> Interactive Studio
           </span>
-          <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl text-[#141414] font-serif font-bold tracking-tight">
+          <h2 className="heading-1 mt-3.5">
             Design Your Bespoke <span className="italic font-normal text-gold-gradient">Handmade Craft</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5A554E] sm:text-lg font-medium">
+          <p className="body-lead mx-auto mt-4 max-w-2xl text-[#4A4339]">
             Choose your artisan base piece, select a curated color mood, and personalize with custom engravings or gold leaf. We craft each one-of-a-kind piece from scratch.
           </p>
         </div>

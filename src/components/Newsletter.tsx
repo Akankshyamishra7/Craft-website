@@ -35,11 +35,11 @@ export default function Newsletter() {
             <span className="section-eyebrow">
               <Sparkles className="h-3.5 w-3.5 text-[#B8860B]" /> Artisan Circle
             </span>
-            <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#141414]">
+            <h2 className="heading-1 mt-3.5">
               Join the Soft <span className="italic font-normal text-gold-gradient">Handmade Circle</span>
             </h2>
-            <p className="mt-4 max-w-xl text-base leading-relaxed text-[#5A554E] sm:text-lg">
-              Get notified of limited batch drops, maker studio journals, and seasonal DIY tutorials. Plus receive a <strong className="text-[#8F650D] font-bold">₹150 voucher</strong> on your first order.
+            <p className="body-lead mt-4 max-w-xl text-[#4A4339]">
+              Get notified of limited batch drops, maker studio journals, and seasonal DIY tutorials. Plus receive a <strong className="text-[#7A5408] font-bold">₹150 voucher</strong> on your first order.
             </p>
             <div className="mt-5 flex items-center gap-3">
               <img
@@ -47,7 +47,7 @@ export default function Newsletter() {
                 alt="Artisan studio box"
                 className="h-12 w-12 rounded-xl object-cover border border-[#D4AF37]/50 shadow-sm"
               />
-              <p className="text-xs font-semibold text-[#8C7A54]">
+              <p className="text-xs font-semibold text-[#7A5408]">
                 ✨ Handcrafted boutique packaging • Dispatched across India
               </p>
             </div>
@@ -60,7 +60,7 @@ export default function Newsletter() {
                   <CheckCircle2 className="h-6 w-6 text-[#8F650D]" />
                 </div>
                 <h3 className="mt-3 font-serif text-2xl font-bold text-[#141414]">You're on the list! ✨</h3>
-                <p className="mt-1 text-xs text-[#5A554E]">
+                <p className="mt-1 text-xs text-[#4A4339]">
                   Use coupon code below at checkout for ₹150 off:
                 </p>
                 <div className="mt-3 flex items-center justify-center gap-2">
@@ -99,7 +99,7 @@ export default function Newsletter() {
               </form>
             )}
             {!isSubscribed && (
-              <p className="mt-2.5 text-center text-[11px] text-[#8C827A] sm:text-left">
+              <p className="mt-2.5 text-center text-[11px] text-[#635B4F] sm:text-left">
                 🔒 We respect your privacy. Zero spam, unsubscribe anytime.
               </p>
             )}

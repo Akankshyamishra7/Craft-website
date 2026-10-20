@@ -23,10 +23,10 @@ const showcaseItems = [
     className: 'top-2 left-0 sm:left-4 -rotate-6 w-36 sm:w-44',
   },
   {
-    title: 'Atelier NP DIY Paint Kit',
-    price: '₹1,449',
-    category: 'DIY Crafts',
-    image: '/products/atelier-diy-paint-kit-sea.jpg',
+    title: 'Royal Discus Aquatic Pair',
+    price: '₹2,999',
+    category: 'Fish & Aquarium',
+    image: 'https://images.unsplash.com/photo-1544943910-4c1dc44a0b38?auto=format&fit=crop&w=800&q=80',
     className: 'top-8 right-0 sm:right-2 rotate-6 w-40 sm:w-48',
   },
   {
@@ -54,22 +54,22 @@ export default function Hero() {
           <div className="max-w-2xl">
             <div className="flex flex-wrap items-center gap-2.5">
               <span className="section-eyebrow">
-                <Sparkles className="h-3.5 w-3.5 text-[#B8860B]" /> Handcrafted With Soul
+                <Sparkles className="h-3.5 w-3.5 text-[#B8860B]" /> Handcrafted With Soul & Living Nature
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full border border-[#D4AF37]/45 bg-gradient-to-r from-white to-[#FDF9EE] px-3.5 py-1 text-xs font-bold text-[#4D3605] shadow-xs">
-                <Users className="h-3.5 w-3.5 text-[#B8860B]" /> 240+ Verified Makers
+                <Users className="h-3.5 w-3.5 text-[#B8860B]" /> 240+ Verified Makers & Aquarists
               </span>
             </div>
 
-            <h1 className="mt-6 text-5xl leading-[1.05] tracking-tight text-[#141414] sm:text-6xl lg:text-7xl font-serif font-bold">
+            <h1 className="heading-display mt-6 sm:text-6xl lg:text-7xl">
               Where Art Meets <br />
               <span className="italic font-normal text-gold-gradient">
-                Imagination.
+                Living Imagination.
               </span>
             </h1>
 
-            <p className="mt-6 text-base leading-relaxed text-[#5A554E] sm:text-lg font-medium">
-              Discover a world where creativity comes alive through handmade art and craft. Each piece blends passion, skill, and imagination to tell a unique story.
+            <p className="body-lead mt-6 sm:text-lg">
+              Discover a world where creativity and living nature merge through handmade artisan crafts and exotic aquatics. Every piece and specimen is curated with passion, skill, and care.
             </p>
 
             {/* CTAs */}
@@ -83,11 +83,10 @@ export default function Hero() {
               </a>
 
               <a
-                href="#customize"
-                className="btn-secondary py-4 px-7 text-sm font-bold tracking-wide"
+                href="#collection"
+                className="btn-secondary py-4 px-7 text-sm font-bold tracking-wide border-teal-500/50 hover:border-teal-600"
               >
-                <Sparkles className="h-4 w-4 text-[#B8860B]" />
-                <span>Custom Craft Studio</span>
+                <span>🐠 Fish & Aquarium</span>
               </a>
             </div>
 
@@ -120,11 +119,11 @@ export default function Hero() {
 
               <div className="hidden h-8 w-px bg-[#E2D2B0] sm:block" />
 
-              <div className="text-xs font-semibold text-[#5A554E]">
+              <div className="text-xs font-semibold text-[#4A4339]">
                 <p className="font-bold text-[#141414] flex items-center gap-1.5">
-                  <Leaf className="h-3.5 w-3.5 text-[#855E0D]" /> 100% Eco Packaging
+                  <Leaf className="h-3.5 w-3.5 text-[#7A5408]" /> 100% Eco Packaging
                 </p>
-                <p className="text-[#7A7369]">Biodegradable boxes & honeycomb wrap</p>
+                <p className="text-[#635B4F]">Biodegradable boxes & honeycomb wrap</p>
               </div>
             </div>
           </div>
